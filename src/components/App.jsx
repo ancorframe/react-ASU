@@ -20,21 +20,9 @@ export const App = () => {
       pt={5}
     >
       <SocialProfile user={user} />
-      <Statistics data={data} />
+      <Statistics data={data} title={"Uploads Stats"} />
       <FriendList friends={friends} />
       <TransactionHistory transaction={transaction} />
     </Box>
-    // <div
-    //   style={{
-    //     height: '100vh',
-    //     display: 'flex',
-    //     justifyContent: 'center',
-    //     alignItems: 'center',
-    //     fontSize: 40,
-    //     color: '#010101'
-    //   }}
-    // >
-    //   React homework template
-    // </div>
   );
 };

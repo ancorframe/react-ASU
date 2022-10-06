@@ -6,8 +6,8 @@ export const Stats = styled.ul`
 
 export const Img = styled.img`
   width: 100px;
-  border-radius: 50%;
-  margin-bottom:auto;
+  border-radius: ${p => p.theme.radii.round};
+  margin-bottom: auto;
 `;
 
 export const Wrapper = styled.span`

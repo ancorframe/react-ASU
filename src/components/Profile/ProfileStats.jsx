@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Wrapper, Item } from './Profile.styled';
 
 export const ProfileStats = ({ props, text }) => {
@@ -7,4 +8,9 @@ export const ProfileStats = ({ props, text }) => {
       <Wrapper>{props}</Wrapper>
     </Item>
   );
+};
+
+ProfileStats.propTypes = {
+  props: PropTypes.number.isRequired,
+  text: PropTypes.string.isRequired,
 };

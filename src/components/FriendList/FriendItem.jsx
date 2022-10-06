@@ -16,10 +16,17 @@ export const FriendItem = ({ friends: { avatar, name, isOnline } }) => {
         pl={3}
       >
         <IsOnline isOnline={isOnline}></IsOnline>
-        <img class="avatar" src={avatar} alt="User avatar" width="48" />
-        <p class="name">{name}</p>
+        <img src={avatar} alt="User avatar" width="48" />
+        <p >{name}</p>
       </Box>
     </Frienditem>
   );
 };
 
+FriendItem.propTypes = {
+  friends: PropTypes.shape({
+    avatar: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    isOnline: PropTypes.bool.isRequired,
+  }),
+};

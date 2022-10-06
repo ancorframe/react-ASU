@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Td, Tr } from './TransactionHistory.styled';
 
 export const TransactionItem = ({
@@ -11,3 +12,11 @@ export const TransactionItem = ({
     </Tr>
   );
 };
+
+TransactionItem.propTypes = {
+  transaction: PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    amount: PropTypes.string.isRequired,
+    currency: PropTypes.string.isRequired
+  })
+}

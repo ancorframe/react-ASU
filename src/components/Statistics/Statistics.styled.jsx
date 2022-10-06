@@ -18,12 +18,12 @@ export const StatItem = styled.li`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  gap: 2px;
+  gap: ${p=>p.theme.space[1]};
 `;
 
 export const StatisticTitle = styled.h2`
   text-align: center;
-  padding: 8px
+  padding: ${p => p.theme.space[3]}px;
 `;
 
 function getRandomHexColor() {
