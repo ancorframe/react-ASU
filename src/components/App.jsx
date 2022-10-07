@@ -1,4 +1,4 @@
-import { FeedbackIn } from './Feedback/Feedbacked';
+import { Feedback } from './Feedback/Feedback';
 import { Box } from './Box';
 
 export const App = () => {
@@ -10,7 +10,7 @@ export const App = () => {
       gridGap={5}
       pt={5}
     >
-      <FeedbackIn />
+      <Feedback />
     </Box>
   );
 };

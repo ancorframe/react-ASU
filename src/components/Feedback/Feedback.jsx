@@ -3,7 +3,7 @@ import { FeedbackOptions } from './FeedbackOptions';
 import { FeedbackStatistics } from './FeedbackStatistics';
 import { Title } from './Feedback.styled';
 
-export class FeedbackIn extends React.Component {
+export class Feedback extends React.Component {
   state = {
     good: 0,
     neutral: 0,
