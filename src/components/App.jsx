@@ -1,4 +1,4 @@
-import { FeedbackIn } from './Feedback/Feedback';
+import { FeedbackIn } from './Feedback/Feedbacked';
 import { Box } from './Box';
 
 export const App = () => {
