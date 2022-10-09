@@ -29,7 +29,6 @@ export class Phonebook extends React.Component {
   };
 
   onDelete = id => {
-    console.log(id.target.id);
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(i => i.id !== id.target.id),
     }));
