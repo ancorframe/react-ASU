@@ -1,4 +1,4 @@
-// import { Feedback } from './Feedback/Feedback';
+import { Phonebook } from './Phonebook/Phonebook';
 import { Box } from './Box';
 
 export const App = () => {
@@ -7,10 +7,10 @@ export const App = () => {
       display="flex"
       flexDirection="column"
       alignItems="center"
-      gridGap={5}
+      gridGap={3}
       pt={5}
     >
-      {/* <Feedback /> */}
+      <Phonebook />
     </Box>
   );
 };
