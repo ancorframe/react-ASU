@@ -1,24 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export class Filter extends React.Component {
-  handleChange = e => {
-    this.props.valueOut(e.target.value.toLowerCase().trim());
-  };
-  value = () => {
-    return this.props.valueIn;
-  };
+export const Filter = ({ valueIn, valueOut }) => {
 
-  render() {
-    return (
-      <>
-        <p>Find contact by name</p>
-        <input
-          type="text"
-          name="filter"
-          value={this.value()}
-          onChange={this.handleChange}
-        />
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <p>Find contact by name</p>
+      <input
+        type="text"
+        name="filter"
+        value={valueIn}
+        onChange={e => valueOut(e.target.value.toLowerCase().trim())}
+      />
+    </>
+  );
+};
+
+Filter.propTypes = {
+  valueIn: PropTypes.string.isRequired,
+  valueOut: PropTypes.func.isRequired
+};

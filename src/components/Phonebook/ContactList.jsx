@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export const ContactList = ({ list, onClick }) => {
   return (
     <ul>
@@ -14,4 +16,9 @@ export const ContactList = ({ list, onClick }) => {
         })}
     </ul>
   );
+};
+
+ContactList.propTypes = {
+  list: PropTypes.array.isRequired,
+  onClick: PropTypes.func.isRequired,
 };

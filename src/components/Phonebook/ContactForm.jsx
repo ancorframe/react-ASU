@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 import { Forma } from './Phonebook.styled';
 import { Formik, Field, ErrorMessage } from 'formik';
@@ -13,7 +14,6 @@ const schema = Yup.object().shape({
     .max(50, 'Too Long!')
     .required('Required'),
   number: Yup.string()
-    .required('required')
     .matches(phoneRegExp, 'Phone number is not valid')
     .min(13, 'Too Short!')
     .max(13, 'Too Long!')
@@ -58,4 +58,10 @@ export const ContactForm = ({ onSubmit, contacts }) => {
       </Formik>
     </>
   );
+};
+
+
+ContactForm.propTypes = {
+  contacts: PropTypes.array.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };

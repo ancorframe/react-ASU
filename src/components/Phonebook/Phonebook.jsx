@@ -12,9 +12,10 @@ export class Phonebook extends React.Component {
   };
 
   formSubmit = data => {
-    data.id = nanoid();
+    const id = nanoid();
+    const obj = { ...data, id }
     this.setState(prevState => ({
-      contacts: prevState.contacts.concat([data]),
+      contacts: prevState.contacts.concat([obj]),
     }));
   };
 
