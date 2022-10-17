@@ -13,7 +13,7 @@ export class Phonebook extends React.Component {
 
   formSubmit = data => {
     const id = nanoid();
-    const obj = { ...data, id }
+    const obj = { ...data, id };
     this.setState(prevState => ({
       contacts: prevState.contacts.concat([obj]),
     }));
@@ -34,6 +34,20 @@ export class Phonebook extends React.Component {
       contacts: prevState.contacts.filter(i => i.id !== id.target.id),
     }));
   };
+
+  componentDidMount() {
+    const contacts = localStorage.getItem('contacts');
+    const parsetContacts = JSON.parse(contacts);
+    if (parsetContacts) {
+      this.setState({ contacts: parsetContacts });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
 
   render() {
     return (
