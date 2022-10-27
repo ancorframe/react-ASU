@@ -24,7 +24,6 @@ export const Phonebook = () => {
   };
 
   const onDelete = id => {
-    console.log(id.target.id);
     dispatch(remove(id.target.id));
   };
 
