@@ -4,7 +4,7 @@ import { ContactList } from './ContactList';
 import { Filter } from './Filter';
 import { Title } from './Phonebook.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { add, remove } from './ContactsSlice';
+import { add } from './ContactsSlice';
 
 export const Phonebook = () => {
   const dispatch = useDispatch();
@@ -23,21 +23,13 @@ export const Phonebook = () => {
     });
   };
 
-  const onDelete = id => {
-    dispatch(remove(id.target.id));
-  };
-
   return (
     <>
       <Title>Phonebook </Title>
       <ContactForm onSubmit={formSubmit} contacts={contacts} />
       <Title>Contacts</Title>
       <Filter />
-      <ContactList
-        list={filter ? filterByName() : contacts}
-        onClick={onDelete}
-      />
+      <ContactList list={filter ? filterByName() : contacts} />
     </>
   );
 };
-

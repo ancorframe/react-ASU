@@ -1,16 +1,14 @@
 import PropTypes from 'prop-types';
+import { ContactItem } from './ContactItem';
 
-export const ContactList = ({ list, onClick }) => {
+export const ContactList = ({ list }) => {
   return (
     <ul>
       {list &&
         list.map(item => {
           return (
             <li key={item.id}>
-              {item.name} {item.number}
-              <button type="button" id={item.id} onClick={e => onClick(e)}>
-                delete
-              </button>
+              <ContactItem item={item} />
             </li>
           );
         })}
@@ -20,5 +18,4 @@ export const ContactList = ({ list, onClick }) => {
 
 ContactList.propTypes = {
   list: PropTypes.array.isRequired,
-  onClick: PropTypes.func.isRequired,
 };
