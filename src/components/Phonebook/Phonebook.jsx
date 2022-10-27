@@ -1,21 +1,20 @@
-import { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import { ContactForm } from './ContactForm';
 import { ContactList } from './ContactList';
 import { Filter } from './Filter';
 import { Title } from './Phonebook.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { add, remove } from './ContactsSlice';
 
 export const Phonebook = () => {
-  const [contacts, setContacts] = useState(() => {
-    return JSON.parse(window.localStorage.getItem('contacts')) ?? [];
-  });
-  const [filter, setFilter] = useState('');
+  const dispatch = useDispatch();
+  const contacts = useSelector(state => state.contacts.list);
+  const filter = useSelector(state => state.filter.value);
 
   const formSubmit = data => {
     const id = nanoid();
     const obj = { ...data, id };
-
-    setContacts(prev => [...prev, obj]);
+    dispatch(add(obj));
   };
 
   const filterByName = () => {
@@ -24,24 +23,17 @@ export const Phonebook = () => {
     });
   };
 
-  const filterValue = data => {
-    setFilter(data);
-  };
-
   const onDelete = id => {
-    setContacts(prev => prev.filter(i => i.id !== id.target.id));
+    console.log(id.target.id);
+    dispatch(remove(id.target.id));
   };
-
-  useEffect(() => {
-    window.localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
 
   return (
     <>
       <Title>Phonebook </Title>
       <ContactForm onSubmit={formSubmit} contacts={contacts} />
       <Title>Contacts</Title>
-      <Filter valueIn={filter} valueOut={filterValue} />
+      <Filter />
       <ContactList
         list={filter ? filterByName() : contacts}
         onClick={onDelete}
@@ -50,65 +42,3 @@ export const Phonebook = () => {
   );
 };
 
-// export class Phonebook extends React.Component {
-//   state = {
-//     contacts: [],
-//     filter: '',
-//   };
-
-//   formSubmit = data => {
-//     const id = nanoid();
-//     const obj = { ...data, id };
-//     this.setState(prevState => ({
-//       contacts: prevState.contacts.concat([obj]),
-//     }));
-//   };
-
-//   filterByName = () => {
-//     return this.state.contacts.filter(i => {
-//       return i.name.toLowerCase().includes(this.state.filter);
-//     });
-//   };
-
-//   filter = data => {
-//     this.setState({ filter: data });
-//   };
-
-//   onDelete = id => {
-//     this.setState(prevState => ({
-//       contacts: prevState.contacts.filter(i => i.id !== id.target.id),
-//     }));
-//   };
-
-//   componentDidMount() {
-//     const contacts = localStorage.getItem('contacts');
-//     const parsetContacts = JSON.parse(contacts);
-//     if (parsetContacts) {
-//       this.setState({ contacts: parsetContacts });
-//     }
-//   }
-
-//   componentDidUpdate(prevProps, prevState) {
-//     if (this.state.contacts !== prevState.contacts) {
-//       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-//     }
-//   }
-
-//   render() {
-//     return (
-//       <>
-//         <Title>Phonebook </Title>
-//         <ContactForm
-//           onSubmit={this.formSubmit}
-//           contacts={this.state.contacts}
-//         />
-//         <Title>Contacts</Title>
-//         <Filter valueIn={this.state.filter} valueOut={this.filter} />
-//         <ContactList
-//           list={this.state.filter ? this.filterByName() : this.state.contacts}
-//           onClick={this.onDelete}
-//         />
-//       </>
-//     );
-//   }
-// }
