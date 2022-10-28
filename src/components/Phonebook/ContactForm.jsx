@@ -1,9 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 import { Forma } from './Phonebook.styled';
 import { Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { useContacts } from 'Redux/Selectors';
+import { add } from 'Redux/ContactsSlice';
 
 const phoneRegExp =
   /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/;
@@ -20,9 +22,13 @@ const schema = Yup.object().shape({
     .required('Required'),
 });
 
-export const ContactForm = ({ onSubmit, contacts }) => {
+export const ContactForm = () => {
   const nameId = nanoid();
   const numberId = nanoid();
+
+  const { contacts } = useContacts();
+
+  const dispatch = useDispatch();
 
   const initialValues = {
     name: '',
@@ -35,7 +41,9 @@ export const ContactForm = ({ onSubmit, contacts }) => {
     ) {
       return alert(`${values.name} is already in contacts.`);
     }
-    onSubmit(values);
+    const id = nanoid();
+    const obj = { ...values, id };
+    dispatch(add(obj));
     actions.resetForm();
   };
 
@@ -58,10 +66,4 @@ export const ContactForm = ({ onSubmit, contacts }) => {
       </Formik>
     </>
   );
-};
-
-
-ContactForm.propTypes = {
-  contacts: PropTypes.array.isRequired,
-  onSubmit: PropTypes.func.isRequired,
 };

@@ -1,10 +1,13 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { update } from './FilterSlice';
+import { useDispatch } from 'react-redux';
+import { update } from 'Redux/FilterSlice';
+import { useFilter } from 'Redux/Selectors';
+
+
 
 export const Filter = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(state => state.filter.value);
+  const { filter } = useFilter();
 
   const onChange = e => {
     const value = e.target.value.toLowerCase().trim();
