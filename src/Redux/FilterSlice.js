@@ -1,6 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import persistReducer from 'redux-persist/es/persistReducer';
-import storage from 'redux-persist/lib/storage';
 
 export const filterSlice = createSlice({
   name: 'filter',
@@ -13,13 +11,6 @@ export const filterSlice = createSlice({
     },
   },
 });
-
-const persistConfig = {
-  key: 'filter',
-  storage,
-};
-
-export const filterReducer = persistReducer(persistConfig, filterSlice.reducer);
 
 export const { update } = filterSlice.actions;
 
