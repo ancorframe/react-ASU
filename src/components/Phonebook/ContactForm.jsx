@@ -3,9 +3,9 @@ import { nanoid } from 'nanoid';
 import { Forma } from './Phonebook.styled';
 import { Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
-import { useContacts } from 'Redux/Selectors';
-import { add } from 'Redux/ContactsSlice';
+import { useAddContactMutation, useFetchContactsQuery } from 'API/mockApi';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const phoneRegExp =
   /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/;
@@ -23,12 +23,15 @@ const schema = Yup.object().shape({
 });
 
 export const ContactForm = () => {
+  const notify = text =>
+    toast.success(`${text}`, {
+      theme: 'dark',
+    });
+
   const nameId = nanoid();
   const numberId = nanoid();
-
-  const { contacts } = useContacts();
-
-  const dispatch = useDispatch();
+  const { data } = useFetchContactsQuery();
+  const [addContact] = useAddContactMutation();
 
   const initialValues = {
     name: '',
@@ -36,14 +39,15 @@ export const ContactForm = () => {
   };
 
   const handleSubmit = (values, actions) => {
-    if (
-      contacts.find(i => i.name.toLowerCase() === values.name.toLowerCase())
-    ) {
-      return alert(`${values.name} is already in contacts.`);
+    if (data.find(i => i.name.toLowerCase() === values.name.toLowerCase())) {
+      return notify(`${values.name} is already in contacts.`);
     }
     const id = nanoid();
     const obj = { ...values, id };
-    dispatch(add(obj));
+    addContact(obj)
+      .unwrap()
+      .then(({ name }) => notify(`${name} was added`))
+      .catch(({ error }) => notify(`${error}`));
     actions.resetForm();
   };
 
@@ -64,6 +68,7 @@ export const ContactForm = () => {
           <button type="submit">Add Contact</button>
         </Forma>
       </Formik>
+      <ToastContainer />
     </>
   );
 };

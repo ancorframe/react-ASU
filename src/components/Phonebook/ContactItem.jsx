@@ -1,11 +1,20 @@
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { remove } from 'Redux/ContactsSlice';
+import { useDeleteContactMutation } from 'API/mockApi';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const ContactItem = ({ contacts }) => {
-  const dispatch = useDispatch();
-  const handleDelate = e => {
-    dispatch(remove(e.target.id));
+  const notify = e =>
+    toast.success(e, {
+      theme: 'dark',
+    });
+  const [deleteContact, { isLoading }] = useDeleteContactMutation();
+
+  const handleDelete = e => {
+    deleteContact(e.target.id)
+      .unwrap()
+      .then(({ name }) => notify(`${name} was deleted`))
+      .catch(({ error }) => notify(`${error}`));
   };
 
   return (
@@ -13,7 +22,12 @@ export const ContactItem = ({ contacts }) => {
       <span>
         {contacts.name} {contacts.number}
       </span>
-      <button type="button" id={contacts.id} onClick={handleDelate}>
+      <button
+        type="button"
+        id={contacts.id}
+        onClick={handleDelete}
+        disabled={isLoading}
+      >
         delete
       </button>
     </>

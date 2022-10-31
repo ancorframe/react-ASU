@@ -1,12 +1,13 @@
 import { ContactItem } from './ContactItem';
-import { useContacts, useFilter } from 'Redux/Selectors';
+import { useFilter } from 'Redux/Selectors';
 import { filterByName } from 'Helpers';
+import { useFetchContactsQuery } from 'API/mockApi';
 
 export const ContactList = () => {
-  const { contacts } = useContacts();
+  const { data } = useFetchContactsQuery();
   const { filter } = useFilter();
 
-  const filterContacts = filterByName(contacts, filter);
+  const filterContacts = filterByName(data ? data : [], filter);
 
   if (filterContacts.length === 0) {
     return;
