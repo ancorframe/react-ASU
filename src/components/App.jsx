@@ -7,10 +7,13 @@ import { useGetCurrentMutation } from 'API/authApi';
 import { useDispatch } from 'react-redux';
 import { updateUser, updateStatus } from 'Redux/authSlice';
 import { useToken } from '../Redux/Selectors';
+import { PrivateRoute } from 'Helpers/PrivateRoute';
+import { RestrictedRoute } from 'Helpers/PublicRoute';
+import { SpinnerLoader } from './SpinnerLoader/SpinnerLoader';
 
-const Register = lazy(() =>
-  import('../Pages/RegisterPage').then(module => ({
-    default: module.RegisterPage,
+const SingUpPage = lazy(() =>
+  import('../Pages/SingUpPage').then(module => ({
+    default: module.SingUpPage,
   }))
 );
 const LoginPage = lazy(() =>
@@ -18,7 +21,7 @@ const LoginPage = lazy(() =>
     default: module.LoginPage,
   }))
 );
-const Contacts = lazy(() =>
+const ContactsPage = lazy(() =>
   import('../Pages/ContactsPage').then(module => ({
     default: module.ContactsPage,
   }))
@@ -26,7 +29,7 @@ const Contacts = lazy(() =>
 
 export const App = () => {
   const dispatch = useDispatch();
-  const [getCurrent] = useGetCurrentMutation();
+  const [getCurrent, { isLoading }] = useGetCurrentMutation();
   const { token } = useToken();
 
   useEffect(() => {
@@ -45,17 +48,54 @@ export const App = () => {
 
   return (
     <>
-      <Box px={3}>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Navigate to="login" />} />
-            <Route path="register" element={<Register />} />
-            <Route path="login" element={<LoginPage />} />
-            <Route path="contacts" element={<Contacts />} />
-          </Route>
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </Box>
+      {!isLoading ? (
+        <Box px={3}>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Navigate to="login" />} />
+              <Route
+                path="register"
+                element={
+                  <RestrictedRoute
+                    redirectTo="/contacts"
+                    component={<SingUpPage />}
+                  />
+                }
+              />
+              <Route
+                path="login"
+                element={
+                  <RestrictedRoute
+                    redirectTo="/contacts"
+                    component={<LoginPage />}
+                  />
+                }
+              />
+              <Route
+                path="contacts"
+                element={
+                  <PrivateRoute
+                    redirectTo="/login"
+                    component={<ContactsPage />}
+                  />
+                }
+              />
+            </Route>
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Box>
+      ) : (
+        <Box
+          as="main"
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+          height="100vh"
+        >
+          <SpinnerLoader/>
+        </Box>
+      )}
     </>
   );
 };

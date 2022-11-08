@@ -1,6 +1,7 @@
 import { Box } from 'components/Box';
+import { HomeLink } from './NotFound.styled';
 
-export const NotFound = ({ error }) => {
+export const NotFound = () => {
   return (
     <Box
       display="flex"
@@ -10,14 +11,7 @@ export const NotFound = ({ error }) => {
       flexDirection="column"
     >
       <h1>Page Not Found! Please check URL!!</h1>
-      {error && (
-        <>
-          <br />
-          <p>error code: {error.code}</p>
-          <br />
-          <p>error message: {error.message}</p>
-        </>
-      )}
+      <HomeLink to="/">Go Home</HomeLink>
     </Box>
   );
 };

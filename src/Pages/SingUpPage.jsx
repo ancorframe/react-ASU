@@ -1,7 +1,7 @@
 import { Box } from 'components/Box';
-import { Register } from 'components/Register/Register';
+import { SingUp } from 'components/SingUp/SingUp';
 
-export const RegisterPage = () => {
+export const SingUpPage = () => {
   return (
     <Box
       as="main"
@@ -11,7 +11,7 @@ export const RegisterPage = () => {
       gridGap={3}
       pt={5}
     >
-      <Register />
+      <SingUp />
     </Box>
   );
 };
