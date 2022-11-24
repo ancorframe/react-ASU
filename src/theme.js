@@ -1,12 +1,17 @@
 export const theme = {
   colors: {
-    white: '#ffffff',
-    black: '#000000',
-    bg: '#ffffff',
+    white: '#FFFFFF',
+    black: '#161E2D',
+    orange: '#0055D3',
+    darkOrange: '#002D85',
+    grey: '#BCC4D3',
+    graayLight: '#F2F3F5',
+    bg: '#FAFAFA',
   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
     body: 'systen-ui,sans-serif',
+    regular: 'Nunito Sans',
   },
   fontSizes: {
     xs: '12px',
@@ -16,8 +21,13 @@ export const theme = {
     xl: '64px',
   },
   fontWeights: {
-    normal: 400,
+    extraLight: 200,
+    light: 300,
+    regular: 400,
+    semiBold: 600,
     bold: 700,
+    extraBold: 800,
+    black: 900,
   },
   lineHeights: {
     body: '1.5',

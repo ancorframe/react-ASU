@@ -1,17 +1,18 @@
 import { AppBar } from 'components/AppBar/AppBar';
-import { Box } from 'components/Box';
+// import { Box } from '';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import { Container } from './Layout.styled';
 
 export const Layout = () => {
   return (
     <>
-      <Box>
+      <Container>
         <AppBar />
         <Suspense fullback={null}>
           <Outlet />
         </Suspense>
-      </Box>
+      </Container>
     </>
   );
 };
