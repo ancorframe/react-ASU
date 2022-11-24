@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 // import { lazy, useEffect } from 'react';
 import { Box } from './Box';
 import { Layout } from './Layout';
-import { NotFoundPage } from 'pages/NotFoundPage';
+import { NotFoundPage } from 'Pages/NotFoundPage';
 // import { useGetCurrentMutation } from 'API/authApi';
 // import { useDispatch } from 'react-redux';
 // import { updateUser, updateStatus } from 'Redux/authSlice';
