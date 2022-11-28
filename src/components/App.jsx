@@ -1,10 +1,10 @@
 import { Routes, Route} from 'react-router-dom';
 
-import { lazy, useEffect } from 'react';
+import { lazy } from 'react';
 
 import { Box } from './Box';
 import { Layout } from './Layout';
-import { NotFoundPage } from 'pages/NotFoundPage';
+// import { NotFoundPage } from 'pages/NotFoundPage';
 // import { useGetCurrentMutation } from 'API/authApi';
 // import { useDispatch } from 'react-redux';
 // import { updateUser, updateStatus } from 'Redux/authSlice';
@@ -32,6 +32,11 @@ const Literature = lazy(() =>
   }))
 );
 
+const NotFoundPage = lazy(() =>
+  import('../pages/NotFoundPage').then(module => ({
+    default: module.NotFoundPage,
+  }))
+);
 // const SingUpPage = lazy(() =>
 //   import('../Pages/SingUpPage').then(module => ({
 //     default: module.SingUpPage,
