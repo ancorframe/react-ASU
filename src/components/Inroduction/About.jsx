@@ -19,7 +19,7 @@ export const About = () => {
   };
   return (
     <>
-      <Box maxWidth="960px" m="0 auto" boxShadow={'regular'} mb='128px'>
+      <Box as='main' maxWidth="960px" m="0 auto" boxShadow={'regular'} mb='128px'>
         <Box
           display="flex"
           gridGap="8px"
