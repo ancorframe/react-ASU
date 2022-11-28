@@ -1,42 +1,114 @@
 import { Box } from 'components/Box';
-import logo from '../../image/logo/V2@2x.png'
-import { ButtonDrop, ButtonMenu, Logo, ArrowDrop } from './AppBar.styled';
-// import { useStatus } from 'Redux/Selectors';
+import logo from '../../image/logo/V2@2x.png';
+import {
+  ButtonMenu,
+  Logo,
+  ArrowDrop,
+  HeaderContainer,
+  ArrowRight,
+  ArrowLeft,
+} from './AppBar.styled';
 import { ButtonLink } from './AppBar.styled';
-// import { UserMenu } from '../UserMenu/UserMenu';
-// import { HiMenuAlt4 } from 'react-icons/hi';
-// import { ReactComponent as Menu } from '../../image/icons/Frame.svg';
+import MenuIcon from '@mui/icons-material/Menu';
+import { useState } from 'react';
+import { Menu } from './Menu';
+import { useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 
 export const AppBar = () => {
-  // const { isLoggedIn } = useStatus();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const [windowSize, setWindowSize] = useState(getWindowSize());
+
+  useEffect(() => {
+    function handleWindowResize() {
+      setWindowSize(getWindowSize());
+    }
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, []);
+
+  const onOpenMenu = () => {
+    setIsOpen(true);
+  };
+  const onCloseMenu = () => {
+    setIsOpen(false);
+  };
 
   return (
-    <Box as="header" display="flex" alignItems="center" p="24px" gridGap="70px">
-      <Logo src={logo} alt="Logo" />
-      <Box as="nav" display="flex" gridGap="11px" alignItems="center">
-        <ButtonLink to="#">ВСТУП</ButtonLink>
-        <ButtonLink to="#">Корисна література</ButtonLink>
-        <ButtonLink to="#">Викладачі</ButtonLink>
-        <ButtonDrop to="#">
-          Навчальний процес
-          <ArrowDrop />
-        </ButtonDrop>
-        <ButtonLink to="#">Партнерство</ButtonLink>
-        <ButtonLink to="#">Історія кафедри</ButtonLink>
-        <ButtonDrop to="#">
-          Наукова діяльність
-          <ArrowDrop />
-        </ButtonDrop>
-        <ButtonMenu />
-        {/* {!isLoggedIn && ( */}
-        {/* <Box ml="auto" gridGap={4} display="flex" alignItems="center"> */}
-        {/* <ButtonLink to="register">Register</ButtonLink> */}
-        {/* <ButtonLink to="login">Login</ButtonLink> */}
-        {/* </Box> */}
-        {/* )} */}
-
-        {/* {isLoggedIn && <UserMenu />} */}
+    <>
+      <Box
+        maxWidth="100vw"
+        width="100%"
+        as="header"
+        position="sticky"
+        top="0"
+        overflow="hidden"
+        zIndex="10"
+      >
+        <HeaderContainer>
+          <NavLink to='/'><Logo src={logo} alt="Logo" /></NavLink>
+          
+          
+          <Box
+            as="nav"
+            display="flex"
+            gridGap="11px"
+            alignItems="center"
+            ml="auto"
+          >
+            {windowSize.innerWidth > 1080 && (
+              <>
+                <Link to="Introduction" text="ВСТУП" />
+                <Link to="Literature" text="Корисна література" />
+                <Link to="3" text="Навчальний процес" />
+                <Link to="4" text="Про кафедру" />
+                <Link to="6" text="Наукова діяльність" />
+              </>
+            )}
+            <ButtonMenu onClick={onOpenMenu}>
+              <MenuIcon />
+            </ButtonMenu>
+          </Box>
+        </HeaderContainer>
       </Box>
-    </Box>
+      {isOpen && <Menu onCloseMenu={onCloseMenu} />}
+    </>
+  );
+};
+
+function getWindowSize() {
+  const { innerWidth, innerHeight } = window;
+  return { innerWidth, innerHeight };
+}
+
+export const Link = ({ to, text }) => {
+  return (
+    <>
+      <ButtonLink to={to}>
+        {({ isActive }) => {
+          return (
+            <>
+              {isActive ? (
+                <>
+                  <ArrowRight />
+                  {text}
+                  <ArrowLeft />
+                </>
+              ) : (
+                <>
+                  {text}
+                  <ArrowDrop />
+                </>
+              )}
+            </>
+          );
+        }}
+      </ButtonLink>
+    </>
   );
 };

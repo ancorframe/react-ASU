@@ -1,9 +1,9 @@
 import Button from '@mui/material/Button';
-import { useLogoutMutation } from 'API/authApi';
+import { useLogoutMutation } from 'redux/authApi';
 import { Box } from 'components/Box';
-import { useUser } from 'Redux/Selectors';
+import { useUser } from 'redux/Selectors';
 import { useDispatch } from 'react-redux';
-import { updateUser, updateStatus, updateToken } from 'Redux/authSlice';
+import { updateUser, updateStatus, updateToken } from 'redux/authSlice';
 
 export const UserMenu = () => {
   const { user } = useUser();
@@ -25,7 +25,7 @@ export const UserMenu = () => {
   };
   return (
     <>
-      <Box ml="auto" display="flex"  alignItems= 'center' gridGap={4}>
+      <Box ml="auto" display="flex" alignItems="center" gridGap={4}>
         <p>{user.name}</p>
         <p>{user.email}</p>
 

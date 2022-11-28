@@ -10,10 +10,9 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import { authApi } from 'API/authApi';
+import { authApi } from 'redux/authApi';
 import { authReducer } from './authSlice';
-import { contactsApi } from 'API/contactsApi';
-
+import { contactsApi } from 'redux/contactsApi';
 
 export const store = configureStore({
   reducer: {

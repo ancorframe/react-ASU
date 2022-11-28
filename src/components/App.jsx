@@ -1,5 +1,5 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
-// import { lazy, useEffect } from 'react';
+import { Routes, Route} from 'react-router-dom';
+import { lazy, useEffect } from 'react';
 import { Box } from './Box';
 import { Layout } from './Layout';
 import { NotFoundPage } from 'pages/NotFoundPage';
@@ -8,9 +8,25 @@ import { NotFoundPage } from 'pages/NotFoundPage';
 // import { updateUser, updateStatus } from 'Redux/authSlice';
 // import { useToken } from '../Redux/Selectors';
 // import { PrivateRoute } from 'Helpers/PrivateRoute';
-import { RestrictedRoute } from 'Helpers/PublicRoute';
+// import { RestrictedRoute } from 'Helpers/PublicRoute';
 // import { SpinnerLoader } from './SpinnerLoader/SpinnerLoader';
-import { Home } from 'pages/Home';
+// import { Home } from 'pages/Home';
+
+const Home = lazy(() =>
+  import('../pages/Home').then(module => ({
+    default: module.Home,
+  }))
+);
+const Introduction = lazy(() =>
+  import('../pages/Introduction').then(module => ({
+    default: module.Introduction,
+  }))
+);
+const Literature = lazy(() =>
+  import('../pages/Literature').then(module => ({
+    default: module.Literature,
+  }))
+);
 
 // const SingUpPage = lazy(() =>
 //   import('../Pages/SingUpPage').then(module => ({
@@ -50,11 +66,13 @@ export const App = () => {
   return (
     <>
       {/* {!isLoading ? ( */}
-        <Box >
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Home/>} />
-              {/* <Route
+      <Box>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="Introduction" element={<Introduction />} />
+            <Route path="Literature" element={<Literature />} />
+            {/* <Route
                 path="register"
                 element={
                   <RestrictedRoute
@@ -63,7 +81,7 @@ export const App = () => {
                   />
                 }
               /> */}
-              {/* <Route
+            {/* <Route
                 path="home"
                 element={
                   <RestrictedRoute
@@ -72,7 +90,7 @@ export const App = () => {
                   />
                 }
               /> */}
-              {/* <Route
+            {/* <Route
                 path="contacts"
                 element={
                   <PrivateRoute
@@ -81,12 +99,12 @@ export const App = () => {
                   />
                 }
               /> */}
-            </Route>
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </Box>
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Box>
       {/* ) : ( */}
-        {/* <Box
+      {/* <Box
           as="main"
           display="flex"
           flexDirection="column"
