@@ -1,5 +1,7 @@
 import { Routes, Route} from 'react-router-dom';
+
 import { lazy, useEffect } from 'react';
+
 import { Box } from './Box';
 import { Layout } from './Layout';
 import { NotFoundPage } from 'pages/NotFoundPage';
@@ -8,7 +10,9 @@ import { NotFoundPage } from 'pages/NotFoundPage';
 // import { updateUser, updateStatus } from 'Redux/authSlice';
 // import { useToken } from '../Redux/Selectors';
 // import { PrivateRoute } from 'Helpers/PrivateRoute';
+
 // import { RestrictedRoute } from 'Helpers/PublicRoute';
+
 // import { SpinnerLoader } from './SpinnerLoader/SpinnerLoader';
 // import { Home } from 'pages/Home';
 
