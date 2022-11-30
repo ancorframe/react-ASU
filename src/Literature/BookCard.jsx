@@ -1,6 +1,6 @@
 import { BookAuthor, BookTitle, Card, Description, Img } from "./BookCard.styled"
 import book from '../image/book.png'
-import { Box } from "components/Box";
+
 
 
 export const BookCard = () => {
