@@ -1,13 +1,14 @@
 {
   "files": {
     "main.css": "/react-ASU/static/css/main.170a514c.css",
-    "main.js": "/react-ASU/static/js/main.ec2f3852.js",
+    "main.js": "/react-ASU/static/js/main.d05d9097.js",
     "static/js/258.2d7529da.chunk.js": "/react-ASU/static/js/258.2d7529da.chunk.js",
     "static/js/745.fa9c1184.chunk.js": "/react-ASU/static/js/745.fa9c1184.chunk.js",
     "static/js/286.242cb564.chunk.js": "/react-ASU/static/js/286.242cb564.chunk.js",
     "static/js/104.8a5e046e.chunk.js": "/react-ASU/static/js/104.8a5e046e.chunk.js",
-    "static/js/929.6f54aafd.chunk.js": "/react-ASU/static/js/929.6f54aafd.chunk.js",
-    "static/js/996.f00f2dc8.chunk.js": "/react-ASU/static/js/996.f00f2dc8.chunk.js",
+    "static/js/223.ff7f89bc.chunk.js": "/react-ASU/static/js/223.ff7f89bc.chunk.js",
+    "static/js/753.8a8c312b.chunk.js": "/react-ASU/static/js/753.8a8c312b.chunk.js",
+    "static/js/38.66606ca0.chunk.js": "/react-ASU/static/js/38.66606ca0.chunk.js",
     "static/js/757.32a61c13.chunk.js": "/react-ASU/static/js/757.32a61c13.chunk.js",
     "static/media/pexels.png": "/react-ASU/static/media/pexels.c4015c2a277d47bf9b33.png",
     "static/media/Rectangl.png": "/react-ASU/static/media/Rectangl.87eba1918162f33a8566.png",
@@ -15,17 +16,18 @@
     "static/media/book.png": "/react-ASU/static/media/book.7ac43f4d16e4e12203f3.png",
     "index.html": "/react-ASU/index.html",
     "main.170a514c.css.map": "/react-ASU/static/css/main.170a514c.css.map",
-    "main.ec2f3852.js.map": "/react-ASU/static/js/main.ec2f3852.js.map",
+    "main.d05d9097.js.map": "/react-ASU/static/js/main.d05d9097.js.map",
     "258.2d7529da.chunk.js.map": "/react-ASU/static/js/258.2d7529da.chunk.js.map",
     "745.fa9c1184.chunk.js.map": "/react-ASU/static/js/745.fa9c1184.chunk.js.map",
     "286.242cb564.chunk.js.map": "/react-ASU/static/js/286.242cb564.chunk.js.map",
     "104.8a5e046e.chunk.js.map": "/react-ASU/static/js/104.8a5e046e.chunk.js.map",
-    "929.6f54aafd.chunk.js.map": "/react-ASU/static/js/929.6f54aafd.chunk.js.map",
-    "996.f00f2dc8.chunk.js.map": "/react-ASU/static/js/996.f00f2dc8.chunk.js.map",
+    "223.ff7f89bc.chunk.js.map": "/react-ASU/static/js/223.ff7f89bc.chunk.js.map",
+    "753.8a8c312b.chunk.js.map": "/react-ASU/static/js/753.8a8c312b.chunk.js.map",
+    "38.66606ca0.chunk.js.map": "/react-ASU/static/js/38.66606ca0.chunk.js.map",
     "757.32a61c13.chunk.js.map": "/react-ASU/static/js/757.32a61c13.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.170a514c.css",
-    "static/js/main.ec2f3852.js"
+    "static/js/main.d05d9097.js"
   ]
 }
