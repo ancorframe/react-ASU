@@ -1,5 +1,5 @@
 import { Item } from './News.styled';
-import { NewsCard } from 'components/common/NewsCard';
+import { NewsCard } from 'components/NewsCard/NewsCard';
 
 import test from '../../image/Rectangle.png';
 import { Box } from 'components/Box';
@@ -19,7 +19,6 @@ export const AllNews = () => {
       <Box
         as="ul"
         display="flex"
-       
         gridGap="24px"
         flexWrap="wrap"
         m="0 auto"

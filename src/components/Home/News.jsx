@@ -1,6 +1,6 @@
 import { Box } from 'components/Box';
 import { Item, LinkAllNews, NewsTitle } from './News.styled';
-import { NewsCard } from '../common/NewsCard';
+import { NewsCard } from '../NewsCard/NewsCard';
 
 import test from '../../image/Rectangle.png';
 
@@ -9,7 +9,6 @@ const dataNews = [
   { id: 2, img: test, text: 'test text' },
   { id: 3, img: test, text: 'test text' },
   { id: 4, img: test, text: 'test text' },
-
 ];
 
 export const News = () => {

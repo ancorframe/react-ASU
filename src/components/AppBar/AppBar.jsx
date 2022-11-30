@@ -49,12 +49,12 @@ export const AppBar = () => {
         top="0"
         overflow="hidden"
         zIndex="10"
-       
       >
         <HeaderContainer>
-          <NavLink to='/'><Logo src={logo} alt="Logo" /></NavLink>
-          
-          
+          <NavLink to="/">
+            <Logo src={logo} alt="Logo" />
+          </NavLink>
+
           <Box
             as="nav"
             display="flex"
@@ -64,9 +64,9 @@ export const AppBar = () => {
           >
             {windowSize.innerWidth > 1080 && (
               <>
-                <Link to="Introduction" text="ВСТУП" />
-                <Link to="Literature" text="Корисна література" />
-                <Link to="3" text="Навчальний процес" />
+                <Link to="introduction" text="ВСТУП" />
+                <Link to="literature" text="Корисна література" />
+                <Link to="learning_process" text="Навчальний процес" />
                 <Link to="4" text="Про кафедру" />
                 <Link to="6" text="Наукова діяльність" />
               </>

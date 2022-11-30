@@ -7,10 +7,10 @@ import {
   DocumentList,
   Img,
   Info,
-  AditionaInfo,
 } from './Inroduction.styled';
 
 import passport from '../../image/Rectangl.png';
+import { AditionalInfo } from 'components/AditionalInfo/AditionalInfo';
 
 export const About = () => {
   const [about, setAbout] = useState('Bachelor');
@@ -19,7 +19,13 @@ export const About = () => {
   };
   return (
     <>
-      <Box as='main' maxWidth="960px" m="0 auto" boxShadow={'regular'} mb='128px'>
+      <Box
+        as="main"
+        maxWidth="960px"
+        m="0 auto"
+        boxShadow={'regular'}
+        mb="128px"
+      >
         <Box
           display="flex"
           gridGap="8px"
@@ -83,10 +89,7 @@ export const About = () => {
               <p>Фото 3х4см – х8</p>
             </li>
           </DocumentList>
-          <AditionaInfo>
-            За детальною інформацією звертатися до нас: asu.dept@lpnu.ua або
-            vasyl.m.teslyuk@lpnu.ua (завідувач кафедрою АСУ).
-          </AditionaInfo>
+          <AditionalInfo />
         </Box>
       </Box>
     </>

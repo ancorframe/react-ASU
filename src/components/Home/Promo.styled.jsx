@@ -5,7 +5,7 @@ export const PromoWrap = styled.div`
   /* right:0px; */
   max-width: 472px;
   width: 100%;
-  height: 840px;
+  max-height: 840px;
   position: sticky;
   border-radius: 4px;
   background: #f2f3f5;

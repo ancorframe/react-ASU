@@ -1,12 +1,12 @@
 import {  Img, Text, TextContainer } from "./ImgCard.styled"
 
-export const ImgCard = ({src}) => {
+export const ImgCard = ({src , text}) => {
     return (
       <>
         
           <Img src={src} />
           <TextContainer>
-            <Text>День відкритих дверей - 5 корпус, 114 ауд.</Text>
+          <Text>{ text}</Text>
           </TextContainer>
         
       </>

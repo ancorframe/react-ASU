@@ -41,6 +41,13 @@ const NewsDetail = lazy(() =>
     default: module.NewsDetail,
   }))
 );
+const Support = lazy(() =>
+  import('../pages/Support').then(module => ({
+    default: module.Support,
+  }))
+);
+
+
 
 const NotFoundPage = lazy(() =>
   import('../pages/NotFoundPage').then(module => ({
@@ -89,10 +96,15 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="Introduction" element={<Introduction />} />
-            <Route path="Literature" element={<Literature />} />
-            <Route path="News" element={<News />} />
-            <Route path="News/:NewsDetail" element={<NewsDetail />} />
+            <Route path="introduction" element={<Introduction />} />
+            <Route path="literature" element={<Literature />} />
+            <Route path="news" element={<News />} />
+            <Route path="news/:news_detail" element={<NewsDetail />} />
+            <Route path="learning_process">
+              <Route index element={<Support />} />
+              <Route path="support" element={<Support />} />
+              {/* <Route path="News" element={<News />} /> */}
+            </Route>
 
             {/* <Route
                 path="register"
