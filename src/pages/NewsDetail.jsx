@@ -1,9 +1,9 @@
 import { Box } from 'components/Box';
-import { AditionalInfo } from 'components/AditionalInfo/AditionalInfo';
+
 import { Footer } from 'components/Footer/Footer';
 import { ImgCard } from 'components/common/ImgCard';
-import { Text } from 'components/Templates/Article/Text';
-import { Item, List } from 'components/NewsDetail/NewsDetail.styled';
+
+import { Item} from 'components/NewsDetail/NewsDetail.styled';
 
 import img from '../image/Rectangl.png';
 import { About } from 'components/NewsDetail/About';
