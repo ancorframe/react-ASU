@@ -1,5 +1,5 @@
 import { Box } from 'components/Box';
-import { Hero } from 'components/Home/Hero';
+import { Hero } from 'components/Home/Hro';
 import { News } from 'components/Home/News';
 import { Promo } from 'components/Home/Promo';
 import { FooterHome } from 'components/common/FooterHome';
