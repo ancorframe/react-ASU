@@ -1,6 +1,6 @@
 
 import { Box } from "components/Box";
-import { FooterContainer, FooterDes, Link, ListItem, Title, Wrap } from "./Footer.styled";
+import { FooterContainer,  Link, ListItem, Title, Wrap } from "./Footer.styled";
 
 
 export const Footer = () => {

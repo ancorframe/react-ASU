@@ -1,4 +1,4 @@
-import { Card, Img, Text, TextContainer } from "./ImgCard.styled"
+import {  Img, Text, TextContainer } from "./ImgCard.styled"
 
 export const ImgCard = ({src}) => {
     return (
