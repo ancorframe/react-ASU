@@ -43,7 +43,7 @@ const NewsDetail = lazy(() =>
 );
 
 const NotFoundPage = lazy(() =>
-  import('../pages/NotFoundPage').then(module => ({
+  import('../pages/NotFoundPag').then(module => ({
     default: module.NotFoundPage,
   }))
 );
