@@ -46,7 +46,11 @@ const Support = lazy(() =>
     default: module.Support,
   }))
 );
-
+const Disciplines = lazy(() =>
+  import('../pages/Disciplines').then(module => ({
+    default: module.Disciplines,
+  }))
+);
 
 
 const NotFoundPage = lazy(() =>
@@ -103,6 +107,7 @@ export const App = () => {
             <Route path="learning_process">
               <Route index element={<Support />} />
               <Route path="support" element={<Support />} />
+              <Route path="disciplines" element={<Disciplines />} />
               {/* <Route path="News" element={<News />} /> */}
             </Route>
 
@@ -152,3 +157,4 @@ export const App = () => {
     </>
   );
 };
+
