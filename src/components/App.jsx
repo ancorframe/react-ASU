@@ -31,6 +31,16 @@ const Literature = lazy(() =>
     default: module.Literature,
   }))
 );
+const News = lazy(() =>
+  import('../pages/News').then(module => ({
+    default: module.News,
+  }))
+);
+const NewsDetail = lazy(() =>
+  import('../pages/NewsDetail').then(module => ({
+    default: module.NewsDetail,
+  }))
+);
 
 const NotFoundPage = lazy(() =>
   import('../pages/NotFoundPage').then(module => ({
@@ -81,6 +91,9 @@ export const App = () => {
             <Route index element={<Home />} />
             <Route path="Introduction" element={<Introduction />} />
             <Route path="Literature" element={<Literature />} />
+            <Route path="News" element={<News />} />
+            <Route path="News/:NewsDetail" element={<NewsDetail />} />
+
             {/* <Route
                 path="register"
                 element={

@@ -49,6 +49,7 @@ export const AppBar = () => {
         top="0"
         overflow="hidden"
         zIndex="10"
+       
       >
         <HeaderContainer>
           <NavLink to='/'><Logo src={logo} alt="Logo" /></NavLink>

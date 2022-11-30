@@ -22,15 +22,7 @@ export const NewsTitle = styled.h2`
 `;
 
 export const Item = styled.li`
-  width: 400px;
-  height: 340px;
-  background: #ffffff;
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  box-shadow: 0px 4px 128px rgba(188, 196, 211, 0.5);
+  width: calc(100% / 2 - 12px);
 `;
 
 export const LinkAllNews = styled(NavLink)`
@@ -55,31 +47,4 @@ export const LinkAllNews = styled(NavLink)`
   color: #161b1f;
 
   box-shadow: 0px 4px 128px rgba(188, 196, 211, 0.5);
-`;
-
-// NewsCard
-
-export const CardImg = styled.img`
-  margin-top: 4px;
-  max-height: 240px;
-  max-width: 392px;
-
-  border: 2px solid #161b1f;
-  border-radius: 1px;
-`;
-export const CardText = styled.p`
-  font-family: 'Overpass Mono';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 26px;
-  /* or 130% */
-
-  letter-spacing: -0.06em;
-
-  /* Black */
-
-  color: #161b1f;
-  width: 352px;
-  height: 52px;
 `;
