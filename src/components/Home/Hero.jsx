@@ -6,12 +6,14 @@ import {
   Text,
   LinkGraduates,
   LinkAbout,
+  Section
+  
 } from './Hero.styled';
 
 
 export const Hero = () => {
     return (
-      <Box as="section" mt="32px" mb="80px" maxWidth="824px">
+      <Section>
         <SecondTitle>КАФЕДРА</SecondTitle>
         <Title>
           <TitleAligh>Автоматизованих</TitleAligh>
@@ -26,6 +28,6 @@ export const Hero = () => {
           <LinkGraduates to="Introduction">Вступникам</LinkGraduates>
           <LinkAbout to="#">Про_нас</LinkAbout>
         </Box>
-      </Box>
+      </Section>
     );
 }

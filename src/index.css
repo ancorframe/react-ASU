@@ -33,3 +33,26 @@ h3,
 h4 {
   margin: 0;
 }
+
+
+.component{
+  /* width: 476px; */
+  /* max-height: 100vh; */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  /* background: #fff; */
+  /* overflow: scroll; */
+  /* z-index: 10; */
+
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 476px;
+  background: #fff;
+}

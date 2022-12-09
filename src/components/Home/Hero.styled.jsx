@@ -1,95 +1,128 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-export const Title = styled.h1`
-  font-family: 'Overpass Mono';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 56px;
-  line-height: 60px;
-  /* or 107% */
-
-  letter-spacing: -0.05em;
-
-  /* Black */
-
-  color: #161b1f;
-  margin-bottom: 16px;
+export const Section = styled.section`
+  /* padding: 0 12px; */
+  margin-bottom: 40px;
+  @media screen and (min-width: 980px) {
+    margin-top: 32px;
+    margin-bottom: 64px;
+    max-width: 824px;
+  }
 `;
-export const SecondTitle = styled.h2`
-  font-family: 'Nunito Sans';
-  font-style: normal;
-  font-weight: 800;
-  font-size: 32px;
-  line-height: 48px;
-  /* identical to box height, or 150% */
 
-  /* Black */
-
-  color: #161b1f;
-
+export const Title = styled.h1`
+  font-family: ${p => p.theme.fonts.titles};
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: ${p => p.theme.fontSizes.mobile.xxl};
+  line-height: 1.12;
+  letter-spacing: -0.05em;
+  color: ${p => p.theme.colors.black};
+  margin-bottom: 8px;
+  @media screen and (min-width: 980px) {
+    font-size: ${p => p.theme.fontSizes.desktop.xxl};
+    line-height: 1.07;
+    margin-bottom: 16px;
+  }
+`;
+export const SecondTitle = styled.h3`
+  font-family: ${p => p.theme.fonts.main};
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: ${p => p.theme.fontSizes.mobile.l};
+  line-height: 1.2;
+  letter-spacing: -0.05em;
+  color: ${p => p.theme.colors.black};
   opacity: 0.1;
-  margin-bottom: 16px;
+  margin-bottom: 4px;
+  @media screen and (min-width: 980px) {
+    font-size: ${p => p.theme.fontSizes.desktop.l};
+    line-height: 1.25;
+    margin-bottom: 8px;
+  }
 `;
 
 export const TitleAligh = styled.span`
   display: block;
 `;
 export const Text = styled.p`
-  font-family: 'Nunito Sans';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 28px;
-  /* or 140% */
-
-  /* Black */
-
-  color: #161b1f;
-  margin-bottom: 48px;
+  font-family: ${p => p.theme.fonts.main};
+  font-weight: ${p => p.theme.fontWeights.regular};
+  font-size: ${p => p.theme.fontSizes.mobile.sm};
+  line-height: 1.5;
+  letter-spacing: -0.05em;
+  color: ${p => p.theme.colors.black};
+  margin-bottom: 20px;
+  @media screen and (min-width: 980px) {
+    font-size: ${p => p.theme.fontSizes.desktop.m};
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
 `;
 
 export const LinkGraduates = styled(NavLink)`
+  text-decoration: none;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 202px;
-  height: 64px;
-  background: #0f1f2c;
+
+  width: 171px;
+  height: 56px;
   border-radius: 2px;
-  /* padding: 16px 32px; */
-  font-family: 'Overpass Mono';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 32px;
-  /* identical to box height, or 133% */
-
+  background-color: ${p => p.theme.colors.black};
+  font-family: ${p => p.theme.fonts.actions};
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: ${p => p.theme.fontSizes.mobile.m};
+  line-height: 1.33;
   letter-spacing: -0.05em;
+  color: ${p => p.theme.colors.white};
+  transition-property: (background-color);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  @media screen and (min-width: 980px) {
+    font-size: ${p => p.theme.fontSizes.desktop.m};
+    line-height: 1.3;
+    height: 64px;
+  }
 
-  color: #ffffff;
+  :hover,
+  :focus {
+    text-decoration-line: underline;
+    background-color: ${p => p.theme.colors.blackLight};
+  }
 `;
 
 export const LinkAbout = styled(NavLink)`
-  font-family: 'Overpass Mono';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 32px;
-  /* identical to box height, or 133% */
-
-  letter-spacing: -0.05em;
-
-  color: #161b1f;
-
+  text-decoration: none;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 177px;
-  height: 64px;
-  background: #f8f9fb;
-  border-radius: 1px;
-  /* padding: 16px 40px; */
+
+  width: 171px;
+  height: 56px;
+  border-radius: 2px;
+  background-color: ${p => p.theme.colors.white};
+  font-family: ${p => p.theme.fonts.actions};
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: ${p => p.theme.fontSizes.mobile.m};
+  line-height: 1.33;
+  letter-spacing: -0.05em;
+  color: ${p => p.theme.colors.black};
+  border: 1px solid ${p => p.theme.colors.grey};
+  transition-property: (background-color);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  @media screen and (min-width: 980px) {
+    font-size: ${p => p.theme.fontSizes.desktop.m};
+    line-height: 1.3;
+    width: 144px;
+    height: 64px;
+  }
+
+  :hover,
+  :focus {
+    text-decoration-line: underline;
+    background-color: ${p => p.theme.colors.blackLight};
+  }
 `;

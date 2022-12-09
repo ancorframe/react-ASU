@@ -1,23 +1,26 @@
 import { Box } from 'components/Box';
 import CloseIcon from '@mui/icons-material/Close';
-import { ButtonMenu, Item } from './AppBar.styled';
-import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
+import { ButtonMenu, Item, ListLink, ListTitle, SubLink, Title,Link} from './AppBar.styled';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+
 
 export const Menu = ({ onCloseMenu }) => {
   return (
     <>
-      <Box
+      {/* <Box
+        as={motion.div}
+        animate={isOpen ? 'open' : 'closed'}
+        variants={sidebar}
+        // initial={false}
         width="476px"
         position="fixed"
         top="0"
         right="0"
         zIndex="10"
         bg="#ffffff"
-        overflowY="scroll"
+        overflowY="overlay"
         maxHeight="100vh"
-      >
+      > */}
         <Box
           display="flex"
           p="24px"
@@ -36,34 +39,30 @@ export const Menu = ({ onCloseMenu }) => {
           <Item>
             <MenuLink text="Корисна література" />
           </Item>
+
           <Item>
-            <MenuLink text="Викладачі" />
+            <ListTitle>Навчальний_процес</ListTitle>
+            <LearnListLink />
           </Item>
           <Item>
-            <ListTitile>Навчальний процес</ListTitile>
+            <ListTitle>Про_кафедру</ListTitle>
             <ListLink>
               <li>
-                <SubLink>Навчально-методичне забезпечення</SubLink>
+                <SubLink>Викладачі</SubLink>
               </li>
               <li>
-                <SubLink>Перелік дисциплін</SubLink>
+                <SubLink>Історія кафедри</SubLink>
               </li>
               <li>
-                <SubLink>Розклад</SubLink>
+                <SubLink>Партнерство</SubLink>
               </li>
               <li>
-                <SubLink>ВНС</SubLink>
+                <SubLink>Новини</SubLink>
               </li>
             </ListLink>
           </Item>
           <Item>
-            <MenuLink text="Партнерство" />
-          </Item>
-          <Item>
-            <MenuLink text="Історія кафедри" />
-          </Item>
-          <Item>
-            <ListTitile>Наукова діяльність</ListTitile>
+            <ListTitle>Наукова діяльність</ListTitle>
             <ListLink>
               <li>
                 <SubLink>Дослідження та здобутки</SubLink>
@@ -77,7 +76,7 @@ export const Menu = ({ onCloseMenu }) => {
             </ListLink>
           </Item>
         </Box>
-      </Box>
+      {/* </Box> */}
     </>
   );
 };
@@ -93,74 +92,25 @@ export const MenuLink = ({ text }) => {
   );
 };
 
-export const Title = styled.h3`
-  font-family: 'Overpass Mono';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 40px;
-  /* identical to box height, or 125% */
 
-  letter-spacing: -0.05em;
 
-  /* Black/100 */
-
-  color: #0f1f2c;
-`;
-
-export const Link = styled(NavLink)`
-  display: flex;
-  align-items: center;
-  font-family: 'Nunito Sans';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 28px;
-  /* identical to box height, or 140% */
-
-  text-decoration-line: underline;
-
-  /* Black/100 */
-
-  color: #0f1f2c;
-
-  padding: 12px 24px;
-`;
-
-export const ListTitile = styled.p`
-  font-family: 'Nunito Sans';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 28px;
-  /* identical to box height, or 140% */
-
-  text-decoration-line: underline;
-
-  /* Black/60 */
-
-  color: #bcc4d3;
-  padding: 12px 24px;
-`;
-
-export const ListLink = styled.ul`
-  padding: 0px 24px 12px 24px;
-`;
-
-export const SubLink = styled(NavLink)`
-  display: block;
-  font-family: 'Nunito Sans';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
-  /* identical to box height, or 143% */
-
-  text-decoration-line: underline;
-
-  /* Black/100 */
-
-  color: #0f1f2c;
-
-  padding: 12px 24px;
-`;
+export const LearnListLink = () => {
+  return (
+    <>
+      <ListLink>
+        <li>
+          <SubLink>Навчально-методичне забезпечення</SubLink>
+        </li>
+        <li>
+          <SubLink>Перелік дисциплін</SubLink>
+        </li>
+        <li>
+          <SubLink>Розклад</SubLink>
+        </li>
+        <li>
+          <SubLink>ВНС</SubLink>
+        </li>
+      </ListLink>
+    </>
+  );
+}

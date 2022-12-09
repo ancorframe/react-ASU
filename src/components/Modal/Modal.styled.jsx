@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 
-export const Overlay = styled.div`
+import {
+  motion,
+  // AnimatePresence,
+  // usePresence,
+  // useIsPresent,
+} from 'framer-motion';
+
+export const Overlay = styled(motion.div)`
   position: fixed;
   top: 0;
   left: 0;

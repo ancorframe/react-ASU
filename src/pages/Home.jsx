@@ -3,22 +3,23 @@ import { Hero } from 'components/Home/Hero';
 import { News } from 'components/Home/News';
 import { Promo } from 'components/Home/Promo';
 import { FooterHome } from 'components/Footer/FooterHome';
+import { Wrap, Container, PromoContainer } from 'components/Home/Home.styled';
 
 export const Home = () => {
   return (
     <>
-      <Box maxWidth="1440px" gridGap="24px" display="flex" m="0 auto">
-        <Box pl="96px" maxWidth="824px">
-          <Box as="main" mb="64px">
+      <Wrap>
+        <Container>
+          <Box as="main">
             <Hero />
             <News />
           </Box>
           <FooterHome />
-        </Box>
-        <Box pr="24px">
+        </Container>
+        <PromoContainer>
           <Promo />
-        </Box>
-      </Box>
+        </PromoContainer>
+      </Wrap>
     </>
   );
 };

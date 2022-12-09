@@ -9,7 +9,7 @@ import { Card } from 'components/Support/Card';
 export const Support = () => {
   return (
     <>
-      <Box as="main"m='0 auto' mt="80px" maxWidth='1248px'>
+      <Box as="main" m="0 auto" mt="80px" maxWidth="1248px" zIndex="1">
         <Box mb="40px">
           <PageTitle>Навчально-методичне_забезпечення</PageTitle>
         </Box>

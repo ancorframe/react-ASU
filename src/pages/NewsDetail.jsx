@@ -7,7 +7,7 @@ import { Item} from 'components/NewsDetail/NewsDetail.styled';
 
 import img from '../image/Rectangl.png';
 import { About } from 'components/NewsDetail/About';
-import { AdditionalTitle } from 'components/Templates/AdditionalTitle/Additionaltitle';
+import { AdditionalTitle } from 'components/Templates/AdditionalTitle/AdditionalTitle';
 
 
 import test from '../image/Rectangle.png';

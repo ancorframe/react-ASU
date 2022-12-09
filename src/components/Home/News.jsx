@@ -1,5 +1,5 @@
 import { Box } from 'components/Box';
-import { Item, LinkAllNews, NewsTitle } from './News.styled';
+import { Item, LinkAllNews, NewsTitle, Section } from './News.styled';
 import { NewsCard } from '../NewsCard/NewsCard';
 
 import test from '../../image/Rectangle.png';
@@ -13,7 +13,7 @@ const dataNews = [
 
 export const News = () => {
   return (
-    <Box as="section" maxWidth="824px">
+    <Section>
       <NewsTitle>Новини</NewsTitle>
       <Box
         as="ul"
@@ -22,6 +22,7 @@ export const News = () => {
         gridGap="24px"
         mb="24px"
         justifyContent="center"
+        
       >
         {dataNews.map(data => (
           <Item key={data.id}>
@@ -30,6 +31,6 @@ export const News = () => {
         ))}
       </Box>
       <LinkAllNews to="News">Всі_новини</LinkAllNews>
-    </Box>
+    </Section>
   );
 };

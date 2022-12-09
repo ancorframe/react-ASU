@@ -2,26 +2,34 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const FooterDes = styled.p`
-  font-family: 'Nunito Sans';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 28px;
-  /* identical to box height, or 200% */
-
-  /* Black */
-
-  color: #161b1f;
-
+  text-align: center;
+  font-family: ${p => p.theme.fonts.main};
+  font-weight: ${p => p.theme.fontWeights.regular};
+  font-size: ${p => p.theme.fontSizes.mobile.xs};
+  line-height: 1.5;
+  letter-spacing: -0.05em;
+  color: ${p => p.theme.colors.black};
   opacity: 0.4;
+  @media screen and (min-width: 980px) {
+    text-align: none;
+    font-size: ${p => p.theme.fontSizes.desktop.s};
+    line-height: 1.42;
+  }
 `;
 
 export const WrapHome = styled.div`
   display: flex;
-  justify-content: space-between;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
   border-top: 1px solid rgba(15, 31, 44, 0.1);
   padding-top: 12px;
+  @media screen and (min-width: 980px) {
+    align-items: unset;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-bottom: 24px;
+  }
 `;
 
 export const Wrap = styled.div`
@@ -84,7 +92,7 @@ export const Link = styled(NavLink)`
 
   color: #ffffff;
 `;
-export const ListItem=styled.li`
+export const ListItem = styled.li`
   max-width: 300px;
   width: 100%;
-`
+`;

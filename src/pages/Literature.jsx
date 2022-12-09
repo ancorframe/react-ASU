@@ -7,7 +7,7 @@ import { BookCard } from 'components/Literature/BookCard';
 export const Literature = () => {
   return (
     <>
-      <Box mt="80px" mb="12px">
+      <Box mt="80px" mb="12px" >
         <PageTitle>Корисна_література</PageTitle>
       </Box>
       <PageDescription>

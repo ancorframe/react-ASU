@@ -7,7 +7,36 @@ const modalRoot = document.querySelector('#modal-root');
 
 export const Modal = ({ onBackdropClose, children }) => {
   return ReactDOM.createPortal(
-    <Overlay onClick={e => onBackdropClose(e)}>
+    <Overlay
+      initial={{
+        opacity: 0,
+        transition: {
+          delay: 0.1,
+          type: 'spring',
+          stiffness: 400,
+          damping: 40,
+        },
+      }}
+      animate={{
+        opacity: 1,
+        transition: {
+          delay: 0.1,
+          type: 'spring',
+          stiffness: 400,
+          damping: 40,
+        },
+      }}
+      exit={{
+        opacity: 0,
+        transition: {
+          delay: 0.1,
+          type: 'spring',
+          stiffness: 400,
+          damping: 40,
+        },
+      }}
+      onClick={e => onBackdropClose(e)}
+    >
       <ModalContainer>{children}</ModalContainer>
     </Overlay>,
     modalRoot

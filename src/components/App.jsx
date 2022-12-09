@@ -51,6 +51,21 @@ const Disciplines = lazy(() =>
     default: module.Disciplines,
   }))
 );
+const History = lazy(() =>
+  import('../pages/History').then(module => ({
+    default: module.History,
+  }))
+);
+const Teachers = lazy(() =>
+  import('../pages/Teachers').then(module => ({
+    default: module.Teachers,
+  }))
+);
+const TeacherDetail = lazy(() =>
+  import('../pages/TeacherDetail').then(module => ({
+    default: module.TeacherDetail,
+  }))
+);
 
 
 const NotFoundPage = lazy(() =>
@@ -108,6 +123,9 @@ export const App = () => {
               <Route index element={<Support />} />
               <Route path="support" element={<Support />} />
               <Route path="disciplines" element={<Disciplines />} />
+              <Route path="history" element={<History />} />
+              <Route path="teachers" element={<Teachers />} />
+              <Route path="teachers/:teacherDetail" element={<TeacherDetail />} />
               {/* <Route path="News" element={<News />} /> */}
             </Route>
 
