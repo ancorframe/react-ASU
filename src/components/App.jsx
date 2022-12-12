@@ -1,4 +1,4 @@
-import { Routes, Route} from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { lazy } from 'react';
 
@@ -67,27 +67,12 @@ const TeacherDetail = lazy(() =>
   }))
 );
 
-
 const NotFoundPage = lazy(() =>
   import('../pages/NotFoundPage').then(module => ({
     default: module.NotFoundPage,
   }))
 );
-// const SingUpPage = lazy(() =>
-//   import('../Pages/SingUpPage').then(module => ({
-//     default: module.SingUpPage,
-//   }))
-// );
-// const LoginPage = lazy(() =>
-//   import('../Pages/LoginPage').then(module => ({
-//     default: module.LoginPage,
-//   }))
-// );
-// const ContactsPage = lazy(() =>
-//   import('../Pages/ContactsPage').then(module => ({
-//     default: module.ContactsPage,
-//   }))
-// );
+
 
 export const App = () => {
   // const dispatch = useDispatch();
@@ -114,48 +99,27 @@ export const App = () => {
       <Box>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
+            <Route index element={<Navigate to="home" />} />
+            <Route path="home" element={<Home />} />
             <Route path="introduction" element={<Introduction />} />
             <Route path="literature" element={<Literature />} />
             <Route path="news" element={<News />} />
             <Route path="news/:news_detail" element={<NewsDetail />} />
             <Route path="learning_process">
-              <Route index element={<Support />} />
+              <Route index element={<Navigate to="support" />} />
               <Route path="support" element={<Support />} />
               <Route path="disciplines" element={<Disciplines />} />
               <Route path="history" element={<History />} />
-              <Route path="teachers" element={<Teachers />} />
-              <Route path="teachers/:teacherDetail" element={<TeacherDetail />} />
-              {/* <Route path="News" element={<News />} /> */}
             </Route>
+            <Route path="about">
+              <Route index element={<Teachers />} />
 
-            {/* <Route
-                path="register"
-                element={
-                  <RestrictedRoute
-                    redirectTo="/contacts"
-                    component={<SingUpPage />}
-                  />
-                }
-              /> */}
-            {/* <Route
-                path="home"
-                element={
-                  <RestrictedRoute
-                    redirectTo="/contacts"
-                    component={<Home/>}
-                  />
-                }
-              /> */}
-            {/* <Route
-                path="contacts"
-                element={
-                  <PrivateRoute
-                    redirectTo="/login"
-                    component={<ContactsPage />}
-                  />
-                }
-              /> */}
+              <Route path="teachers" element={<Teachers />} />
+              <Route
+                path="teachers/:teacherDetail"
+                element={<TeacherDetail />}
+              />
+            </Route>
           </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
@@ -175,4 +139,3 @@ export const App = () => {
     </>
   );
 };
-

@@ -2,16 +2,14 @@ import styled from "styled-components";
 
 
 export const Text = styled.p`
-  font-family: 'Nunito Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  /* identical to box height, or 143% */
-
-  /* Black/100 */
-
-  color: #0f1f2c;
-
+  font-family: ${p => p.theme.fonts.main};
+  font-weight: ${p => p.theme.fontWeights.regular};
+  font-size: ${p => p.theme.fontSizes.mobile.xs};
+  line-height: 1.5;
+  color: ${p => p.theme.colors.black};
+  @media screen and (min-width: 980px) {
+    font-size: ${p => p.theme.fontSizes.desktop.s};
+    line-height: 1.42;
+  }
   opacity: 0.4;
 `;

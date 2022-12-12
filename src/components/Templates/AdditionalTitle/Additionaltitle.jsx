@@ -1,10 +1,9 @@
-import { Title } from "./AdditionalTitle.styled"
+import { Title } from './AdditionalTitle.styled';
 
-
-export const AdditionalTitle = ({children}) => {
-    return (
-        <>
-            <Title>{ children}</Title>
-        </>
-    )
-}
+export const AdditionalTitle = ({ children }) => {
+  return (
+    <>
+      <Title>{children}</Title>
+    </>
+  );
+};

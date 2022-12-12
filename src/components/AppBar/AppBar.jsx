@@ -80,7 +80,7 @@ export const AppBar = () => {
                 >
                   <LearnListLink />
                 </LinkDropdown>
-                <LinkDropdown to="4" text="Про кафедру" keysa={22}>
+                <LinkDropdown to="about" text="Про кафедру" keysa={22}>
                   <DepartmentListLink />
                 </LinkDropdown>
                 <LinkDropdown to="6" text="Наукова діяльність" keysa={23}>
@@ -124,6 +124,7 @@ export const AppBar = () => {
             exit={{
               x: 500,
               opacity: 0,
+              zIndex: -1,
               transition: {
                 delay: 0.1,
                 type: 'spring',
@@ -132,7 +133,7 @@ export const AppBar = () => {
               },
             }}
             maxWidth="476px"
-            width='100%'
+            width="100%"
             position="fixed"
             top="0"
             right="0"
@@ -193,6 +194,12 @@ export const LinkDropdown = ({ to, text, children, keysa }) => {
           setIsOpen(true);
         }}
         onMouseLeave={event => {
+          setIsOpen(false);
+        }}
+        onFocus={event => {
+          setIsOpen(true);
+        }}
+        onBlur={event => {
           setIsOpen(false);
         }}
       >
@@ -286,10 +293,14 @@ export const LearnListLink = () => {
         p="16px 8px "
       > */}
       <li>
-        <DropdownLink>Навчально-методичне забезпечення</DropdownLink>
+        <DropdownLink to="learning_process/support">
+          Навчально-методичне забезпечення
+        </DropdownLink>
       </li>
       <li>
-        <DropdownLink>Перелік дисциплін</DropdownLink>
+        <DropdownLink to="learning_process/disciplines ">
+          Перелік дисциплін
+        </DropdownLink>
       </li>
       <li>
         <DropdownLink>Розклад</DropdownLink>
@@ -320,10 +331,10 @@ export const DepartmentListLink = () => {
         p="16px 8px "
       > */}
       <li>
-        <DropdownLink>Викладачі</DropdownLink>
+        <DropdownLink to="about/teachers ">Викладачі</DropdownLink>
       </li>
       <li>
-        <DropdownLink>Історія кафедри</DropdownLink>
+        <DropdownLink to="about/history ">Історія кафедри</DropdownLink>
       </li>
       <li>
         <DropdownLink>Партнерство</DropdownLink>

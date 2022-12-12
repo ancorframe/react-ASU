@@ -1,12 +1,20 @@
 import { Box } from 'components/Box';
-import { FooterContainer, Link, ListItem, Title, Wrap } from './Footer.styled';
+import {
+  Container,
+  FooterContainer,
+  Link,
+  ListItem,
+  Title,
+  Wrap,
+  ListLink,
+} from './Footer.styled';
 
 export const Footer = () => {
   return (
     <>
-      <Box as="footer" p="0px 24px 24px 24px" maxWidth="1440px" m="0 auto">
-        <FooterContainer>
-          <Box as="ul" display="flex" gridGap="32px" mb="64px">
+      <FooterContainer>
+        <Container>
+          <ListLink>
             <ListItem>
               <Title>Основне</Title>
               <ul>
@@ -66,7 +74,7 @@ export const Footer = () => {
                 </li>
               </ul>
             </ListItem>
-          </Box>
+          </ListLink>
           <Wrap>
             <p>
               © 2022 Department of automated management systems. All Rigths
@@ -74,8 +82,8 @@ export const Footer = () => {
             </p>
             <p>Sokolov Design</p>
           </Wrap>
-        </FooterContainer>
-      </Box>
+        </Container>
+      </FooterContainer>
     </>
   );
 };

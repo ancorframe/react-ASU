@@ -33,66 +33,106 @@ export const WrapHome = styled.div`
 `;
 
 export const Wrap = styled.div`
-  font-family: 'Nunito Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  /* identical to box height, or 143% */
-
-  /* Black/00 */
-
-  color: #ffffff;
-
+  font-family: ${p => p.theme.fonts.main};
+  font-weight: ${p => p.theme.fontWeights.regular};
+  font-size: ${p => p.theme.fontSizes.mobile.xs};
+  line-height: 1.5;
+  letter-spacing: -0.05em;
+  color: ${p => p.theme.colors.white};
   opacity: 0.4;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
+  @media screen and (min-width: 980px) {
+    text-align: none;
+    font-size: ${p => p.theme.fontSizes.desktop.s};
+    line-height: 1.42;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+  text-align: center;
+
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 12px;
 `;
 
-export const FooterContainer = styled.div`
-  background: #0f1f2c;
+export const Container = styled.div`
+margin: 0 12px 12px;
+  background-color: ${p => p.theme.colors.black};
   border-radius: 4px;
-  padding: 48px;
+  padding: 32px;
+  @media screen and (min-width: 980px) {
+    padding: 48px;
+    margin: 0 24px 24px;
+  }
+`;
+
+export const FooterContainer = styled.div`
+
+  @media screen and (min-width: 980px) {
+    /* padding: 0 24px 24px; */
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+  /* padding: 0 12px 12px; */
+
+  margin: 0 auto;
+`;
+
+export const ListLink = styled.ul`
+
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  @media screen and (min-width: 980px) {
+    margin-bottom: 64px;
+    flex-direction: row;
+  }
 `;
 
 export const Title = styled.h5`
-  padding-bottom: 8px;
-  font-family: 'Overpass Mono';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 28px;
-  /* identical to box height, or 140% */
-
+width:100%;
+  padding-bottom: 2px;
+  font-family: ${p => p.theme.fonts.titles};
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: ${p => p.theme.fontSizes.mobile.s};
+  line-height: 1.42;
   letter-spacing: -0.05em;
-
-  /* Black/00 */
-
-  color: #ffffff;
-
+  color: ${p => p.theme.colors.white};
   opacity: 0.2;
+  @media screen and (min-width: 980px) {
+    font-size: ${p => p.theme.fontSizes.desktop.m};
+    line-height: 1.4;
+    padding-bottom: 8px;
+  }
+
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   margin: 0;
 `;
 
 export const Link = styled(NavLink)`
-  font-family: 'Nunito Sans';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
-  /* identical to box height, or 143% */
+display:block;
+  font-family: ${p => p.theme.fonts.main};
+  font-weight: ${p => p.theme.fontWeights.semiBold};
+  font-size: ${p => p.theme.fontSizes.mobile.xs};
+  line-height: 1.5;
+  letter-spacing: -0.05em;
+  color: ${p => p.theme.colors.white};
+
+  @media screen and (min-width: 980px) {
+    text-align: none;
+    font-size: ${p => p.theme.fontSizes.desktop.s};
+    line-height: 1.42;
+  }
 
   text-decoration-line: underline;
-
-  /* Black/00 */
-
-  color: #ffffff;
 `;
+
+
+
 export const ListItem = styled.li`
+/* display: block; */
   max-width: 300px;
-  width: 100%;
+  /* width: 100%; */
+  width: calc(100%/4 - 24px);
+  min-width: 250px;
 `;
