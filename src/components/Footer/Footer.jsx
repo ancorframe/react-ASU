@@ -7,6 +7,7 @@ import {
   Title,
   Wrap,
   ListLink,
+  LinkItem,
 } from './Footer.styled';
 
 export const Footer = () => {
@@ -18,60 +19,60 @@ export const Footer = () => {
             <ListItem>
               <Title>Основне</Title>
               <ul>
-                <li>
+                <LinkItem>
                   <Link>Вступникам</Link>
-                </li>
-                <li>
+                </LinkItem>
+                <LinkItem>
                   <Link>Корисна література</Link>
-                </li>
+                </LinkItem>
               </ul>
             </ListItem>
             <ListItem>
               <Title>Навчальний_процес</Title>
               <ul>
-                <li>
+                <LinkItem>
                   <Link>Методичне забезпечення</Link>
-                </li>
-                <li>
+                </LinkItem>
+                <LinkItem>
                   <Link>Перелік дисциплін</Link>
-                </li>
-                <li>
+                </LinkItem>
+                <LinkItem>
                   <Link>Розклад</Link>
-                </li>
-                <li>
+                </LinkItem>
+                <LinkItem>
                   <Link>ВНС</Link>
-                </li>
+                </LinkItem>
               </ul>
             </ListItem>
             <ListItem>
               <Title>Про_кафедру</Title>
               <ul>
-                <li>
+                <LinkItem>
                   <Link>Історія кафедри</Link>
-                </li>
-                <li>
+                </LinkItem>
+                <LinkItem>
                   <Link>Викладачі</Link>
-                </li>
-                <li>
+                </LinkItem>
+                <LinkItem>
                   <Link>Партнерство</Link>
-                </li>
-                <li>
+                </LinkItem>
+                <LinkItem>
                   <Link>Новини</Link>
-                </li>
+                </LinkItem>
               </ul>
             </ListItem>
             <ListItem>
               <Title>Наукова_діяльність</Title>
               <ul>
-                <li>
+                <LinkItem>
                   <Link>Дослідження та здобутки</Link>
-                </li>
-                <li>
+                </LinkItem>
+                <LinkItem>
                   <Link>Конференції</Link>
-                </li>
-                <li>
+                </LinkItem>
+                <LinkItem>
                   <Link>Проекти</Link>
-                </li>
+                </LinkItem>
               </ul>
             </ListItem>
           </ListLink>

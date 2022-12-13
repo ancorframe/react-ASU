@@ -8,8 +8,8 @@ export const theme = {
     orangeLight: '#FF7536',
     grey: '#BCC4D3',
     greyLight: '#F2F3F5',
-    blue: '#F2F3F5',
-    blueLight: ' #3687FF26',
+    blue: '#3687FF',
+    blueLight: 'rgba(54, 135, 255, 0.15)',
   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
   fonts: {

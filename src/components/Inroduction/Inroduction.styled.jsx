@@ -170,15 +170,4 @@ export const DocumentList = styled.ul`
   }
 `;
 
-// export const AditionaInfo = styled.p`
-//   font-family: ${p => p.theme.fonts.main};
-//   font-weight: ${p => p.theme.fontWeights.regular};
-//   font-size: ${p => p.theme.fontSizes.mobile.xs};
-//   line-height: 1.5;
-//   color: ${p => p.theme.colors.black};
-//   @media screen and (min-width: 980px) {
-//     font-size: ${p => p.theme.fontSizes.desktop.m};
-//     line-height: 1.6;
-//   }
-//   opacity: 0.4;
-// `;
+

@@ -1,4 +1,4 @@
-import { Box } from 'components/Box';
+
 import { Hero } from 'components/Home/Hero';
 import { News } from 'components/Home/News';
 import { Promo } from 'components/Home/Promo';
@@ -10,10 +10,10 @@ export const Home = () => {
     <>
       <Wrap>
         <Container>
-          <Box as="main">
+          <main>
             <Hero />
             <News />
-          </Box>
+          </main>
           <FooterHome />
         </Container>
         <PromoContainer>

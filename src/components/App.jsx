@@ -66,6 +66,16 @@ const TeacherDetail = lazy(() =>
     default: module.TeacherDetail,
   }))
 );
+const Partnership = lazy(() =>
+  import('../pages/Partnership').then(module => ({
+    default: module.Partnership,
+  }))
+);
+const PartnershipDetail = lazy(() =>
+  import('../pages/PartnershipDetail').then(module => ({
+    default: module.PartnershipDetail,
+  }))
+);
 
 const NotFoundPage = lazy(() =>
   import('../pages/NotFoundPage').then(module => ({
@@ -118,6 +128,11 @@ export const App = () => {
               <Route
                 path="teachers/:teacherDetail"
                 element={<TeacherDetail />}
+              />
+              <Route path="partnership" element={<Partnership />} />
+              <Route
+                path="partnership/:partnershipDetail"
+                element={<PartnershipDetail />}
               />
             </Route>
           </Route>

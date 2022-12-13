@@ -1,13 +1,17 @@
-import { Box } from 'components/Box';
+import { Footer } from 'components/Footer/Footer';
 import {
-  List,
+  ImgConteiner,
   Rank,
-  // Title,
+  Section,
+  Title,
+  Wrap,
+  ItemAchievements,
+  ListDescription,
+  TitleAchievements,
+  Text,
 } from 'components/TeacherDetail/TeacherDetail.styled';
-import { Card, Img } from 'components/Teachers/Teachers.styled';
+import { Img } from 'components/Teachers/Teachers.styled';
 
-// import { ChapterTitle } from 'components/Templates/ChapterTitle/ChapterTitle';
-import { Titles } from 'components/Templates/Title/Title';
 import img from '../image/teachers/Rectangle 19.png';
 
 const data = {
@@ -133,73 +137,51 @@ const data = {
 export const TeacherDetail = () => {
   return (
     <>
-      <Box
-        as="main"
-        maxWidth="1248px"
-        display="flex"
-        gridGap="24px"
-        m="0 auto"
-        mt="80px"
-      >
-        <Box>
-          <Card>
+      <main>
+        <Wrap>
+          <ImgConteiner>
             <Img src={img} />
-          </Card>
-        </Box>
-        <Box maxWidth="824px" p="48px">
-          <Titles title={'h2'}>
-            {data.fullname}
-          </Titles>
-          <Rank>{data.rank}</Rank>
-          <Box mb="32px">
+          </ImgConteiner>
+          <Section>
+            <Title>{data.fullname}</Title>
+            <Rank>{data.rank}</Rank>
+
             <ul>
               {data.info.map(({ id, title, info }) => {
                 return (
-                  <li key={id}>
-                    <Titles title={'h3'}>{title}</Titles>
-                    <List>
+                  <ItemAchievements key={id}>
+                    <TitleAchievements>{title}</TitleAchievements>
+                    <ListDescription>
                       {info.map(info => {
                         if (Array.isArray(info.text)) {
                           return (
-                            <List key={info.id}>
+                            <ListDescription key={info.id}>
                               {info.text.map(info => {
-                                return <li key={info.id}>{info.text}</li>;
+                                return (
+                                  <li key={info.id}>
+                                    <Text>{info.text}</Text>
+                                  </li>
+                                );
                               })}
-                            </List>
+                            </ListDescription>
                           );
                         } else {
-                          return <li key={info.id}>{info.text}</li>;
+                          return (
+                            <li key={info.id}>
+                              <Text>{info.text}</Text>
+                            </li>
+                          );
                         }
                       })}
-                    </List>
-                  </li>
+                    </ListDescription>
+                  </ItemAchievements>
                 );
               })}
             </ul>
-
-            {/* <Title>Освіта</Title>
-            <List>
-              {data.info[2].info.map(info => {
-                if (Array.isArray(info.text)) {
-            
-                  return (
-                    <List key={info.id}>
-                      {info.text.map(info => {
-                        return <li key={info.id}>{info.text}</li>;
-                      })}
-                    </List>
-                  );
-                }
-                else {
-                  return (
-                    <li key={info.id}>{ info.text}</li>
-                  )
-                }
-              })}
-            </List> */}
-          </Box>
-        </Box>
-      </Box>
+          </Section>
+        </Wrap>
+      </main>
+      <Footer />
     </>
   );
 };

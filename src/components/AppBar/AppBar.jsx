@@ -337,7 +337,7 @@ export const DepartmentListLink = () => {
         <DropdownLink to="about/history ">Історія кафедри</DropdownLink>
       </li>
       <li>
-        <DropdownLink>Партнерство</DropdownLink>
+        <DropdownLink to="about/partnership">Партнерство</DropdownLink>
       </li>
       <li>
         <DropdownLink>Новини</DropdownLink>
