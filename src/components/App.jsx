@@ -77,6 +77,14 @@ const PartnershipDetail = lazy(() =>
   }))
 );
 
+const Schedule = lazy(() =>
+  import('../pages/Schedule').then(module => ({
+    default: module.Schedule,
+  }))
+);
+
+
+
 const NotFoundPage = lazy(() =>
   import('../pages/NotFoundPage').then(module => ({
     default: module.NotFoundPage,
@@ -119,11 +127,14 @@ export const App = () => {
               <Route index element={<Navigate to="support" />} />
               <Route path="support" element={<Support />} />
               <Route path="disciplines" element={<Disciplines />} />
-              <Route path="history" element={<History />} />
+              <Route path="disciplines" element={<Disciplines />} />
+
+              <Route path="schedule" element={<Schedule />} />
             </Route>
             <Route path="about">
-              <Route index element={<Teachers />} />
-
+              <Route index element={<Navigate to="teachers" />} />
+          
+              <Route path="history" element={<History />} />
               <Route path="teachers" element={<Teachers />} />
               <Route
                 path="teachers/:teacherDetail"

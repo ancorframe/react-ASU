@@ -303,7 +303,7 @@ export const LearnListLink = () => {
         </DropdownLink>
       </li>
       <li>
-        <DropdownLink>Розклад</DropdownLink>
+        <DropdownLink to="learning_process/schedule">Розклад</DropdownLink>
       </li>
       <li>
         <DropdownLink>ВНС</DropdownLink>

@@ -25,8 +25,8 @@ export const Hero = () => {
           навчального корпусу.
         </Text>
         <Box display="flex" gridGap="24px">
-          <LinkGraduates to="Introduction">Вступникам</LinkGraduates>
-          <LinkAbout to="#">Про_нас</LinkAbout>
+          <LinkGraduates to="/introduction">Вступникам</LinkGraduates>
+          <LinkAbout to="/about/history">Про_нас</LinkAbout>
         </Box>
       </Section>
     );
