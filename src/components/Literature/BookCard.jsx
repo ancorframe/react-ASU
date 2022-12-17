@@ -9,10 +9,10 @@ export const BookCard = ({to, img=book, title,author}) => {
       <>
         <Card href={to} target="_blank">
           <Img src={img} alt="Book" />
-          <Box position='absolute' left='0' bottom='12px' width='100%'>
-          <Description>
-            <BookTitle>Atomic Design</BookTitle>
-            <BookAuthor>Brad Frost, 2017</BookAuthor>
+          <Box position="absolute" left="0" bottom="12px" width="100%">
+            <Description>
+              <BookTitle>{title}</BookTitle>
+              <BookAuthor>{author}</BookAuthor>
             </Description>
           </Box>
         </Card>

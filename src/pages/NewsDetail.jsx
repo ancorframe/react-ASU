@@ -1,4 +1,4 @@
-import { Box } from 'components/Box';
+// import { Box } from 'components/Box';
 
 import { Footer } from 'components/Footer/Footer';
 // import { ImgCard } from 'components/common/ImgCard';
@@ -8,7 +8,7 @@ import {
   Title,
   Img,
   ImgContainer,
-  Item,
+  // Item,
   SectionImg,
   Section,
   Container,
@@ -21,10 +21,10 @@ import {
 
 import img from '../image/Rectangl.png';
 // import { About } from 'components/NewsDetail/About';
-import { AdditionalTitle } from 'components/Templates/AdditionalTitle/AdditionalTitle';
+// import { AdditionalTitle } from 'components/Templates/AdditionalTitle/AdditionalTitle';
 
-import test from '../image/Rectangle.png';
-import { NewsCard } from 'components/NewsCard/NewsCard';
+// import test from '../image/Rectangle.png';
+// import { NewsCard } from 'components/NewsCard/NewsCard';
 import { AditionalInfo } from 'components/AditionalInfo/AditionalInfo';
 import { NewsRecomendation } from 'components/NewsRecomendation/NewsRecomendation';
 
@@ -82,11 +82,11 @@ const data = [
   },
 ];
 
-const dataNews = [
-  { id: 3331, img: test, text: 'test text' },
-  { id: 3333332, img: test, text: 'test text' },
-  { id: 33335, img: test, text: 'test text' },
-];
+// const dataNews = [
+//   { id: 3331, img: test, text: 'test text' },
+//   { id: 3333332, img: test, text: 'test text' },
+//   { id: 33335, img: test, text: 'test text' },
+// ];
 
 export const NewsDetail = () => {
   return (

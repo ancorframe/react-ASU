@@ -1,4 +1,4 @@
-import { Box } from 'components/Box';
+// import { Box } from 'components/Box';
 import { Footer } from 'components/Footer/Footer';
 // import { PageDescription } from 'components/Templates/PageDescription/PageDescription';
 // import { PageTitle } from 'components/Templates/PageTitle/PageTitle';

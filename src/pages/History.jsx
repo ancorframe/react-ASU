@@ -1,8 +1,8 @@
 import { AditionalInfo } from "components/AditionalInfo/AditionalInfo";
-import { Box } from "components/Box"
+// import { Box } from "components/Box"
 import { Footer } from "components/Footer/Footer";
 import { ChapterContainer, ChapterText, ChapterTitle, Container, Section, SectionTitle, Title, TitleDescription } from "components/History/History.styled";
-import { Text } from "components/Templates/Article/Text";
+// import { Text } from "components/Templates/Article/Text";
 // import { ChapterTitle } from "components/Templates/ChapterTitle/ChapterTitle";
 // import { PageDescription } from "components/Templates/PageDescription/PageDescription"
 // import { PageTitle } from "components/Templates/PageTitle/PageTitle"
