@@ -1,11 +1,18 @@
-import { Box } from 'components/Box';
-import { CardAuthor, CardButton, CardDescription } from './Support.styled';
+// import { Box } from 'components/Box';
+import {
+  CardAuthor,
+  CardButton,
+  CardDescription,
+  CardWrap,
+  CardTitle,
+  CardContainer,
+} from './Support.styled';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-import { Text } from 'components/Templates/Article/Text';
+// import { Text } from 'components/Templates/Article/Text';
 import { useState } from 'react';
 
-export const Card = ({ Title, Author, Description }) => {
+export const Card = ({ Title, Author, Description ,Book}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => {
@@ -14,25 +21,22 @@ export const Card = ({ Title, Author, Description }) => {
 
   return (
     <>
-      <Box
-        p="8px 20px  8px 8px"
-        display="flex"
-        gridGap="20px"
-        alignItems="center"
-      >
+      <CardWrap>
         <CardButton type="button" onClick={handleToggle}>
           {isOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
         </CardButton>
-        <Box>
-          <Text>{Title}</Text>
+        <CardContainer>
+          {!isOpen && <CardTitle close>{Title}</CardTitle>}
           {isOpen && (
             <>
+              <CardTitle>{Title}</CardTitle>
               <CardAuthor>{Author}</CardAuthor>
+              <CardDescription>{Book}</CardDescription>
               <CardDescription>{Description}</CardDescription>
             </>
           )}
-        </Box>
-      </Box>
+        </CardContainer>
+      </CardWrap>
     </>
   );
 };

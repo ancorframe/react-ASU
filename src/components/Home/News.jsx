@@ -30,7 +30,7 @@ export const News = () => {
           </Item>
         ))}
       </Box>
-      <LinkAllNews to="News">Всі_новини</LinkAllNews>
+      <LinkAllNews to="/news">Всі_новини</LinkAllNews>
     </Section>
   );
 };

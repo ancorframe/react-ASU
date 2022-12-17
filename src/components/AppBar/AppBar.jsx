@@ -340,7 +340,7 @@ export const DepartmentListLink = () => {
         <DropdownLink to="about/partnership">Партнерство</DropdownLink>
       </li>
       <li>
-        <DropdownLink>Новини</DropdownLink>
+        <DropdownLink to="about/news">Новини</DropdownLink>
       </li>
       {/* </Box> */}
     </>

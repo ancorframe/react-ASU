@@ -25,7 +25,6 @@ export const Title = styled.h1`
     line-height: 1.07;
     margin-bottom: 12px;
   }
-
   text-align: center;
 
 `;

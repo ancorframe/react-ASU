@@ -83,14 +83,11 @@ const Schedule = lazy(() =>
   }))
 );
 
-
-
 const NotFoundPage = lazy(() =>
   import('../pages/NotFoundPage').then(module => ({
     default: module.NotFoundPage,
   }))
 );
-
 
 export const App = () => {
   // const dispatch = useDispatch();
@@ -121,19 +118,15 @@ export const App = () => {
             <Route path="home" element={<Home />} />
             <Route path="introduction" element={<Introduction />} />
             <Route path="literature" element={<Literature />} />
-            <Route path="news" element={<News />} />
-            <Route path="news/:news_detail" element={<NewsDetail />} />
             <Route path="learning_process">
               <Route index element={<Navigate to="support" />} />
               <Route path="support" element={<Support />} />
               <Route path="disciplines" element={<Disciplines />} />
               <Route path="disciplines" element={<Disciplines />} />
-
               <Route path="schedule" element={<Schedule />} />
             </Route>
             <Route path="about">
               <Route index element={<Navigate to="teachers" />} />
-          
               <Route path="history" element={<History />} />
               <Route path="teachers" element={<Teachers />} />
               <Route
@@ -145,6 +138,8 @@ export const App = () => {
                 path="partnership/:partnershipDetail"
                 element={<PartnershipDetail />}
               />
+              <Route path="news" element={<News />} />
+              <Route path="news/:news_detail" element={<NewsDetail />} />
             </Route>
           </Route>
           <Route path="*" element={<NotFoundPage />} />
