@@ -142,7 +142,7 @@ export const InputField = styled.input`
   :hover,
   :focus {
     border-color: ${p => p.theme.colors.black};
-    /* color: ${p => p.theme.colors.black}; */
+
   }
   :focus {
     ::placeholder {
@@ -162,7 +162,9 @@ export const Label = styled.label`
   margin-bottom: 4px;
 
   text-transform: uppercase;
-
+  /* ${InputField}:hover & {
+    color: ${p => p.theme.colors.black};
+  } */
 `;
 
 export const InputWrap = styled.div`

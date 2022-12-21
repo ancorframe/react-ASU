@@ -79,14 +79,7 @@ export const Item = styled.li`
   }
 `;
 
-export const Card = styled(NavLink)`
-display: block;
-position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 1px;
-  
-`;
+
 
 export const Img = styled.img`
   width: 100%;
@@ -101,6 +94,7 @@ export const Descriptoin = styled.div`
     width: 100%;
     background-color: #ffffff;
 `
+
 export const FullName = styled.h5`
   font-family: ${p => p.theme.fonts.titles};
   font-weight: ${p => p.theme.fontWeights.bold};
@@ -118,6 +112,17 @@ export const FullName = styled.h5`
   margin: 0;
 
   margin-bottom: 2px;
+`;
+export const Card = styled(NavLink)`
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 1px;
+  &:hover ${FullName} {
+    text-decoration-line:underline;
+    text-decoration-color: ${p => p.theme.colors.black};
+  }
 `;
 
 export const Rank = styled.p`

@@ -22,10 +22,28 @@ export const BookTitle = styled.p`
     line-height: 1.2;
     margin-bottom: 4px;
   }
-
  
 `;
+export const Card = styled.a`
+  display: block;
+  text-decoration: none;
+  position: relative;
+  /* max-width: 400px; */
+  /* width: calc(100% / 3 - 24px); */
+  /* max-height: 320px; */
+  width: 100%;
 
+  height: 100%;
+  border: 2px solid #0f1f2c;
+  border-radius: 2px;
+
+  &:hover {
+    /* background: red; */
+    ${BookTitle} {
+      text-decoration-line: underline;
+    }
+  }
+`;
 export const BookAuthor = styled.p`
   font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights.regular};
@@ -58,16 +76,3 @@ padding: 24px;
   }
 `;
 
-export const Card = styled.a`
-display: block;
-text-decoration: none;
-  position: relative;
-  /* max-width: 400px; */
-  /* width: calc(100% / 3 - 24px); */
-  /* max-height: 320px; */
-  width: 100%;
-  
-height: 100%;
-  border: 2px solid #0f1f2c;
-  border-radius: 2px;
-`;

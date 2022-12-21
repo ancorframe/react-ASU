@@ -95,7 +95,15 @@ export const LoadMore = styled.button`
   line-height: 1.33;
   letter-spacing: -0.05em;
   color: ${p => p.theme.colors.black};
-
+  transition-property: (border-color);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  :hover,
+  :focus {
+    text-decoration-line:underline;
+    border-color: ${p => p.theme.colors.black};
+    /* color: ${p => p.theme.colors.black}; */
+  }
   @media screen and (min-width: 980px) {
     padding: 19px 0;
     font-size: ${p => p.theme.fontSizes.desktop.m};

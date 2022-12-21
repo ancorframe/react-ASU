@@ -111,7 +111,7 @@ export const LinkAbout = styled(NavLink)`
   letter-spacing: -0.05em;
   color: ${p => p.theme.colors.black};
   border: 1px solid ${p => p.theme.colors.grey};
-  transition-property: (background-color);
+  transition-property: (border);
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   @media screen and (min-width: 980px) {
@@ -124,6 +124,6 @@ export const LinkAbout = styled(NavLink)`
   :hover,
   :focus {
     text-decoration-line: underline;
-    background-color: ${p => p.theme.colors.blackLight};
+    border: 1px solid #0f1f2c;
   }
 `;

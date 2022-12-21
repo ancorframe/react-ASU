@@ -93,6 +93,14 @@ export const InputSelect = styled.select`
     line-height: 1.6;
   }
   cursor: pointer;
+  transition-property: (border-color);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  :hover,
+  :focus {
+    border-color: ${p => p.theme.colors.black};
+    /* color: ${p => p.theme.colors.black}; */
+  }
 `;
 
 export const Label = styled.label`
@@ -104,6 +112,9 @@ export const Label = styled.label`
   color: ${p => p.theme.colors.grey};
   margin-bottom: 4px;
   text-transform: uppercase;
+  &:hover ${InputSelect} {
+    text-decoration-line: underline;
+  }
 `;
 
 export const RadioButtonWrap = styled.div`
@@ -142,6 +153,10 @@ export const RadioLable = styled.label`
     color: ${p => p.theme.colors.white};
     background-color: ${p => p.theme.colors.black};
   }
+  transition-property: (color, background-color);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
   :hover,
   :focus {
     color: ${p => p.theme.colors.white};
@@ -256,6 +271,14 @@ export const Infolink = styled.a`
   border-radius: 1px;
   margin-bottom: 24px;
   cursor: pointer;
+  /* transition-property: (border-color);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); */
+  :hover,
+  :focus {
+    text-decoration-line:underline;
+    /* color: ${p => p.theme.colors.black}; */
+  }
 `;
 
 

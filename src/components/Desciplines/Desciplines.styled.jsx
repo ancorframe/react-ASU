@@ -20,9 +20,13 @@ export const CardTitle = styled.p`
   line-height: 1.33;
   letter-spacing: -0.06em;
   color: ${p => p.theme.colors.black};
+
   @media screen and (min-width: 980px) {
     font-size: ${p => p.theme.fontSizes.desktop.m};
     line-height: 1.3;
+  }
+  :hover,:focus{
+      text-decoration-line: underline;
   }
 `;
 
@@ -145,6 +149,14 @@ export const InputSelect = styled.select`
     line-height: 1.6;
   }
   cursor: pointer;
+  transition-property: (border-color);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  :hover,
+  :focus {
+    border-color: ${p => p.theme.colors.black};
+    /* color: ${p => p.theme.colors.black}; */
+  }
 `;
 
 export const Label = styled.label`

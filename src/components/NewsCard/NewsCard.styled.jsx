@@ -20,13 +20,14 @@ export const Card = styled(NavLink)`
   align-items: center;
   background: #ffffff;
   box-shadow: 0px 4px 128px rgba(188, 196, 211, 0.5);
-  transition-property: text-decoration;
-  transition-duration: 2500ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* transition-property: text-decoration;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); */
   :hover,
   :focus {
     /* box-shadow: 0px 4px 128px rgb(112 123 144 / 56%); */
     text-decoration-line: underline;
+    text-decoration-color: ${p => p.theme.colors.black};
   }
   @media screen and (min-width: 980px) {
     padding: 4px 4px 24px;

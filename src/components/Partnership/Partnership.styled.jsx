@@ -149,4 +149,14 @@ export const Link = styled(NavLink)`
     font-size: ${p => p.theme.fontSizes.desktop.m};
     line-height: 1.3;
   }
+  transition-property: (border-color);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  :hover,
+  :focus {
+    border-color: ${p => p.theme.colors.black};
+    /* color: ${p => p.theme.colors.black}; */
+    text-decoration-line:underline ;
+    ${p => p.theme.colors.black};
+  }
 `;
