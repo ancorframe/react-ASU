@@ -25,7 +25,6 @@ export const Menu = ({ onCloseMenu }) => {
       > */}
       <Box
         display="flex"
-        
         p="24px"
         justifyContent="space-between"
         alignItems="center"
@@ -37,30 +36,42 @@ export const Menu = ({ onCloseMenu }) => {
       </Box>
       <Box as="ul" p="32px 24px ">
         <Item>
-          <MenuLink text="ВСТУП" to="introduction" />
+          <MenuLink text="ВСТУП" to="introduction" onClick={onCloseMenu} />
         </Item>
         <Item>
-          <MenuLink text="Корисна література" to="literature" />
+          <MenuLink
+            text="Корисна література"
+            to="literature"
+            onClick={onCloseMenu}
+          />
         </Item>
 
         <Item>
           <ListTitle>Навчальний_процес</ListTitle>
-          <LearnListLink />
+          <LearnListLink onClick={onCloseMenu} />
         </Item>
         <Item>
           <ListTitle>Про_кафедру</ListTitle>
           <ListLink>
             <li>
-              <SubLink to="about/teachers">Викладачі</SubLink>
+              <SubLink to="about/teachers" onClick={onCloseMenu}>
+                Викладачі
+              </SubLink>
             </li>
             <li>
-              <SubLink to="about/history">Історія кафедри</SubLink>
+              <SubLink to="about/history" onClick={onCloseMenu}>
+                Історія кафедри
+              </SubLink>
             </li>
             <li>
-              <SubLink to="about/partnership">Партнерство</SubLink>
+              <SubLink to="about/partnership" onClick={onCloseMenu}>
+                Партнерство
+              </SubLink>
             </li>
             <li>
-              <SubLink to="about/news">Новини</SubLink>
+              <SubLink to="about/news" onClick={onCloseMenu}>
+                Новини
+              </SubLink>
             </li>
           </ListLink>
         </Item>
@@ -68,12 +79,18 @@ export const Menu = ({ onCloseMenu }) => {
           <ListTitle>Наукова діяльність</ListTitle>
           <ListLink>
             <li>
-              <SubLink to="research_activities/research_and_acquisitions">
+              <SubLink
+                to="research_activities/research_and_acquisitions"
+                onClick={onCloseMenu}
+              >
                 Дослідження та здобутки
               </SubLink>
             </li>
             <li>
-              <SubLink to="research_activities/conferences">
+              <SubLink
+                to="research_activities/conferences"
+                onClick={onCloseMenu}
+              >
                 Конференції
               </SubLink>
             </li>
@@ -85,10 +102,10 @@ export const Menu = ({ onCloseMenu }) => {
   );
 };
 
-export const MenuLink = ({ text ,to}) => {
+export const MenuLink = ({ text ,to,onClick}) => {
   return (
     <>
-      <Link to={to}>
+      <Link to={to} onClick={onClick}>
         {text}
         <ArrowRightIcon />
       </Link>
@@ -98,30 +115,38 @@ export const MenuLink = ({ text ,to}) => {
 
 
 
-export const LearnListLink = () => {
+export const LearnListLink = ({ onClick }) => {
   return (
     <>
       <ListLink>
         <li>
-          <SubLink to="learning_process/support">
+          <SubLink to="learning_process/support" onClick={onClick}>
             Навчально-методичне забезпечення
           </SubLink>
         </li>
         <li>
-          <SubLink to="learning_process/disciplines">Перелік дисциплін</SubLink>
+          <SubLink to="learning_process/disciplines" onClick={onClick}>
+            Перелік дисциплін
+          </SubLink>
         </li>
         <li>
-          <SubLink to="learning_process/schedule">Розклад</SubLink>
+          <SubLink to="learning_process/schedule" onClick={onClick}>
+            Розклад
+          </SubLink>
         </li>
         <li>
-          <SubLinkExternal href="http://vns.lpnu.ua/" target="_blank">
+          <SubLinkExternal
+            href="http://vns.lpnu.ua/"
+            target="_blank"
+            onClick={onClick}
+          >
             ВНС
           </SubLinkExternal>
         </li>
       </ListLink>
     </>
   );
-}
+};
 
 
 const useBodyScrollLock = () => {
