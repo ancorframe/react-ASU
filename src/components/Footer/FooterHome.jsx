@@ -1,9 +1,9 @@
 import { Box } from 'components/Box';
-import { FooterDes, WrapHome } from './Footer.styled';
+import { FooterDes, WrapHome,FooterHomeContainer } from './Footer.styled';
 
 export const FooterHome = () => {
   return (
-    <Box as="footer">
+    <FooterHomeContainer>
       <WrapHome>
         <FooterDes>
           © 2022 Department of automated management systems. All Rigths
@@ -11,6 +11,6 @@ export const FooterHome = () => {
         </FooterDes>
         <FooterDes>Sokolov Design</FooterDes>
       </WrapHome>
-    </Box>
+    </FooterHomeContainer>
   );
 };

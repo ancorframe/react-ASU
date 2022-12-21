@@ -8,6 +8,7 @@ import {
   Wrap,
   ListLink,
   LinkItem,
+  LinkExternal,
 } from './Footer.styled';
 
 export const Footer = () => {
@@ -20,10 +21,10 @@ export const Footer = () => {
               <Title>Основне</Title>
               <ul>
                 <LinkItem>
-                  <Link>Вступникам</Link>
+                  <Link to="/introduction">Вступникам</Link>
                 </LinkItem>
                 <LinkItem>
-                  <Link>Корисна література</Link>
+                  <Link to="/literature">Корисна література</Link>
                 </LinkItem>
               </ul>
             </ListItem>
@@ -31,16 +32,22 @@ export const Footer = () => {
               <Title>Навчальний_процес</Title>
               <ul>
                 <LinkItem>
-                  <Link>Методичне забезпечення</Link>
+                  <Link to="/learning_process/support">
+                    Методичне забезпечення
+                  </Link>
                 </LinkItem>
                 <LinkItem>
-                  <Link>Перелік дисциплін</Link>
+                  <Link to="/learning_process/disciplines ">
+                    Перелік дисциплін
+                  </Link>
                 </LinkItem>
                 <LinkItem>
-                  <Link>Розклад</Link>
+                  <Link to="/learning_process/schedule">Розклад</Link>
                 </LinkItem>
                 <LinkItem>
-                  <Link>ВНС</Link>
+                  <LinkExternal href="http://vns.lpnu.ua/" target="_blank">
+                    ВНС
+                  </LinkExternal>
                 </LinkItem>
               </ul>
             </ListItem>
@@ -48,16 +55,16 @@ export const Footer = () => {
               <Title>Про_кафедру</Title>
               <ul>
                 <LinkItem>
-                  <Link>Історія кафедри</Link>
+                  <Link to="/about/teachers ">Історія кафедри</Link>
                 </LinkItem>
                 <LinkItem>
-                  <Link>Викладачі</Link>
+                  <Link to="/about/history ">Викладачі</Link>
                 </LinkItem>
                 <LinkItem>
-                  <Link>Партнерство</Link>
+                  <Link to="/about/partnership">Партнерство</Link>
                 </LinkItem>
                 <LinkItem>
-                  <Link>Новини</Link>
+                  <Link to="/about/news">Новини</Link>
                 </LinkItem>
               </ul>
             </ListItem>
@@ -65,13 +72,12 @@ export const Footer = () => {
               <Title>Наукова_діяльність</Title>
               <ul>
                 <LinkItem>
-                  <Link>Дослідження та здобутки</Link>
+                  <Link to="/research_activities/research_and_acquisitions">
+                    Дослідження та здобутки
+                  </Link>
                 </LinkItem>
                 <LinkItem>
-                  <Link>Конференції</Link>
-                </LinkItem>
-                <LinkItem>
-                  <Link>Проекти</Link>
+                  <Link to="/research_activities/conferences">Конференції</Link>
                 </LinkItem>
               </ul>
             </ListItem>

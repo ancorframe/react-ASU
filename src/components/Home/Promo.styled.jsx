@@ -9,12 +9,12 @@ export const PromoWrap = styled.section`
   max-height: 370px;
   @media screen and (min-width: 980px) {
     padding: 0;
-    height: 100%;
+    height: 84vh;
     top: 96px;
     /* right:0px; */
     max-width: 472px;
     width: 100%;
-    max-height: 840px;
+    max-height: 900px;
     position: sticky;
     border-radius: 4px;
     background: #f2f3f5;
@@ -73,5 +73,30 @@ export const Arrow = styled(Svg)`
   @media screen and (min-width: 980px) {
     height: 47px;
     width: 37px;
+  }
+`;
+
+export const TextContainer = styled.div`
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+
+  @media screen and (min-width: 980px) {
+    right: 32px;
+    bottom: 32px;
+  }
+`;
+
+export const PromoText = styled.p`
+  font-family: ${p => p.theme.fonts.main};
+  font-weight: ${p => p.theme.fontWeights.regular};
+  font-size: ${p => p.theme.fontSizes.mobile.xs};
+  line-height: 1.5;
+
+  color: ${p => p.theme.colors.white};
+  opacity: 0.8;
+  @media screen and (min-width: 980px) {
+    font-size: ${p => p.theme.fontSizes.desktop.s};
+    line-height: 1.42;
   }
 `;

@@ -9,10 +9,10 @@ const dataNews = [
   { id: 4, img: test, text: 'test text' },
 ];
 
-export const NewsRecomendation = () => {
+export const NewsRecomendation = ({title='Рекомендовані новини:'}) => {
   return (
     <Section>
-      <Title>Рекомендовані новини:</Title>
+      <Title>{title}</Title>
       <Wrap>
         {dataNews.map(data => (
           <Item key={data.id}>

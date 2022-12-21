@@ -31,9 +31,12 @@ export const NewsTitle = styled.h2`
 `;
 
 export const Item = styled.li`
-min-width: 335px;
-max-width: 400px;
-  width: calc(100% / 2 - 12px);
+width: 100%;
+  @media screen and (min-width: 770px) {
+    min-width: 250px;
+    /* max-width: 400px; */
+    width: calc(100% / 2 - 12px);
+  }
 `;
 
 export const LinkAllNews = styled(NavLink)`
@@ -70,10 +73,16 @@ export const LinkAllNews = styled(NavLink)`
 
 
 export const ListWrap = styled.ul`
+
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  @media screen and (max-width: 769px) {
+    flex-direction: column;
+  }
+  gap: 16px;
   margin-bottom: 16px;
+  @media screen and (min-width: 770px) {
+    flex-wrap: wrap;
+  }
   @media screen and (min-width: 980px) {
     gap: 24px;
     margin-bottom: 24px;

@@ -7,15 +7,18 @@ export const Item = styled.li`
 export const SectionImg = styled.section`
   padding: 36px 12px 44px;
   @media screen and (min-width: 980px) {
-    padding: 20px 0 68px;
+    padding: 20px 12px 68px;
   }
 `;
 
 export const ImgContainer = styled.div`
   margin: 0 auto;
+
   position: relative;
   max-height: 480px;
   max-width: 1248px;
+      border-radius: 2px;
+    box-shadow: 4px 4px 0px 0px #0f1f2c;
 `;
 
 export const Img = styled.img`

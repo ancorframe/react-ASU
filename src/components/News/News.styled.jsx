@@ -40,10 +40,11 @@ export const TitleDescription = styled.p`
 `;
 export const Section = styled.section`
   padding: 0 12px 100px;
+  max-width: 1272px;
   @media screen and (min-width: 980px) {
     margin: 0 auto;
-    padding: 0 0 128px;
-    max-width: 1248px;
+    padding: 0 12px 128px;
+    
   }
 `;
 
@@ -55,18 +56,27 @@ export const Wrap = styled.ul`
   margin-bottom: 16px;
   @media screen and (min-width: 980px) {
     gap: 24px;
+
     margin-bottom: 24px;
   }
-  @media screen and (min-width: 1146px) {
-    justify-content:unset;
+  @media screen and (min-width: 600px) {
+    justify-content: unset;
   }
 `;
 
 export const Item = styled.li`
-  min-width: 366px;
-  max-width: 400px;
+  min-width: 250px;
+ 
   /* max-height: 320px; */
-  width: calc(100% / 3 - 17px);
+  width:100%;
+   @media screen and (min-width: 600px) {
+    width: calc(100% / 2 - 8px); 
+    max-width: 400px;
+  }
+
+  @media screen and (min-width: 850px) {
+    width: calc(100% / 3 - 16px);
+  }
 `;
 
 export const LoadMore = styled.button`

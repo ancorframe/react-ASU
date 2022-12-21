@@ -2,22 +2,25 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Section = styled.section`
-  padding-top: 40px;
-  padding-bottom: 100px;
+  max-width: 1272px;
+  padding: 0 12px 100px;
+  margin: 0 auto;
   @media screen and (min-width: 980px) {
-    padding-top: 80px;
     padding-bottom: 128px;
   }
 `;
 
-export const Container = styled.div`
+export const SectionTitle = styled.section`
   margin: 0 auto;
-  padding: 0 12px;
+  max-width: 1272px;
+  padding: 40px 12px 40px;
   @media screen and (min-width: 980px) {
-    padding: 0;
-    max-width: 1248px;
+    padding-top: 80px;
+    padding-bottom: 58px;
   }
 `;
+
+
 
 export const Title = styled.h1`
   font-family: ${p => p.theme.fonts.titles};
@@ -54,7 +57,7 @@ export const PageDescription = styled.p`
 
 export const Wrap = styled.ul`
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 40px;
   align-items: center;
   @media screen and (min-width: 980px) {
@@ -64,21 +67,38 @@ export const Wrap = styled.ul`
 `;
 
 export const Card = styled.li`
-  width: fit-content;
+  /* width: fit-content; */
+  width: 100%;
+  min-width: 366px;
+ 
+
   padding: 16px;
   @media screen and (min-width: 980px) {
     padding: 44px;
+    width: calc( 100% / 2 - 12px );
+    max-width: 612px;
   }
 `;
 
-export const Img = styled.img``;
+export const Img = styled.img`
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  max-height: 280px;
+  @media screen and (min-width: 700px) {
+    max-height: 350px;
+  }
+  @media screen and (min-width: 980px) {
+    min-height: 480px;
+  }
+`;
 
 export const ImgContainer = styled.div`
-  max-width: 516px;
+  /* max-width: 516px; */
   position: relative;
   /* box-shadow: 4px 4px 0px 0px #0f1f2c; */
   width: 100%;
-  max-height: 480px;
+  /* max-height: 480px; */
   margin-bottom: 28px;
   border: 2px solid #0f1f2c;
   border-radius: 2px;

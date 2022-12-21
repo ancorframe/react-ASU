@@ -1,17 +1,28 @@
 // import { Box } from 'components/Box';
+import { Box } from 'components/Box';
 import { Footer } from 'components/Footer/Footer';
 // import { PageDescription } from 'components/Templates/PageDescription/PageDescription';
 // import { PageTitle } from 'components/Templates/PageTitle/PageTitle';
 import { BookCard } from 'components/Literature/BookCard';
+import SearchIcon from '@mui/icons-material/Search';
+import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
+import RefreshRoundedIcon from '@mui/icons-material/RefreshRounded';
 import {
+  Form,
+  InputField,
+  InputSelect,
+  InputWrap,
   Item,
+  Label,
   LoadMore,
+  ResetButton,
   Section,
   SectionTitle,
   Title,
   TitleDescription,
   Wrap,
 } from 'components/Literature/Literaturte.styled';
+import { useForm, Controller } from 'react-hook-form';
 
 const data = [
   {
@@ -47,6 +58,11 @@ const data = [
 ];
 
 export const Literature = () => {
+  const { control, watch, reset } = useForm();
+
+  const watchFields = watch();
+  console.log('watchFields', watchFields);
+
   return (
     <>
       <main>
@@ -58,6 +74,54 @@ export const Literature = () => {
           </TitleDescription>
         </SectionTitle>
         <Section>
+          <Form>
+            <InputWrap>
+              <Label htmlFor="search">Пошук</Label>
+              <Box position="relative">
+                <Controller
+                  render={({ field }) => (
+                    <InputField
+                      {...field}
+                      placeholder="Назва книги або ресурсу ..."
+                      autoComplete="off"
+                    />
+                  )}
+                  name="search"
+                  control={control}
+                  defaultValue=""
+                />
+                <Box position="absolute" right="16px" top="16px">
+                  <SearchIcon />
+                </Box>
+              </Box>
+            </InputWrap>
+            <InputWrap>
+              <Label htmlFor="select">Напрям</Label>
+              <Box position="relative">
+                <Controller
+                  render={({ field }) => (
+                    <InputSelect {...field}>
+                      <option value="" disabled hidden>
+                        Обери фільтр ...
+                      </option>
+                      <option value="female">female</option>
+                      <option value="male">male</option>
+                      <option value="other">other</option>
+                    </InputSelect>
+                  )}
+                  name="select"
+                  control={control}
+                  defaultValue=""
+                />
+                <Box position="absolute" right="16px" top="16px">
+                  <FilterAltOutlinedIcon />
+                </Box>
+              </Box>
+            </InputWrap>
+            <ResetButton type="button" onClick={reset}>
+              {window.innerWidth < 849 ? 'Оновити' :<RefreshRoundedIcon />}
+            </ResetButton>
+          </Form>
           <Wrap>
             {data.map(({ id, title, to, author }) => {
               return (
@@ -74,3 +138,4 @@ export const Literature = () => {
     </>
   );
 };
+

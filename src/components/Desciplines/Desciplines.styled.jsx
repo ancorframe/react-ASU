@@ -3,12 +3,12 @@ import styled from 'styled-components';
 
 export const Item = styled.li`
   min-width: 366px;
-  max-width: 632px;
+  /* max-width: 632px; */
   width: 100%;
   border: 2px solid #F2F3F5;
 border-radius: 4px;
   @media screen and (min-width: 888px) {
-    width: calc(100% / 2 - 16px);
+    width: calc(100% / 2 - 12px);
 
   }
 `;
@@ -77,20 +77,85 @@ export const Description = styled.p`
 
 export const Section = styled.section`
   padding: 0 12px 100px;
+  max-width: 1248px;
+  margin: 0 auto;
   @media screen and (min-width: 980px) {
-    padding: 0;
+    padding: 0 12px;
     padding-bottom: 128px;
   }
 `;
 
 export const Wrap = styled.ul`
+
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
-  max-width: 1248px;
+
   justify-content: center;
   @media screen and (min-width: 888px) {
     justify-content: unset;
   }
+`;
+
+
+export const Form = styled.form`
+  margin-bottom: 40px;
+  @media screen and (min-width: 850px) {
+    display: flex;
+    gap: 24px;
+    align-items: flex-end;
+  }
+`;
+
+export const InputWrap = styled.div`
+  @media screen and (max-width: 849px) {
+    width: 100%;
+  }
+  @media screen and (max-width: 849px) {
+    :first-child {
+      margin-bottom: 16px;
+    }
+
+  }
+
+width: calc( 100% / 2 - 12px);
+`;
+
+
+export const InputSelect = styled.select`
+  /* @media screen and (min-width: 850px) {
+    width: 320px;
+  } */
+  appearance: none;
+  height: 56px;
+  background: #ffffff;
+  width: 100%;
+  border: 1px solid #bcc4d3;
+  border-radius: 1px;
+  padding: 12px 52px 12px 16px;
+
+  font-family: ${p => p.theme.fonts.main};
+  font-weight: ${p => p.theme.fontWeights.regular};
+  font-size: ${p => p.theme.fontSizes.mobile.sm};
+  line-height: 1.5;
+  color: ${p => p.theme.colors.grey};
+  @media screen and (min-width: 980px) {
+    font-size: ${p => p.theme.fontSizes.desktop.m};
+    line-height: 1.6;
+  }
+  cursor: pointer;
+`;
+
+export const Label = styled.label`
+  display: inline-block;
+  font-family: ${p => p.theme.fonts.main};
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: ${p => p.theme.fontSizes.desktop.xs};
+  line-height: 1.33;
+
+  color: ${p => p.theme.colors.grey};
+  margin-bottom: 4px;
+
+  text-transform: uppercase;
 `;

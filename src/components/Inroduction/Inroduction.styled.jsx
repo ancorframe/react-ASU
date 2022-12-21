@@ -65,9 +65,14 @@ export const Button = styled.button`
     color: #FFFFFF;
     
   `}
-  :hover,:focus :not(:active) {
-    background-color: ${p => p.theme.colors.grey};
-  }
+  ${({ active }) =>
+    !active &&
+    ` :hover,:focus  {
+    background-color:#33414C;
+    color: #FFFFFF;
+     }
+  `} /* :hover,:focus :not(:checked) {
+    background-color: ${p => p.theme.colors.grey}; */
 `;
 
 export const ButtonWrap = styled.div`

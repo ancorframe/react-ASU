@@ -24,8 +24,9 @@ export const Title = styled.h1`
     font-size: ${p => p.theme.fontSizes.desktop.xxl};
     line-height: 1.07;
     margin-bottom: 12px;
+      text-align: center;
+
   }
-  text-align: center;
 
 `;
 export const Wrap = styled.ul`

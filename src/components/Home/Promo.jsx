@@ -1,4 +1,11 @@
-import { PromoWrap, Img, Button, Arrow } from './Promo.styled';
+import {
+  PromoWrap,
+  Img,
+  Button,
+  Arrow,
+  TextContainer,
+  PromoText,
+} from './Promo.styled';
 // import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
 // import { ReactComponent as Svg }  from '../../image/icons/Vector.svg';
@@ -52,6 +59,9 @@ export const Promo = () => {
       <Button type="button" onClick={onClick}>
         <Arrow />
       </Button>
+      <TextContainer>
+        <PromoText>Відео-звіт конкурсу “Радіотехніки”</PromoText>
+      </TextContainer>
       <AnimatePresence>
         {isOpen && (
           <Modal

@@ -2,11 +2,11 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const Section = styled.section`
-  /* padding: 0 12px; */
-  margin-bottom: 40px;
+
+  padding-bottom: 40px;
   @media screen and (min-width: 980px) {
-    margin-top: 32px;
-    margin-bottom: 64px;
+    padding-top: 32px;
+    padding-bottom: 64px;
     max-width: 824px;
   }
 `;
@@ -61,6 +61,7 @@ export const Text = styled.p`
 
 export const LinkGraduates = styled(NavLink)`
   text-decoration: none;
+  /* text-decoration-line: none; */
   display: flex;
   flex-direction: row;
   justify-content: center;

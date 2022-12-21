@@ -2,12 +2,13 @@ import { Footer } from 'components/Footer/Footer';
 import {
   Card,
   CardText,
-  Container,
+
   Img,
   ImgContainer,
   Link,
   PageDescription,
   Section,
+  SectionTitle,
   TextContainer,
   Title,
   Wrap,
@@ -24,15 +25,18 @@ export const Partnership = () => {
   return (
     <>
       <main>
-        <Section>
-          <Container>
-            <Title>Партнерство</Title>
+        <SectionTitle>
+          <Title>Партнерство</Title>
             <PageDescription>
               Кафедра АСУ співпрацює з багатьма навчальними закладами як в
               Україні так і за кордоном. Також існують можливості проходження
               практики у провідних ІТ-компанії з подальшим можливим
               працевлаштуванням.
             </PageDescription>
+        </SectionTitle>
+        <Section>
+          
+            
             <Wrap>
               {data.map(({ id, img, title }) => {
                 return (
@@ -49,7 +53,7 @@ export const Partnership = () => {
                 );
               })}
             </Wrap>
-          </Container>
+        
         </Section>
       </main>
       <Footer />

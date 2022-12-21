@@ -23,12 +23,12 @@ export const WrapHome = styled.div`
   align-items: center;
   gap: 4px;
   border-top: 1px solid rgba(15, 31, 44, 0.1);
-  padding-top: 12px;
+
   @media screen and (min-width: 980px) {
     align-items: unset;
     justify-content: space-between;
     flex-direction: row;
-    margin-bottom: 24px;
+
   }
 `;
 
@@ -128,6 +128,24 @@ export const Link = styled(NavLink)`
   text-decoration-line: underline;
 `;
 
+export const LinkExternal = styled.a`
+  display: block;
+  font-family: ${p => p.theme.fonts.main};
+  font-weight: ${p => p.theme.fontWeights.semiBold};
+  font-size: ${p => p.theme.fontSizes.mobile.xs};
+  line-height: 1.5;
+  letter-spacing: -0.05em;
+  color: ${p => p.theme.colors.white};
+
+  @media screen and (min-width: 980px) {
+    text-align: none;
+    font-size: ${p => p.theme.fontSizes.desktop.s};
+    line-height: 1.42;
+  }
+
+  text-decoration-line: underline;
+`;
+
 export const ListItem = styled.li`
   /* display: block; */
   max-width: 300px;
@@ -142,5 +160,13 @@ export const LinkItem = styled.li`
     @media screen and (min-width: 980px) {
       margin-bottom: 12px;
     }
+  }
+`;
+
+
+export const FooterHomeContainer = styled.footer`
+  padding-bottom: 20px;
+  @media screen and (min-width: 980px) {
+ padding-bottom: 24px;
   }
 `;

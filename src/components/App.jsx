@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { lazy } from 'react';
 
-import { Box } from './Box';
+// import { Box } from './Box';
 import { Layout } from './Layout';
 // import { NotFoundPage } from 'pages/NotFoundPage';
 // import { useGetCurrentMutation } from 'API/authApi';
@@ -82,6 +82,21 @@ const Schedule = lazy(() =>
     default: module.Schedule,
   }))
 );
+const Conferences = lazy(() =>
+  import('../pages/Conferences').then(module => ({
+    default: module.Conferences,
+  }))
+);
+const ConferencesDetail = lazy(() =>
+  import('../pages/ConferencesDetail').then(module => ({
+    default: module.ConferencesDetail,
+  }))
+);
+const ResearchAndAcquisitions = lazy(() =>
+  import('../pages/ResearchAndAcquisitions').then(module => ({
+    default: module.ResearchAndAcquisitions,
+  }))
+);
 
 const NotFoundPage = lazy(() =>
   import('../pages/NotFoundPage').then(module => ({
@@ -111,40 +126,52 @@ export const App = () => {
   return (
     <>
       {/* {!isLoading ? ( */}
-      <Box>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Navigate to="home" />} />
-            <Route path="home" element={<Home />} />
-            <Route path="introduction" element={<Introduction />} />
-            <Route path="literature" element={<Literature />} />
-            <Route path="learning_process">
-              <Route index element={<Navigate to="support" />} />
-              <Route path="support" element={<Support />} />
-              <Route path="disciplines" element={<Disciplines />} />
-              <Route path="disciplines" element={<Disciplines />} />
-              <Route path="schedule" element={<Schedule />} />
-            </Route>
-            <Route path="about">
-              <Route index element={<Navigate to="teachers" />} />
-              <Route path="history" element={<History />} />
-              <Route path="teachers" element={<Teachers />} />
-              <Route
-                path="teachers/:teacherDetail"
-                element={<TeacherDetail />}
-              />
-              <Route path="partnership" element={<Partnership />} />
-              <Route
-                path="partnership/:partnershipDetail"
-                element={<PartnershipDetail />}
-              />
-              <Route path="news" element={<News />} />
-              <Route path="news/:news_detail" element={<NewsDetail />} />
-            </Route>
+
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Navigate to="home" />} />
+          <Route path="home" element={<Home />} />
+          <Route path="introduction" element={<Introduction />} />
+          <Route path="literature" element={<Literature />} />
+          <Route path="learning_process">
+            <Route index element={<Navigate to="support" />} />
+            <Route path="support" element={<Support />} />
+            <Route path="disciplines" element={<Disciplines />} />
+            <Route path="disciplines" element={<Disciplines />} />
+            <Route path="schedule" element={<Schedule />} />
           </Route>
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </Box>
+          <Route path="about">
+            <Route index element={<Navigate to="history" />} />
+            <Route path="history" element={<History />} />
+            <Route path="teachers" element={<Teachers />} />
+            <Route path="teachers/:teacherDetail" element={<TeacherDetail />} />
+            <Route path="partnership" element={<Partnership />} />
+            <Route
+              path="partnership/:partnershipDetail"
+              element={<PartnershipDetail />}
+            />
+            <Route path="news" element={<News />} />
+            <Route path="news/:news_detail" element={<NewsDetail />} />
+          </Route>
+          <Route path="research_activities">
+            <Route
+              index
+              element={<Navigate to="research_and_acquisitions" />}
+            />
+            <Route
+              path="research_and_acquisitions"
+              element={<ResearchAndAcquisitions />}
+            />
+            <Route path="conferences" element={<Conferences />} />
+            <Route
+              path="conferences/:conferencesDetail"
+              element={<ConferencesDetail />}
+            />
+          </Route>
+        </Route>
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+
       {/* ) : ( */}
       {/* <Box
           as="main"

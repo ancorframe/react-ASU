@@ -1,7 +1,5 @@
-// import { Box } from 'components/Box';
 
 import { Footer } from 'components/Footer/Footer';
-// import { ImgCard } from 'components/common/ImgCard';
 
 import {
   TitleContainer,
@@ -20,11 +18,6 @@ import {
 } from 'components/NewsDetail/NewsDetail.styled';
 
 import img from '../image/Rectangl.png';
-// import { About } from 'components/NewsDetail/About';
-// import { AdditionalTitle } from 'components/Templates/AdditionalTitle/AdditionalTitle';
-
-// import test from '../image/Rectangle.png';
-// import { NewsCard } from 'components/NewsCard/NewsCard';
 import { AditionalInfo } from 'components/AditionalInfo/AditionalInfo';
 import { NewsRecomendation } from 'components/NewsRecomendation/NewsRecomendation';
 
@@ -82,11 +75,7 @@ const data = [
   },
 ];
 
-// const dataNews = [
-//   { id: 3331, img: test, text: 'test text' },
-//   { id: 3333332, img: test, text: 'test text' },
-//   { id: 33335, img: test, text: 'test text' },
-// ];
+
 
 export const NewsDetail = () => {
   return (
@@ -104,7 +93,7 @@ export const NewsDetail = () => {
           <Container>
             <ContainerList>
             {data[0].info.map((info, index) => {
-              // console.log(info);
+             
               return (
                 <ContainerItem key={info.id}>
                   {Array.isArray(info.text) ? (

@@ -1,10 +1,12 @@
 import { Box } from 'components/Box';
 import CloseIcon from '@mui/icons-material/Close';
-import { ButtonMenu, Item, ListLink, ListTitle, SubLink, Title,Link} from './AppBar.styled';
+import { ButtonMenu, Item, ListLink, ListTitle, SubLink, Title,Link, SubLinkExternal} from './AppBar.styled';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { useLayoutEffect } from 'react';
 
 
 export const Menu = ({ onCloseMenu }) => {
+  useBodyScrollLock()
   return (
     <>
       {/* <Box
@@ -21,70 +23,72 @@ export const Menu = ({ onCloseMenu }) => {
         overflowY="overlay"
         maxHeight="100vh"
       > */}
-        <Box
-          display="flex"
-          p="24px"
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <Title>Меню</Title>
-          <ButtonMenu onClick={onCloseMenu}>
-            <CloseIcon />
-          </ButtonMenu>
-        </Box>
-        <Box as="ul" p="32px 24px ">
-          <Item>
-            <MenuLink text="ВСТУП" />
-          </Item>
-          <Item>
-            <MenuLink text="Корисна література" />
-          </Item>
+      <Box
+        display="flex"
+        
+        p="24px"
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <Title>Меню</Title>
+        <ButtonMenu onClick={onCloseMenu}>
+          <CloseIcon />
+        </ButtonMenu>
+      </Box>
+      <Box as="ul" p="32px 24px ">
+        <Item>
+          <MenuLink text="ВСТУП" to="introduction" />
+        </Item>
+        <Item>
+          <MenuLink text="Корисна література" to="literature" />
+        </Item>
 
-          <Item>
-            <ListTitle>Навчальний_процес</ListTitle>
-            <LearnListLink />
-          </Item>
-          <Item>
-            <ListTitle>Про_кафедру</ListTitle>
-            <ListLink>
-              <li>
-                <SubLink>Викладачі</SubLink>
-              </li>
-              <li>
-                <SubLink>Історія кафедри</SubLink>
-              </li>
-              <li>
-                <SubLink>Партнерство</SubLink>
-              </li>
-              <li>
-                <SubLink>Новини</SubLink>
-              </li>
-            </ListLink>
-          </Item>
-          <Item>
-            <ListTitle>Наукова діяльність</ListTitle>
-            <ListLink>
-              <li>
-                <SubLink>Дослідження та здобутки</SubLink>
-              </li>
-              <li>
-                <SubLink>Конференції</SubLink>
-              </li>
-              <li>
-                <SubLink>Проекти</SubLink>
-              </li>
-            </ListLink>
-          </Item>
-        </Box>
+        <Item>
+          <ListTitle>Навчальний_процес</ListTitle>
+          <LearnListLink />
+        </Item>
+        <Item>
+          <ListTitle>Про_кафедру</ListTitle>
+          <ListLink>
+            <li>
+              <SubLink to="about/teachers">Викладачі</SubLink>
+            </li>
+            <li>
+              <SubLink to="about/history">Історія кафедри</SubLink>
+            </li>
+            <li>
+              <SubLink to="about/partnership">Партнерство</SubLink>
+            </li>
+            <li>
+              <SubLink to="about/news">Новини</SubLink>
+            </li>
+          </ListLink>
+        </Item>
+        <Item>
+          <ListTitle>Наукова діяльність</ListTitle>
+          <ListLink>
+            <li>
+              <SubLink to="research_activities/research_and_acquisitions">
+                Дослідження та здобутки
+              </SubLink>
+            </li>
+            <li>
+              <SubLink to="research_activities/conferences">
+                Конференції
+              </SubLink>
+            </li>
+          </ListLink>
+        </Item>
+      </Box>
       {/* </Box> */}
     </>
   );
 };
 
-export const MenuLink = ({ text }) => {
+export const MenuLink = ({ text ,to}) => {
   return (
     <>
-      <Link>
+      <Link to={to}>
         {text}
         <ArrowRightIcon />
       </Link>
@@ -99,18 +103,31 @@ export const LearnListLink = () => {
     <>
       <ListLink>
         <li>
-          <SubLink>Навчально-методичне забезпечення</SubLink>
+          <SubLink to="learning_process/support">
+            Навчально-методичне забезпечення
+          </SubLink>
         </li>
         <li>
-          <SubLink>Перелік дисциплін</SubLink>
+          <SubLink to="learning_process/disciplines">Перелік дисциплін</SubLink>
         </li>
         <li>
-          <SubLink>Розклад</SubLink>
+          <SubLink to="learning_process/schedule">Розклад</SubLink>
         </li>
         <li>
-          <SubLink>ВНС</SubLink>
+          <SubLinkExternal href="http://vns.lpnu.ua/" target="_blank">
+            ВНС
+          </SubLinkExternal>
         </li>
       </ListLink>
     </>
   );
 }
+
+
+const useBodyScrollLock = () => {
+  useLayoutEffect(() => {
+    const originalStyle = window.getComputedStyle(document.body).overflow;
+    document.body.style.overflow = 'hidden';
+    return () => (document.body.style.overflow = originalStyle);
+  }, []);
+};

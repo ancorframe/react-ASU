@@ -228,6 +228,25 @@ export const SubLink = styled(NavLink)`
   }
 `;
 
+export const SubLinkExternal = styled.a`
+  display: block;
+  font-family: ${p => p.theme.fonts.main};
+  font-weight: ${p => p.theme.fontWeights.semiBold};
+  font-size: ${p => p.theme.fontSizes.desktop.s};
+  line-height: 1.43;
+  text-decoration-line: underline;
+  color: ${p => p.theme.colors.black};
+  padding: 12px 24px;
+  transition-property: (background);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  :hover,
+  :focus {
+    background: #f2f3f5;
+    border-radius: 1px;
+  }
+`;
+
 export const DropdownLink = styled(NavLink)`
   font-family: 'Nunito Sans';
   font-style: normal;
@@ -252,6 +271,31 @@ export const DropdownLink = styled(NavLink)`
   }
 `;
 
+export const DropdownExternal = styled.a`
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  /* identical to box height, or 143% */
+
+  text-decoration-line: underline;
+  padding: 8px 16px;
+  display: block;
+  color: #0f1f2c;
+  white-space: nowrap;
+
+  transition-property: (background);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  :hover,
+  :focus {
+    background: #f2f3f5;
+    border-radius: 1px;
+  }
+`;
+
+
 export const MotionWrap = styled(motion.ul)`
   position: absolute;
   left: 50%;
@@ -263,6 +307,11 @@ export const MotionWrap = styled(motion.ul)`
   flex-direction: column;
   padding: 16px 0;
   overflow: hidden;
+  /* border: 1px solid #bcc4d3; */
+  /* Shadow M */
+
+  box-shadow: 0px 32px 128px rgba(188, 196, 211, 0.5);
+  border-radius: 1px;
   /* z-index: 5; */
 `;
 

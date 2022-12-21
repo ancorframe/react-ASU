@@ -10,6 +10,7 @@ import {
   // Block,
   DropdownLink,
   MotionWrap,
+  DropdownExternal,
 } from './AppBar.styled';
 import { ButtonLink } from './AppBar.styled';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -83,7 +84,11 @@ export const AppBar = () => {
                 <LinkDropdown to="about" text="Про кафедру" keysa={22}>
                   <DepartmentListLink />
                 </LinkDropdown>
-                <LinkDropdown to="6" text="Наукова діяльність" keysa={23}>
+                <LinkDropdown
+                  to="research_activities"
+                  text="Наукова діяльність"
+                  keysa={23}
+                >
                   <ResearchActivitiesListLink />
                 </LinkDropdown>
               </>
@@ -306,7 +311,9 @@ export const LearnListLink = () => {
         <DropdownLink to="learning_process/schedule">Розклад</DropdownLink>
       </li>
       <li>
-        <DropdownLink>ВНС</DropdownLink>
+        <DropdownExternal href="http://vns.lpnu.ua/" target="_blank">
+          ВНС
+        </DropdownExternal>
       </li>
       {/* </Box> */}
     </>
@@ -365,14 +372,12 @@ export const ResearchActivitiesListLink = () => {
         p="16px 8px "
       > */}
       <li>
-        <DropdownLink>Дослідження та здобутки</DropdownLink>
+        <DropdownLink to="research_activities/research_and_acquisitions">Дослідження та здобутки</DropdownLink>
       </li>
       <li>
-        <DropdownLink>Конференції</DropdownLink>
+        <DropdownLink to="research_activities/conferences">Конференції</DropdownLink>
       </li>
-      <li>
-        <DropdownLink>Проекти</DropdownLink>
-      </li>
+
       {/* </Box> */}
     </>
   );

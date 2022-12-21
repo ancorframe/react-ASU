@@ -7,12 +7,12 @@ import { Container } from './Layout.styled';
 export const Layout = () => {
   return (
     <>
-      <Container>
+      <>
         <AppBar />
         <Suspense fullback={null}>
           <Outlet />
         </Suspense>
-      </Container>
+      </>
     </>
   );
 };

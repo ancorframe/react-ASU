@@ -28,15 +28,32 @@ export const Title = styled.h2`
 `;
 
 export const Wrap = styled.ul`
-          display: flex;
-          flex-wrap: wrap;
-          gap: 24px;
-          justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  /* margin-bottom: 16px; */
+  @media screen and (min-width: 980px) {
+    gap: 24px;
+/* 
+    margin-bottom: 24px; */
+  }
+  @media screen and (min-width: 600px) {
+    justify-content: unset;
+  }
 `;
 
 export const Item = styled.li`
-  min-width: 366px;
-  max-width: 400px;
+  min-width: 250px;
+
   /* max-height: 320px; */
-  width: calc(100% / 3 - 17px);
+  width: 100%;
+  @media screen and (min-width: 600px) {
+    width: calc(100% / 2 - 8px);
+    max-width: 400px;
+  }
+
+  @media screen and (min-width: 850px) {
+    width: calc(100% / 3 - 16px);
+  }
 `;

@@ -22,7 +22,7 @@ export const Card = ({ Title, Author, Description ,Book}) => {
   return (
     <>
       <CardWrap>
-        <CardButton type="button" onClick={handleToggle}>
+        <CardButton type="button" onClick={handleToggle} open={isOpen}>
           {isOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
         </CardButton>
         <CardContainer>

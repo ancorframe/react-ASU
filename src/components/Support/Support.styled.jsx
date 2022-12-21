@@ -125,6 +125,7 @@ export const CardWrap = styled.div`
         gridGap="20px"
         alignItems="center" */
   /* width: 100%; */
+  height: 100%;
   display: flex;
   gap: 16px;
   align-items: center;
@@ -137,20 +138,42 @@ export const CardWrap = styled.div`
   }
 `;
 export const CardButton = styled.button`
-display: block;
-padding: 0;
-width: 100%;
-max-width: 48px;
-min-width: 48px;
-/* height: 48px; */
-height: 100%;
-min-height: 48px;
-display: flex;
-align-items: center;
-justify-content: center;
+  display: block;
+  padding: 0;
+  width: 100%;
+  max-width: 40px;
+  min-width: 40px;
+  /* height: 48px; */
+  height: 100%;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #f2f3f5;
   border-radius: 1px;
   border: 0;
+  transition-property: (transform, border);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  @media screen and (min-width: 980px) {
+    max-width: 48px;
+    min-width: 48px;
+    min-height: 48px;
+  }
+
+  :hover,
+  :focus {
+    ${p => !p.open && ' transform: rotate(-90deg);'}
+    /* transform: rotate(-90deg); */
+    border: 1px solid #0f1f2c;
+    border-radius: 1px;
+  }
+  .unfocus:focus,
+  .unfocus:active {
+    outline: none;
+    box-shadow: none;
+    border: 0;
+  }
 `;
 
 export const CardTitle = styled.p`

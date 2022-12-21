@@ -1,5 +1,5 @@
-import { Box } from 'components/Box';
-import { Item, LinkAllNews, NewsTitle, Section } from './News.styled';
+// import { Box } from 'components/Box';
+import { Item, LinkAllNews, NewsTitle, Section, ListWrap } from './News.styled';
 import { NewsCard } from '../NewsCard/NewsCard';
 
 import test from '../../image/Rectangle.png';
@@ -15,21 +15,13 @@ export const News = () => {
   return (
     <Section>
       <NewsTitle>Новини</NewsTitle>
-      <Box
-        as="ul"
-        display="flex"
-        flexWrap="wrap"
-        gridGap="24px"
-        mb="24px"
-        justifyContent="center"
-        
-      >
+      <ListWrap>
         {dataNews.map(data => (
           <Item key={data.id}>
             <NewsCard data={data} />
           </Item>
         ))}
-      </Box>
+      </ListWrap>
       <LinkAllNews to="/news">Всі_новини</LinkAllNews>
     </Section>
   );

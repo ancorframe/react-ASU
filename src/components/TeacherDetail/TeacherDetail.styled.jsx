@@ -3,9 +3,11 @@ import styled from 'styled-components';
 export const Wrap = styled.div`
 padding-top: 36px;
   margin: 0 auto;
-  padding-bottom: 100px;
+
+  padding:0 12px 100px ;
   @media screen and (min-width: 980px) {
     max-width: 1248px;
+    
     display: flex;
     gap: 24px;
 
@@ -15,7 +17,7 @@ padding-top: 36px;
 `;
 
 export const Section = styled.div`
-  padding: 0 12px;
+  /* padding: 0 12px; */
   @media screen and (min-width: 980px) {
     max-width: 824px;
     padding: 48px;
@@ -23,12 +25,13 @@ export const Section = styled.div`
 `;
 
 export const ImgConteiner = styled.div`
-
+min-width: 300px;
   max-width: 366px;
   margin-bottom: 44px;
-  padding: 0 8px;
+
   @media screen and (min-width: 980px) {
     padding: 0;
+    /* padding-left: 12px; */
     margin: 0;
     max-width: 400px;
     width: 100%;
