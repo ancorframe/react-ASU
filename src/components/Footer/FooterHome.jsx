@@ -1,4 +1,4 @@
-import { Box } from 'components/Box';
+// import { Box } from 'components/Box';
 import { FooterDes, WrapHome,FooterHomeContainer } from './Footer.styled';
 
 export const FooterHome = () => {
