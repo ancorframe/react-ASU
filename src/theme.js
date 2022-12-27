@@ -1,4 +1,5 @@
 export const theme = {
+  breakpoints: ['370px', '980px'],
   colors: {
     white: '#FFFFFF',
     whiteLight: '#FAFAFA',
@@ -11,6 +12,8 @@ export const theme = {
     blue: '#3687FF',
     blueLight: 'rgba(54, 135, 255, 0.15)',
   },
+  backgroundColor: {},
+  opacity: {},
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
     titles: 'Overpass Mono',
@@ -37,6 +40,19 @@ export const theme = {
       xl: '24px',
       xxl: '32px',
     },
+    titles: {
+      h1: 'clamp(2rem, 1.4429rem + 2.2857vw, 3.5rem)',
+      h2: 'clamp(1.5rem, 1.1286rem + 1.5238vw, 2.5rem)',
+      h3: 'clamp(1.25rem, 0.9714rem + 1.1429vw, 2rem)',
+      h4: 'clamp(1rem, 0.8143rem + 0.7619vw, 1.5rem)',
+      h5: 'clamp(0.875rem, 0.7357rem + 0.5714vw, 1.25rem)',
+    },
+    main: {
+      body: 'clamp(1rem, 0.9071rem + 0.381vw, 1.25rem)',
+      additional: 'clamp(0.75rem, 0.7036rem + 0.1905vw, 0.875rem)',
+      tag: '12px',
+    },
+    actions: {},
   },
   fontWeights: {
     extraLight: 200,
@@ -47,13 +63,14 @@ export const theme = {
     extraBold: 800,
     black: 900,
   },
+  letterSpacings: { titles: '-0.05em' },
   lineHeights: {
     body: '1.5',
     heading: '1.125',
   },
   borders: {
     none: 'none',
-    normal: '1px solid',
+    normal: '1px solid #000',
   },
   radii: {
     none: '0',

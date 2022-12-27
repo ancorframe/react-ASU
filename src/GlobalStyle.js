@@ -1,17 +1,20 @@
-@import-normalize; /* bring in normalize.css styles */
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
 * {
   box-sizing: border-box; /* gives padding and border from inside */
    scroll-behavior: smooth;
 }
 body {
   margin: 0;
+  padding: 0;
   font-family: 'Overpass Mono','Nunito Sans';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family:'Overpass Mono','Nunito Sans', source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
@@ -33,4 +36,6 @@ h2,
 h3,
 h4 {
   margin: 0;
+  padding: 0;
 }
+`;

@@ -1,6 +1,6 @@
 import { AditionalInfo } from "components/AditionalInfo/AditionalInfo";
 import { Box } from "components/Box";
-import { Text } from "components/Templates/Article/Text";
+import { Text } from "components/Templates/Article/Article";
 
 import { List } from "./NewsDetail.styled";
 

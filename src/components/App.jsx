@@ -97,6 +97,12 @@ const ResearchAndAcquisitions = lazy(() =>
     default: module.ResearchAndAcquisitions,
   }))
 );
+const TestPage = lazy(() =>
+  import('../pages/TestPage').then(module => ({
+    default: module.TestPage,
+  }))
+);
+
 
 const NotFoundPage = lazy(() =>
   import('../pages/NotFoundPage').then(module => ({
@@ -131,6 +137,7 @@ export const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="home" />} />
           <Route path="home" element={<Home />} />
+          <Route path="testpage" element={<TestPage />} />
           <Route path="introduction" element={<Introduction />} />
           <Route path="literature" element={<Literature />} />
           <Route path="learning_process">
