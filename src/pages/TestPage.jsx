@@ -1,4 +1,4 @@
-import { Box } from 'components/Box';
+// import { Box } from 'components/Box';
 import { Article } from 'components/Templates/Article/Article';
 import { Title } from 'components/Templates/Title/Title';
 import { TitleDescription } from 'components/Templates/TitleDescription/TitleDescription';
