@@ -1,49 +1,15 @@
+import { Article } from 'components/Templates/Article/Article';
 import styled from 'styled-components';
-
-export const Title = styled.h1`
-  font-family: ${p => p.theme.fonts.titles};
-  font-weight: ${p => p.theme.fontWeights.bold};
-  font-size: ${p => p.theme.fontSizes.mobile.xxl};
-  line-height: 1.12;
-  letter-spacing: -0.05em;
-  color: ${p => p.theme.colors.black};
-  padding: 0 12px;
-  @media screen and (min-width: 980px) {
-    font-size: ${p => p.theme.fontSizes.desktop.xxl};
-    line-height: 1.07;
-    text-align: center;
-  }
-`;
-export const TitleWrap = styled.div`
-margin-top: 40px;
-margin-bottom: 20px;
-  @media screen and (min-width: 980px) {
-margin-top: 80px;
-margin-bottom: 40px;
-  }
-`;
-
-export const AboutContainer = styled.div`
-  max-width: 960px;
-  margin: 0 auto;
-  box-shadow: 0px 24px 128px rgba(188, 196, 211, 0.3);
-  border-radius: 8px;
-  margin-bottom: 100px;
-  @media screen and (min-width: 980px) {
-  margin-bottom: 128px;
-  }
-`;
 
 export const Button = styled.button`
   font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights.bold};
-  font-size: ${p => p.theme.fontSizes.mobile.s};
+  font-size: ${p => p.theme.fontSizes.main.button};
   line-height: 1.28;
   letter-spacing: 0.02em;
   color: ${p => p.theme.colors.black};
   background-color: ${p => p.theme.colors.greyLight};
   @media screen and (min-width: 980px) {
-    font-size: ${p => p.theme.fontSizes.desktop.sm};
     line-height: 1.25;
   }
   display: flex;
@@ -88,53 +54,13 @@ export const ButtonWrap = styled.div`
   }
 `;
 
-export const AboutWrap = styled.div`
-  padding: 20px 12px;
-  @media screen and (min-width: 980px) {
-    padding: 48px;
+export const Info = styled(Article)`
+  :not(:last-of-type) {
+    margin-bottom: 24px;
+    @media screen and (min-width: 980px) {
+      margin-bottom: 32px;
+    }
   }
-`;
-
-export const ContainerInfo = styled.div`
-  margin-bottom: 32px;
-  @media screen and (min-width: 980px) {
-    margin-bottom: 64px;
-  }
-`;
-
-export const AboutTitle = styled.h2`
-  font-family: ${p => p.theme.fonts.titles};
-  font-weight: ${p => p.theme.fontWeights.bold};
-  font-size: ${p => p.theme.fontSizes.mobile.xl};
-  line-height: 1.16;
-  letter-spacing: -0.05em;
-  color: ${p => p.theme.colors.black};
-  @media screen and (min-width: 980px) {
-    font-size: ${p => p.theme.fontSizes.desktop.xl};
-    line-height: 1.2;
-    padding-bottom: 12px;
-  }
-
-  padding-bottom: 4px;
-  margin-bottom: 20px;
-  border-bottom: 1px solid ${p => p.theme.colors.grey};
-`;
-
-export const Info = styled.p`
-  font-family: ${p => p.theme.fonts.main};
-  font-weight: ${p => p.theme.fontWeights.regular};
-  font-size: ${p => p.theme.fontSizes.mobile.sm};
-  line-height: 1.5;
-  color: ${p => p.theme.colors.black};
-  @media screen and (min-width: 980px) {
-    font-size: ${p => p.theme.fontSizes.desktop.m};
-    line-height: 1.6;
-    ${p => p.mb && ' margin-bottom: 32px;'}
-  }
-
-  text-align: justify;
-
-  ${p => p.mb && ' margin-bottom: 24px;'}
 `;
 
 export const Img = styled.img`
@@ -174,5 +100,3 @@ export const DocumentList = styled.ul`
     line-height: 1.6;
   }
 `;
-
-

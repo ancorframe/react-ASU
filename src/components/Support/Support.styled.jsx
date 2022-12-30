@@ -1,34 +1,5 @@
 import styled from "styled-components";
 
-
-
-export const SectionTitle = styled.section`
-  padding: 40px 0;
-`
-
-export const Title = styled.h1`
-  font-family: ${p => p.theme.fonts.titles};
-  font-weight: ${p => p.theme.fontWeights.bold};
-  font-size: ${p => p.theme.fontSizes.mobile.xxl};
-  line-height: 1.12;
-  letter-spacing: -0.05em;
-  color: ${p => p.theme.colors.black};
- padding: 0 12px;
-  @media screen and (min-width: 980px) {
-    font-size: ${p => p.theme.fontSizes.desktop.xxl};
-    line-height: 1.07;
-padding: 0;
-    text-align: center;
-  }
-`;
-
-export const Section = styled.section`
-  padding-bottom: 136px;
-  @media screen and (min-width: 980px) {
-padding-bottom: 128px;
-  }
-`;
-
 export const Container = styled.div`
   margin: 0 auto;
   max-width: 960px;
@@ -40,74 +11,14 @@ export const Container = styled.div`
   }
 `;
 
-export const InfoContainer = styled.div`
-  :not(:last-child) {
-    margin-bottom: 40px;
-    @media screen and (min-width: 980px) {
-      margin-bottom: 64px;
-    }
-  }
-  :last-child {
-    margin-bottom: 52px;
-    @media screen and (min-width: 980px) {
-      margin-bottom: 76px;
-    }
-  }
-`;
 
-export const TitleBorder = styled.h2`
-  font-family: ${p => p.theme.fonts.titles};
-  font-weight: ${p => p.theme.fontWeights.bold};
-  font-size: ${p => p.theme.fontSizes.mobile.xl};
-  line-height: 1.16;
-  letter-spacing: -0.05em;
-  color: ${p => p.theme.colors.black};
-padding-bottom: 4px;
-  border-bottom: 1px solid #bcc4d3;
-  @media screen and (min-width: 980px) {
-    font-size: ${p => p.theme.fontSizes.desktop.xl};
-    line-height: 1.2;
-    padding-bottom: 12px;
-  }
-  margin-bottom: 20px;
-`;
 
-export const Text = styled.p`
-  font-family: ${p => p.theme.fonts.main};
-  font-weight: ${p => p.theme.fontWeights.regular};
-  font-size: ${p => p.theme.fontSizes.mobile.sm};
-  line-height: 1.5;
-  color: ${p => p.theme.colors.black};
-  @media screen and (min-width: 980px) {
-    font-size: ${p => p.theme.fontSizes.desktop.m};
-    line-height: 1.6;
-    text-align: justify;
-  }
-  :not(:last-child) {
-    margin-bottom: 24px;
-    @media screen and (min-width: 980px) {
-     margin-bottom: 32px;
-    }
-  }
-`;
 
-export const SecondTitle = styled.h2`
-  font-family: ${p => p.theme.fonts.titles};
-  font-weight: ${p => p.theme.fontWeights.bold};
-  font-size: ${p => p.theme.fontSizes.mobile.xl};
-  line-height: 1.16;
-  letter-spacing: -0.05em;
-  color: ${p => p.theme.colors.black};
 
-margin-bottom: 24px;
-  @media screen and (min-width: 980px) {
-    font-size: ${p => p.theme.fontSizes.desktop.xl};
-    line-height: 1.2;
-margin-bottom: 32px;
-  }
 
-`;
-export const Wrap = styled.ul`
+
+
+export const WrapList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 12px;

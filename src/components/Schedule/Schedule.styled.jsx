@@ -1,54 +1,6 @@
 import styled from "styled-components";
 
 
-export const SectionTitle = styled.section`
-  padding: 40px 12px 20px;
-  @media screen and (min-width: 980px) {
-    padding-top: 80px;
-    padding-bottom: 44px;
-  }
-`;
-
-export const Title = styled.h1`
-  font-family: ${p => p.theme.fonts.titles};
-  font-weight: ${p => p.theme.fontWeights.bold};
-  font-size: ${p => p.theme.fontSizes.mobile.xxl};
-  line-height: 1.12;
-  letter-spacing: -0.05em;
-  color: ${p => p.theme.colors.black};
-  margin-bottom: 6px;
-  @media screen and (min-width: 980px) {
-    font-size: ${p => p.theme.fontSizes.desktop.xxl};
-    line-height: 1.07;
-    margin-bottom: 12px;
-    text-align: center;
-  }
-`;
-
-export const TitleDescription = styled.p`
-  font-family: ${p => p.theme.fonts.main};
-  font-weight: ${p => p.theme.fontWeights.regular};
-  font-size: ${p => p.theme.fontSizes.mobile.sm};
-  line-height: 1.5;
-  letter-spacing: -0.05em;
-  color: ${p => p.theme.colors.black};
-
-  @media screen and (min-width: 980px) {
-    font-size: ${p => p.theme.fontSizes.desktop.m};
-    line-height: 1.6;
-    text-align: center;
-  }
-`;
-
-export const Section = styled.section`
-  max-width: 1272px;
-  padding: 0 12px;
-  margin: 0 auto;
-  padding-bottom: 100px;
-  @media screen and (min-width: 980px) {
-padding-bottom: 128px;
-  }
-`;
 
 
 
@@ -87,6 +39,7 @@ export const InputSelect = styled.select`
   font-weight: ${p => p.theme.fontWeights.regular};
   font-size: ${p => p.theme.fontSizes.mobile.sm};
   line-height: 1.5;
+  text-transform: capitalize;
   color: ${p => p.theme.colors.grey};
   @media screen and (min-width: 980px) {
     font-size: ${p => p.theme.fontSizes.desktop.m};
@@ -139,11 +92,11 @@ export const RadioLable = styled.label`
   border-radius: 1px;
   font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights.bold};
-  font-size: ${p => p.theme.fontSizes.mobile.s};
+  font-size: ${p => p.theme.fontSizes.actions.buttonS};
   line-height: 1.28;
   color: ${p => p.theme.colors.black};
   @media screen and (min-width: 980px) {
-    font-size: ${p => p.theme.fontSizes.desktop.sm};
+
     line-height: 1.25;
     padding: 10px 0;
   }
@@ -221,7 +174,7 @@ export const TimeContainer = styled.div`
 export const Time = styled.p`
   font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights.bold};
-  font-size: ${p => p.theme.fontSizes.mobile.xs};
+  font-size: ${p => p.theme.fontSizes.main.tag};
   line-height: 1.33;
   color: ${p => p.theme.colors.grey};
   text-transform: uppercase;
@@ -246,11 +199,11 @@ min-height: 178px;
 export const InfoTitle = styled.p`
   font-family: ${p => p.theme.fonts.titles};
   font-weight: ${p => p.theme.fontWeights.bold};
-  font-size: ${p => p.theme.fontSizes.mobile.m};
+  font-size: ${p => p.theme.fontSizes.actions.buttonL};
   line-height: 1.33;
   color: ${p => p.theme.colors.black};
   @media screen and (min-width: 980px) {
-    font-size: ${p => p.theme.fontSizes.desktop.m};
+
     line-height: 1.3;
 
   }
@@ -262,7 +215,7 @@ export const Infolink = styled.a`
   display: inline-block;
   font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights.bold};
-  font-size: ${p => p.theme.fontSizes.mobile.xs};
+  font-size: ${p => p.theme.fontSizes.main.tag};
   line-height: 1.33;
   color: ${p => p.theme.colors.blue};
   text-transform: uppercase;
@@ -285,11 +238,11 @@ export const Infolink = styled.a`
 export const InfoTeacher = styled.p`
   font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights.bold};
-  font-size: ${p => p.theme.fontSizes.mobile.xs};
+  font-size: ${p => p.theme.fontSizes.actions.linkL};
   line-height: 1.33;
   color: ${p => p.theme.colors.black};
   @media screen and (min-width: 980px) {
-    font-size: ${p => p.theme.fontSizes.desktop.m};
+
     line-height: 1.4;
   }
   text-decoration-line: underline;

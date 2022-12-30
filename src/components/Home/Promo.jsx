@@ -9,7 +9,7 @@ import {
 // import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
 // import { ReactComponent as Svg }  from '../../image/icons/Vector.svg';
-import promo from '../../image/pexels-mik.png';
+import promo from '../../image/promoImg/promoVideo.png';
 import { Modal } from '../Modal/Modal';
 import { useState } from 'react';
 import YouTube from 'react-youtube';

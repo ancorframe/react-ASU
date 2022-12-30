@@ -13,23 +13,27 @@ import {
   InputSelect,
   InputWrap,
   Label,
-  // RadioButtonWrap,
   RadioInput,
   RadioLable,
   RadioWrap,
   ScheduleItem,
-  Section,
-  SectionTitle,
   Time,
   TimeContainer,
-  Title,
-  TitleDescription,
 } from 'components/Schedule/Schedule.styled';
 import { useForm, Controller } from 'react-hook-form';
 import EmojiFlagsOutlinedIcon from '@mui/icons-material/EmojiFlagsOutlined';
 import PeopleOutlineOutlinedIcon from '@mui/icons-material/PeopleOutlineOutlined';
 import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import img from '../image/teacher.png';
+
+import { SectionContent } from 'components/Templates/SectionContent/SectionContent';
+import { SectionTitle } from 'components/Templates/SectionTitle/SectionTitle';
+import { Title } from 'components/Templates/Title/Title';
+import { Wrap } from 'components/Templates/Wrap/Wrap';
+import { TitleDescription } from 'components/Templates/TitleDescription/TitleDescription';
+
+
+
 
 const radio = [
   { value: 'mon', checked: true, label: 'ПН' },
@@ -39,13 +43,58 @@ const radio = [
   { value: 'fri', label: 'ПТ' },
 ];
 
+
+
+const selects = [
+  {
+    name: 'course',
+    label: 'Курс',
+    option: [
+      { value: 1, name: 1 },
+      { value: 2, name: 2 },
+      { value: 3, name: 3 },
+      { value: 4, name: 4 },
+    ],
+    placeholder: ' Обери курс ...',
+    icon: <EmojiFlagsOutlinedIcon />,
+  },
+  {
+    name: 'group',
+    label: 'група',
+    option: [
+      { value: 1, name: 1 },
+      { value: 2, name: 2 },
+      { value: 3, name: 3 },
+      { value: 4, name: 4 },
+    ],
+    placeholder: ' Обери групу ...',
+    icon: <PeopleOutlineOutlinedIcon />,
+  },
+  {
+    name: 'subgroup',
+    label: 'Підгрупа',
+    option: [
+      { value: 1, name: 'перша' },
+      { value: 2, name: 'друга' },
+      { value: 3, name: 'третя' },
+      { value: 4, name: 'четверта' },
+    ],
+    placeholder: ' Перша',
+    defaultValue: '1',
+    icon: <PermIdentityOutlinedIcon />,
+  },
+];
+
+
+
+
+
+
 const data = [
   {
     id: 1,
     time: '8:30',
-    info: [
-      
-    ],
+    info: [],
   },
   {
     id: 2,
@@ -62,9 +111,7 @@ const data = [
   {
     id: 3,
     time: '8:30',
-    info: [
-      
-    ],
+    info: [],
   },
   {
     id: 4,
@@ -129,140 +176,112 @@ export const Schedule = () => {
     <>
       <main>
         <SectionTitle>
-          <Title>Розклад_занять</Title>
-          <TitleDescription>
-            Простий та зручний помічник, який покаже і розкаже що і де 🙂
-          </TitleDescription>
+          <Wrap>
+            <Title variant="h1" textAlign={[null, 'center']}>
+              Розклад_занять
+            </Title>
+            <TitleDescription textAlign={[null, 'center']}>
+              Простий та зручний помічник, який покаже і розкаже що і де 🙂
+            </TitleDescription>
+          </Wrap>
         </SectionTitle>
-        <Section>
-          <Form>
-            <FieldContainer>
-              <InputWrap>
-                <Label htmlFor="select">Курс</Label>
-                <Box position="relative">
-                  <Controller
-                    render={({ field }) => (
-                      <InputSelect {...field}>
-                        <option value="" disabled hidden>
-                          Обери спеціальність ...
-                        </option>
-                        <option value="female">female</option>
-                        <option value="male">male</option>
-                        <option value="other">other</option>
-                      </InputSelect>
-                    )}
-                    name="select"
-                    control={control}
-                    defaultValue=""
-                  />
-                  <Box position="absolute" right="16px" top="16px">
-                    <EmojiFlagsOutlinedIcon />
-                  </Box>
-                </Box>
-              </InputWrap>
-
-              <InputWrap>
-                <Label htmlFor="select1">група</Label>
-                <Box position="relative">
-                  <Controller
-                    render={({ field }) => (
-                      <InputSelect {...field}>
-                        <option value="" disabled hidden>
-                          Обери групу ...
-                        </option>
-                        <option value="female">female</option>
-                        <option value="male">male</option>
-                        <option value="other">other</option>
-                      </InputSelect>
-                    )}
-                    name="select1"
-                    control={control}
-                    defaultValue=""
-                  />
-                  <Box position="absolute" right="16px" top="16px">
-                    <PeopleOutlineOutlinedIcon />
-                  </Box>
-                </Box>
-              </InputWrap>
-
-              <InputWrap>
-                <Label htmlFor="select2">Підгрупа</Label>
-                <Box position="relative">
-                  <Controller
-                    render={({ field }) => (
-                      <InputSelect {...field}>
-                        <option value="" disabled hidden>
-                          Перша
-                        </option>
-                        <option value="female">female</option>
-                        <option value="male">male</option>
-                        <option value="other">other</option>
-                      </InputSelect>
-                    )}
-                    name="select2"
-                    control={control}
-                    defaultValue=""
-                  />
-                  <Box position="absolute" right="16px" top="16px">
-                    <PermIdentityOutlinedIcon />
-                  </Box>
-                </Box>
-              </InputWrap>
-            </FieldContainer>
-
-            <Controller
-              render={({ field: { onChange, value } }) => (
-                <Fieldset onChange={onChange} value={value} id="RadioGroup">
-                  {radio.map(({ value, checked, label }, index) => {
+        <SectionContent>
+          <Wrap>
+            <Form>
+              <FieldContainer>
+                {selects.map(
+                  (
+                    { name, label, option, placeholder, defaultValue, icon },
+                    index
+                  ) => {
                     return (
-                      <RadioWrap key={index}>
-                        <RadioInput
-                          type="radio"
-                          value={value}
-                          id={index}
-                          name="RadioGroup"
-                          defaultChecked={checked}
-                        />
-                        <RadioLable htmlFor={index}>{label}</RadioLable>
-                      </RadioWrap>
+                      <InputWrap key={index}>
+                        <Label htmlFor={name}>{label}</Label>
+                        <Box position="relative">
+                          <Controller
+                            render={({ field }) => (
+                              <InputSelect {...field}>
+                                <option value="" disabled hidden>
+                                  {placeholder}
+                                </option>
+                                {option.map((option, index) => (
+                                  <option key={index} value={option.value}>
+                                    {option.name}
+                                  </option>
+                                ))}
+                              </InputSelect>
+                            )}
+                            name={name}
+                            control={control}
+                            defaultValue={defaultValue ? `${defaultValue}` : ''}
+                          />
+                          <Box position="absolute" right="16px" top="16px">
+                            {icon}
+                          </Box>
+                        </Box>
+                      </InputWrap>
                     );
-                  })}
-                </Fieldset>
-              )}
-              name="RadioGroup"
-              control={control}
-              defaultValue="mon"
-            />
-          </Form>
+                  }
+                )}
+              </FieldContainer>
 
-          <ul>
-            {data.map(({ id, time, info }) => {
-              return (
-                <ScheduleItem key={id}>
-                  <TimeContainer>
-                    <Time>{time}</Time>
-                  </TimeContainer>
-                  
-                    {info.length !== 0 ? 
+              <Controller
+                render={({ field: { onChange, value } }) => (
+                  <Fieldset onChange={onChange} value={value} id="RadioGroup">
+                    {radio.map(({ value, checked, label }, index) => {
+                      return (
+                        <RadioWrap key={index}>
+                          <RadioInput
+                            type="radio"
+                            value={value}
+                            id={index}
+                            name="RadioGroup"
+                            defaultChecked={checked}
+                          />
+                          <RadioLable htmlFor={index}>{label}</RadioLable>
+                        </RadioWrap>
+                      );
+                    })}
+                  </Fieldset>
+                )}
+                name="RadioGroup"
+                control={control}
+                defaultValue="mon"
+              />
+            </Form>
+
+            <ul>
+              {data.map(({ id, time, info }) => {
+                return (
+                  <ScheduleItem key={id}>
+                    <TimeContainer>
+                      <Time>{time}</Time>
+                    </TimeContainer>
+
+                    {info.length !== 0 ? (
                       <InfoContainer>
                         <InfoTitle>{info[0].title}</InfoTitle>
                         <Infolink src={info[0].link}>Link</Infolink>
-                        <Box display='flex' alignItems='center' justifyContent='space-between'>
+                        <Box
+                          display="flex"
+                          alignItems="center"
+                          justifyContent="space-between"
+                        >
                           <InfoTeacher>{info[0].teacher}</InfoTeacher>
                           <InfoImg src={info[0].img} />
-                      </Box></InfoContainer> : <InfoAltConteiner/>
-                      
-                    }
-                  
-                </ScheduleItem>
-              );
-            })}
-          </ul>
-        </Section>
+                        </Box>
+                      </InfoContainer>
+                    ) : (
+                      <InfoAltConteiner />
+                    )}
+                  </ScheduleItem>
+                );
+              })}
+            </ul>
+          </Wrap>
+        </SectionContent>
       </main>
       <Footer />
     </>
   );
 };
-
-

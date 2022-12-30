@@ -12,13 +12,12 @@ export const Img = styled.img`
 export const BookTitle = styled.p`
   font-family: ${p => p.theme.fonts.titles};
   font-weight: ${p => p.theme.fontWeights.bold};
-  font-size: ${p => p.theme.fontSizes.mobile.m};
+  font-size: ${p => p.theme.fontSizes.actions.buttonL};
   line-height: 1.33;
   letter-spacing: -0.06em;
   color: ${p => p.theme.colors.black};
   margin-bottom: 2px;
   @media screen and (min-width: 980px) {
-    font-size: ${p => p.theme.fontSizes.desktop.m};
     line-height: 1.2;
     margin-bottom: 4px;
   }
@@ -47,15 +46,12 @@ export const Card = styled.a`
 export const BookAuthor = styled.p`
   font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights.regular};
-  font-size: ${p => p.theme.fontSizes.mobile.xs};
+  font-size: ${p => p.theme.fontSizes.main.additional};
   line-height: 1.5;
   color: ${p => p.theme.colors.black};
-
   @media screen and (min-width: 980px) {
-    font-size: ${p => p.theme.fontSizes.desktop.s};
     line-height: 1.42;
   }
-
 `;
 
 export const DescriptionContainer = styled.div`

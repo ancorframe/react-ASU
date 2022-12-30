@@ -1,7 +1,7 @@
 import { Item, Section, Title, Wrap } from './NewsRecomendation.styled';
 
-import { NewsCard } from 'components/NewsCard/NewsCard';
-import test from '../../image/Rectangle.png';
+import { Card } from 'components/common/Card/Card';
+import test from '../../image/newstest/Rectangle.png';
 
 const dataNews = [
   { id: 2, img: test, text: 'test texttest texttest texttest text' },
@@ -9,14 +9,14 @@ const dataNews = [
   { id: 4, img: test, text: 'test text' },
 ];
 
-export const NewsRecomendation = ({title='Рекомендовані новини:'}) => {
+export const NewsRecomendation = ({ title = 'Рекомендовані новини:' }) => {
   return (
     <Section>
       <Title>{title}</Title>
       <Wrap>
         {dataNews.map(data => (
           <Item key={data.id}>
-            <NewsCard data={data} />
+            <Card data={data} />
           </Item>
         ))}
       </Wrap>

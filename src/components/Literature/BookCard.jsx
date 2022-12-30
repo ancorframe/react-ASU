@@ -1,5 +1,5 @@
 import { BookAuthor, BookTitle, Card, Description, Img } from "./BookCard.styled"
-import book from '../../image/book.png'
+import book from '../../image/altBook/book.png'
 import { Box } from "components/Box";
 
 

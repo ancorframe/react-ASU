@@ -5,26 +5,26 @@ import {
   About,
   Button,
   ImgContainer,
-  Section,
-  SectionTitle,
-  Title,
-  Wrap,
+  ButtonList,
   Img,
   LogoContainer,
   Logo,
   DescriptonContainer,
   ImgLink,
-  ImgTitle,
-  Wrapper,
   InfoContainer,
-  TitleDetail,
   ItemDetail,
-  TextDetail,
   ItemTextDetail,
 } from 'components/PartnershipDetail/PartnershipDetail.styled';
 
-import img from '../image/univer.png';
-import logo from '../image/univlogo.png';
+import img from '../image/partnertest/univer.png';
+import logo from '../image/partnertest/univlogo.png';
+
+import { SectionContent } from 'components/Templates/SectionContent/SectionContent';
+import { SectionTitle } from 'components/Templates/SectionTitle/SectionTitle';
+import { Title } from 'components/Templates/Title/Title';
+import { Wrap } from 'components/Templates/Wrap/Wrap';
+import { Article } from 'components/Templates/Article/Article';
+import { Box } from 'components/Box';
 
 const data = [
   {
@@ -90,7 +90,6 @@ const data = [
             title: 'Програма обміну',
             text: 'Програма обміну включала двосеместрове стипендіальне навчання студентів спеціальності “Інформаційні управляючі системи та технології” на факультеті автоматики, електроніки та комп’ютерних наук Сілезького політехнічного університету. На навчання у Сілезький університет двічі скеровувалися групи з п’ятьох студентів-магістрів кафедри АСУ Львівської політехніки. До першої п’ятірки потрапили Арсен Заграй, Сергій Батюк, Уляна Поліщук, Мирон Мавко та Сергій Криницький. До другої групи – Сергій Пилипчук, Дмитро Санду, Марта Машевська, Олександр Фесенко, Ірина Марецька. Своєю чергою, викладачі Сілезького університету упродовж двох місяців обмінювались науковим та освітнім досвідом у стінах Львівської політехніки.',
           },
-          
         ],
       },
     ],
@@ -99,85 +98,97 @@ const data = [
 
 export const PartnershipDetail = () => {
   const { title, tag, info } = data[0];
-  console.log('tag', tag);
 
   const onClick = link => {
     window.location.href = `${link}`;
   };
 
-
-
   return (
     <>
       <main>
         <SectionTitle>
-          <Title>{title}</Title>
           <Wrap>
-            {tag.map(({ text, id, href }) => {
+            <Title variant="h1" mb={[8, 6]} textAlign={[null, 'center']}>
+              {title}
+            </Title>
+            <ButtonList>
+              {tag.map(({ text, id, href }) => {
+                return (
+                  <li key={id}>
+                    <Button
+                      type="button"
+                      onClick={() => {
+                        onClick(href);
+                      }}
+                    >
+                      {text}
+                    </Button>
+                  </li>
+                );
+              })}
+            </ButtonList>
+          </Wrap>
+        </SectionTitle>
+        <SectionContent>
+          <Wrap p={[0, 0]} maxWidth={[null, '1248px']}>
+            {info.map(({ id, img, title, logo, href, detail, link }) => {
               return (
-                <li key={id}>
-                <Button
-                  type="button"
-                  onClick={() => {
-                    onClick(href);
-                  }}
-                  
-                >
-                  {text}
-                </Button></li>
+                <About key={id} id={href}>
+                  <ImgContainer>
+                    <Img src={img} alt="" />
+                    <LogoContainer>
+                      <Logo src={logo} alt="" />
+                    </LogoContainer>
+                    <DescriptonContainer>
+                      <Box py={8} px={[7, 9]}>
+                        <Title variant="h2" mb={2}>
+                          {title}
+                        </Title>
+                        <ImgLink href={link}>{link}</ImgLink>
+                      </Box>
+                    </DescriptonContainer>
+                  </ImgContainer>
+                  <InfoContainer>
+                    {Array.isArray(detail) ? (
+                      <ul>
+                        {detail.map(detail => {
+                          return (
+                            <ItemDetail key={detail.id}>
+                              <Title
+                                variant="h2"
+                                mb={9}
+                                pb={[2, 6]}
+                                borderBottom="titles"
+                              >
+                                {detail.title}
+                              </Title>
+                              {Array.isArray(detail.text) ? (
+                                <ul>
+                                  {detail.text.map(({ id, text }) => {
+                                    return (
+                                      <ItemTextDetail key={id}>
+                                        <Article>{text}</Article>
+                                      </ItemTextDetail>
+                                    );
+                                  })}
+                                </ul>
+                              ) : (
+                                <Article>{detail.text}</Article>
+                              )}
+                            </ItemDetail>
+                          );
+                        })}
+                      </ul>
+                    ) : (
+                      <Article>{detail}</Article>
+                    )}
+                  </InfoContainer>
+                  <AditionalInfo />
+                </About>
               );
             })}
           </Wrap>
-        </SectionTitle>
-        <Section>
-          {info.map(({ id, img, title, logo, href, detail, link }) => {
-            return (
-              <About key={id} id={href}>
-                <ImgContainer>
-                  <Img src={img} alt="" />
-                  <LogoContainer>
-                    <Logo src={logo} alt="" />
-                  </LogoContainer>
-                  <DescriptonContainer>
-                    <Wrapper>
-                      <ImgTitle>{title}</ImgTitle>
-                      <ImgLink href={link}>{link}</ImgLink>
-                    </Wrapper>
-                  </DescriptonContainer>
-                </ImgContainer>
-                <InfoContainer>
-                  {Array.isArray(detail) ? (
-                    <ul>
-                      {detail.map(detail => {
-                        return (
-                          <ItemDetail key={detail.id}>
-                            <TitleDetail>{detail.title}</TitleDetail>
-                            {Array.isArray(detail.text) ? (
-                              <ul>
-                                {detail.text.map(({ id, text }) => {
-                                  return (
-                                    <ItemTextDetail key={id}>
-                                      <TextDetail>{text}</TextDetail>
-                                    </ItemTextDetail>
-                                  );
-                                })}
-                              </ul>
-                            ) : (
-                              <TextDetail>{detail.text}</TextDetail>
-                            )}
-                          </ItemDetail>
-                        );
-                      })}
-                    </ul>
-                  ) : (
-                    <TextDetail>{detail}</TextDetail>
-                  )}
-                </InfoContainer>
-                <AditionalInfo />
-              </About>
-            );
-          })}
-        </Section>
+        </SectionContent>
       </main>
       <Footer />
     </>

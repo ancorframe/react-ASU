@@ -1,22 +1,18 @@
 import { AditionalInfo } from 'components/AditionalInfo/AditionalInfo';
 import { Box } from 'components/Box';
 import { Footer } from 'components/Footer/Footer';
-// import { Text } from 'components/Templates/Article/Text';
-// import { ChapterTitle } from 'components/Templates/ChapterTitle/ChapterTitle';
-// import { PageTitle } from 'components/Templates/PageTitle/PageTitle';
 import { Card } from 'components/Support/Card';
 import {
   Container,
-  InfoContainer,
-  Section,
-  SectionTitle,
-  Title,
-  Text,
-  TitleBorder,
-  SecondTitle,
-  Wrap,
+  WrapList,
   WrapItem,
 } from 'components/Support/Support.styled';
+
+import { SectionContent } from 'components/Templates/SectionContent/SectionContent';
+import { SectionTitle } from 'components/Templates/SectionTitle/SectionTitle';
+import { Title } from 'components/Templates/Title/Title';
+import { Wrap } from 'components/Templates/Wrap/Wrap';
+import { Article } from 'components/Templates/Article/Article';
 
 const data = [
   {
@@ -51,15 +47,20 @@ export const Support = () => {
     <>
       <main>
         <SectionTitle>
-          <Title>
-            Навчально-методичне_<Box display="inline-block">забезпечення</Box>
-          </Title>
+          <Wrap>
+            <Title variant="h1" textAlign={[null, 'center']}>
+              Навчально-методичне_<Box display="inline-block">забезпечення</Box>
+            </Title>
+          </Wrap>
         </SectionTitle>
-        <Section>
+
+        <SectionContent>
           <Container>
-            <InfoContainer>
-              <TitleBorder>Загальна інформація</TitleBorder>
-              <Text>
+            <Box mb={[16, 12]}>
+              <Title variant="h2" pb={[2, 6]} mb={8} borderBottom={'titles'}>
+                Загальна інформація
+              </Title>
+              <Article mb={[9, 10]}>
                 Від часу створення кафедри АСУ навчально-методична робота завжди
                 була і залишається одним із важливих напрямів її діяльності,
                 оскільки організація інформаційного та методичного забезпечення
@@ -70,8 +71,8 @@ export const Support = () => {
                 увагу завжди звертали на розроблення навчальних планів і робочих
                 програм навчальних дисциплін, склад яких періодично змінювався
                 відповідно до вимог часу та науково-технічного прогресу.
-              </Text>
-              <Text>
+              </Article>
+              <Article>
                 Викладачами кафедри підготовано, написано та опубліковано
                 декілька сотень методичних розробок до навчальних дисциплін,
                 серед яких підручники й навчальні посібники, зокрема з грифом
@@ -84,13 +85,13 @@ export const Support = () => {
                 вказівки та інструкції до лабораторних робіт, методичні
                 матеріали та завдання до практичних занять і самостійної роботи
                 студентів та багато іншого.
-              </Text>
-            </InfoContainer>
-            <InfoContainer>
-              <SecondTitle>
+              </Article>
+            </Box>
+            <Box mb={[16, 12]}>
+              <Title variant="h2" mb={[9, 10]}>
                 Підручники і навчальні посібники викладачів кафедри АСУ
-              </SecondTitle>
-              <Wrap>
+              </Title>
+              <WrapList>
                 {data.map(({ id, title, author, description, book }) => {
                   return (
                     <WrapItem key={id}>
@@ -103,11 +104,11 @@ export const Support = () => {
                     </WrapItem>
                   );
                 })}
-              </Wrap>
-            </InfoContainer>
+              </WrapList>
+            </Box>
             <AditionalInfo />
           </Container>
-        </Section>
+        </SectionContent>
       </main>
       <Footer />
     </>

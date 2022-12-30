@@ -1,35 +1,22 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-
-export const Wrap = styled.div`
-
-  padding: 20px 0;
-  @media screen and (min-width: 980px) {
-    padding: 0;
-
-  }
-  :not(:last-of-type) { 
-     margin-bottom: 40px;
+export const Wraper = styled.div`
+  :not(:last-of-type) {
+    margin-bottom: 40px;
     @media screen and (min-width: 980px) {
       padding: 0;
       margin-bottom: 60px;
     }
   }
 `;
-
-export const AltTitle = styled.h5`
-  margin: 0;
-  font-family: ${p => p.theme.fonts.titles};
-  font-weight: ${p => p.theme.fontWeights.bold};
-  font-size: ${p => p.theme.fontSizes.mobile.s};
-  line-height: 1.42;
-  letter-spacing: -0.05em;
-  color: ${p => p.theme.colors.black};
-  margin-bottom: 20px;
-  text-align: justify;
+export const Container = styled.div`
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 0 12px;
+  box-shadow: 0px 24px 128px rgba(188, 196, 211, 0.3);
+  border-radius: 8px;
   @media screen and (min-width: 980px) {
-    font-size: ${p => p.theme.fontSizes.desktop.m};
-    line-height: 1.4;
+    padding: 48px;
   }
 `;
 
@@ -45,15 +32,15 @@ export const InfoImg = styled.img`
 export const InfoDescription = styled.p`
   font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights.regular};
-  font-size: ${p => p.theme.fontSizes.mobile.xs};
+  font-size: ${p => p.theme.fontSizes.main.additional};
   line-height: 1.5;
 
   color: ${p => p.theme.colors.blackLight};
-margin-bottom: 15px;
+  margin-bottom: 15px;
   @media screen and (min-width: 980px) {
-    font-size: ${p => p.theme.fontSizes.desktop.s};
     line-height: 1.42;
-    margin-bottom: 20px;  }
+    margin-bottom: 20px;
+  }
 
   text-align: right;
 `;

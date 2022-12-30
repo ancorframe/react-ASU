@@ -1,8 +1,8 @@
 // import { Box } from 'components/Box';
 import { Item, LinkAllNews, NewsTitle, Section, ListWrap } from './News.styled';
-import { NewsCard } from '../NewsCard/NewsCard';
+import { Card } from '../common/Card/Card';
 
-import test from '../../image/Rectangle.png';
+import test from '../../image/newstest/Rectangle.png';
 
 const dataNews = [
   { id: 1, img: test, text: 'test text' },
@@ -18,11 +18,11 @@ export const News = () => {
       <ListWrap>
         {dataNews.map(data => (
           <Item key={data.id}>
-            <NewsCard data={data} />
+            <Card data={data} />
           </Item>
         ))}
       </ListWrap>
-      <LinkAllNews to="/news">Всі_новини</LinkAllNews>
+      <LinkAllNews to="/about/news">Всі_новини</LinkAllNews>
     </Section>
   );
 };

@@ -1,21 +1,16 @@
-// import { Box } from 'components/Box';
 import { Footer } from 'components/Footer/Footer';
-// import { LoadMoreBtn } from 'components/common/LoadMoreBtn';
 
-// import { PageDescription } from 'components/Templates/PageDescription/PageDescription';
-// import { PageTitle } from 'components/Templates/PageTitle/PageTitle';
-// import { AllNews } from 'components/News/News';
-import {
-  Item,
-  LoadMore,
-  Section,
-  SectionTitle,
-  Title,
-  TitleDescription,
-  Wrap,
-} from 'components/News/News.styled';
-import { NewsCard } from 'components/NewsCard/NewsCard';
-import test from '../image/Rectangle.png';
+import { Card } from 'components/common/Card/Card';
+import test from '../image/newstest/Rectangle.png';
+
+import { SectionContent } from 'components/Templates/SectionContent/SectionContent';
+import { SectionTitle } from 'components/Templates/SectionTitle/SectionTitle';
+import { Title } from 'components/Templates/Title/Title';
+import { Wrap } from 'components/Templates/Wrap/Wrap';
+import { TitleDescription } from 'components/Templates/TitleDescription/TitleDescription';
+import { ListWrap } from 'components/Templates/ListWrap/ListWrap';
+import { Box } from 'components/Box';
+import { LoadMore } from 'components/common/LoadMore/LoadMore';
 
 const dataNews = [
   {
@@ -35,24 +30,30 @@ export const News = () => {
   return (
     <>
       <main>
-        <SectionTitle>
-          <Title>Новини_кафедри</Title>
-          <TitleDescription>
-            Стрічка з останніми публікаціями про культурні заходи та здобутки
-            кафедри АСУ
-          </TitleDescription>
+        <SectionTitle pb={[16, 12]}>
+          <Wrap>
+            <Title variant="h1" textAlign={[null, 'center']} mb={[3, 6]}>
+              Новини_кафедри
+            </Title>
+            <TitleDescription textAlign={[null, 'center']}>
+              Стрічка з останніми публікаціями про культурні заходи та здобутки
+              кафедри АСУ
+            </TitleDescription>
+          </Wrap>
         </SectionTitle>
 
-        <Section>
+        <SectionContent>
           <Wrap>
-            {dataNews.map(data => (
-              <Item key={data.id}>
-                <NewsCard to={`${data.id}`} data={data} />
-              </Item>
-            ))}
+            <ListWrap mb={[7, 9]}>
+              {dataNews.map(data => (
+                <Box as="li" minWidth="250px" width="100%" key={data.id}>
+                  <Card to={`${data.id}`} data={data} />
+                </Box>
+              ))}
+            </ListWrap>
+            <LoadMore>Завантажити_більше</LoadMore>
           </Wrap>
-          <LoadMore>Завантажити_більше</LoadMore>
-        </Section>
+        </SectionContent>
       </main>
       <Footer />
     </>

@@ -1,5 +1,5 @@
 export const theme = {
-  breakpoints: ['370px', '980px'],
+  breakpoints: ['980px'],
   colors: {
     white: '#FFFFFF',
     whiteLight: '#FAFAFA',
@@ -12,9 +12,9 @@ export const theme = {
     blue: '#3687FF',
     blueLight: 'rgba(54, 135, 255, 0.15)',
   },
-  backgroundColor: {},
+  backgroundColor: { white: '#FFFFFF' },
   opacity: {},
-  space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
+  space: [0, 2, 4, 6, 8, 10, 12, 16, 20, 24, 32, 48, 64, 100, 128, 256, 40, 36],
   fonts: {
     titles: 'Overpass Mono',
     main: 'Nunito Sans',
@@ -51,8 +51,13 @@ export const theme = {
       body: 'clamp(1rem, 0.9071rem + 0.381vw, 1.25rem)',
       additional: 'clamp(0.75rem, 0.7036rem + 0.1905vw, 0.875rem)',
       tag: '12px',
+      button: 'clamp(0.875rem, 0.8286rem + 0.1905vw, 1rem)',
     },
-    actions: {},
+    actions: {
+      linkL: 'clamp(1rem, 0.9071rem + 0.381vw, 1.25rem)',
+      buttonL: 'clamp(1.125rem, 1.0786rem + 0.1905vw, 1.25rem)',
+      buttonS: 'clamp(0.875rem, 0.8286rem + 0.1905vw, 1rem)',
+    },
   },
   fontWeights: {
     extraLight: 200,
@@ -71,6 +76,7 @@ export const theme = {
   borders: {
     none: 'none',
     normal: '1px solid #000',
+    titles: '1px solid #BCC4D3',
   },
   radii: {
     none: '0',
@@ -85,3 +91,4 @@ export const theme = {
     regular: ' 0px 24px 128px rgba(188, 196, 211, 0.3)',
   },
 };
+

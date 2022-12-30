@@ -12,7 +12,7 @@ import {
 } from 'components/TeacherDetail/TeacherDetail.styled';
 import { Img } from 'components/Teachers/Teachers.styled';
 
-import img from '../image/teachers/Rectangle 19.png';
+import img from '../image/teacherstest/Rectangle 19.png';
 
 const data = {
   fullname: 'Батюк Анатолій Євгенович',

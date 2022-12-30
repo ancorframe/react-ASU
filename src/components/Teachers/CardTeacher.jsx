@@ -8,7 +8,7 @@ export const CardTeacher = ({ to , src, fullname, rank }) => {
       <Card to={to}>
         <Img src={src} />
         <Descriptoin>
-          <Box p="20px 24px" >
+          <Box p={[7,null]} px={[null,9]} py={[null,8]}>
             <FullName>{fullname}</FullName>
             <Rank>{rank}</Rank>
           </Box>

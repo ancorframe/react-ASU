@@ -18,7 +18,7 @@ import {
   ContainerList,
 } from 'components/NewsDetail/NewsDetail.styled';
 
-import img from '../image/Rectangl.png';
+import img from '../image/passport/passport.png';
 import { AditionalInfo } from 'components/AditionalInfo/AditionalInfo';
 import { NewsRecomendation } from 'components/NewsRecomendation/NewsRecomendation';
 import {
