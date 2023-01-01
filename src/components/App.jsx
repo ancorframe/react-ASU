@@ -1,11 +1,11 @@
 import {
-  Routes,
-  Route,
+  // Routes,
+  // Route,
   Navigate,
   useRoutes,
   useLocation,
-  useNavigate,
-  Outlet,
+  // useNavigate,
+  // Outlet,/
 } from 'react-router-dom';
 import { lazy } from 'react';
 import { Layout } from './Layout';
@@ -93,17 +93,17 @@ const ResearchAndAcquisitions = lazy(() =>
     default: module.ResearchAndAcquisitions,
   }))
 );
-const TestPage = lazy(() =>
-  import('../pages/TestPage').then(module => ({
-    default: module.TestPage,
-  }))
-);
+// const TestPage = lazy(() =>
+//   import('../pages/TestPage').then(module => ({
+//     default: module.TestPage,
+//   }))
+// );
 
-const NotFoundPage = lazy(() =>
-  import('../pages/NotFoundPage').then(module => ({
-    default: module.NotFoundPage,
-  }))
-);
+// const NotFoundPage = lazy(() =>
+//   import('../pages/NotFoundPage').then(module => ({
+//     default: module.NotFoundPage,
+//   }))
+// );
 
 export const App = () => {
   const location = useLocation();
