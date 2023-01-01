@@ -1,15 +1,52 @@
-// import { Box } from 'components/Box';
 import {
   Container,
   FooterContainer,
   Link,
   ListItem,
-  Title,
   Wrap,
   ListLink,
   LinkItem,
   LinkExternal,
 } from './Footer.styled';
+import { Title } from 'components/Templates/Title/Title';
+
+const links = [
+  {
+    title: 'Основне',
+    links: [
+      { to: '/introduction', name: 'Вступникам' },
+      { to: '/literature', name: 'Корисна література' },
+    ],
+  },
+  {
+    title: 'Навчальний_процес',
+    links: [
+      { to: '/learning_process/support', name: 'Методичне забезпечення' },
+      { to: '/learning_process/disciplines', name: 'Перелік дисциплін' },
+      { to: '/learning_process/schedule', name: 'Розклад' },
+      { external: 'http://vns.lpnu.ua/', name: 'ВНС' },
+    ],
+  },
+  {
+    title: 'Про_кафедру',
+    links: [
+      { to: '/about/history', name: 'Історія кафедри' },
+      { to: '/about/teachers', name: 'Викладачі' },
+      { to: '/about/partnership', name: 'Партнерство' },
+      { to: '/about/news', name: 'Новини' },
+    ],
+  },
+  {
+    title: 'Наукова_діяльність',
+    links: [
+      {
+        to: '/research_activities/research_and_acquisitions',
+        name: 'Дослідження та здобутки',
+      },
+      { to: '/research_activities/conferences', name: 'Конференції' },
+    ],
+  },
+];
 
 export const Footer = () => {
   return (
@@ -17,70 +54,32 @@ export const Footer = () => {
       <FooterContainer>
         <Container>
           <ListLink>
-            <ListItem>
-              <Title>Основне</Title>
-              <ul>
-                <LinkItem>
-                  <Link to="/introduction">Вступникам</Link>
-                </LinkItem>
-                <LinkItem>
-                  <Link to="/literature">Корисна література</Link>
-                </LinkItem>
-              </ul>
-            </ListItem>
-            <ListItem>
-              <Title>Навчальний_процес</Title>
-              <ul>
-                <LinkItem>
-                  <Link to="/learning_process/support">
-                    Методичне забезпечення
-                  </Link>
-                </LinkItem>
-                <LinkItem>
-                  <Link to="/learning_process/disciplines ">
-                    Перелік дисциплін
-                  </Link>
-                </LinkItem>
-                <LinkItem>
-                  <Link to="/learning_process/schedule">Розклад</Link>
-                </LinkItem>
-                <LinkItem>
-                  <LinkExternal href="http://vns.lpnu.ua/" target="_blank">
-                    ВНС
-                  </LinkExternal>
-                </LinkItem>
-              </ul>
-            </ListItem>
-            <ListItem>
-              <Title>Про_кафедру</Title>
-              <ul>
-                <LinkItem>
-                  <Link to="/about/teachers ">Історія кафедри</Link>
-                </LinkItem>
-                <LinkItem>
-                  <Link to="/about/history ">Викладачі</Link>
-                </LinkItem>
-                <LinkItem>
-                  <Link to="/about/partnership">Партнерство</Link>
-                </LinkItem>
-                <LinkItem>
-                  <Link to="/about/news">Новини</Link>
-                </LinkItem>
-              </ul>
-            </ListItem>
-            <ListItem>
-              <Title>Наукова_діяльність</Title>
-              <ul>
-                <LinkItem>
-                  <Link to="/research_activities/research_and_acquisitions">
-                    Дослідження та здобутки
-                  </Link>
-                </LinkItem>
-                <LinkItem>
-                  <Link to="/research_activities/conferences">Конференції</Link>
-                </LinkItem>
-              </ul>
-            </ListItem>
+            {links.map(({ title, links }, index) => (
+              <ListItem key={index}>
+                <Title
+                  variant="h5"
+                  pb={[1, 4]}
+                  mb={[4, 6]}
+                  opacity="0.2"
+                  borderBottom="footer"
+                  color="white"
+                >
+                  {title}
+                </Title>
+                <ul>
+                  {links.map(({ to, name, external }, index) => (
+                    <LinkItem key={index}>
+                      {to && <Link to={to}>{name}</Link>}
+                      {external && (
+                        <LinkExternal href={external} target="_blank">
+                          {name}
+                        </LinkExternal>
+                      )}
+                    </LinkItem>
+                  ))}
+                </ul>
+              </ListItem>
+            ))}
           </ListLink>
           <Wrap>
             <p>

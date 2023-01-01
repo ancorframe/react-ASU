@@ -1,20 +1,16 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
-
+import {
+  Routes,
+  Route,
+  Navigate,
+  useRoutes,
+  useLocation,
+  useNavigate,
+  Outlet,
+} from 'react-router-dom';
 import { lazy } from 'react';
-
-// import { Box } from './Box';
 import { Layout } from './Layout';
-// import { NotFoundPage } from 'pages/NotFoundPage';
-// import { useGetCurrentMutation } from 'API/authApi';
-// import { useDispatch } from 'react-redux';
-// import { updateUser, updateStatus } from 'Redux/authSlice';
-// import { useToken } from '../Redux/Selectors';
-// import { PrivateRoute } from 'Helpers/PrivateRoute';
-
-// import { RestrictedRoute } from 'Helpers/PublicRoute';
-
-// import { SpinnerLoader } from './SpinnerLoader/SpinnerLoader';
-// import { Home } from 'pages/Home';
+import { AnimatePresence } from 'framer-motion';
+import React from 'react';
 
 const Home = lazy(() =>
   import('../pages/Home').then(module => ({
@@ -103,7 +99,6 @@ const TestPage = lazy(() =>
   }))
 );
 
-
 const NotFoundPage = lazy(() =>
   import('../pages/NotFoundPage').then(module => ({
     default: module.NotFoundPage,
@@ -111,29 +106,75 @@ const NotFoundPage = lazy(() =>
 );
 
 export const App = () => {
-  // const dispatch = useDispatch();
-  // const [getCurrent, { isLoading }] = useGetCurrentMutation();
-  // const { token } = useToken();
+  const location = useLocation();
 
-  // useEffect(() => {
-  //   if (token) {
-  //     getCurrent()
-  //       .unwrap()
-  //       .then(response => {
-  //         dispatch(updateUser(response));
-  //         dispatch(updateStatus(true));
-  //       })
-  //       .catch(error => {
-  //         console.log(error);
-  //       });
-  //   }
-  // }, [dispatch, getCurrent, token]);
+  const element = useRoutes([
+    {
+      path: '/',
+      element: <Layout />,
+      children: [
+        {
+          element: <Home />,
+          index: true,
+        },
+        { path: 'introduction', element: <Introduction /> },
+        { path: 'literature', element: <Literature /> },
+
+        {
+          path: 'learning_process',
+          children: [
+            { path: '', element: <Navigate to="support" /> },
+            {
+              path: 'support',
+              element: <Support />,
+            },
+            { path: 'disciplines', element: <Disciplines /> },
+            { path: 'introduction', element: <Introduction /> },
+            { path: 'schedule', element: <Schedule /> },
+          ],
+        },
+        {
+          path: 'about',
+
+          children: [
+            { path: '', element: <Navigate to="history" /> },
+            { path: 'history', element: <History /> },
+            { path: 'disciplines', element: <Disciplines /> },
+            { path: 'teachers', element: <Teachers /> },
+            { path: 'teachers/:id', element: <TeacherDetail /> },
+            { path: 'partnership', element: <Partnership /> },
+            {
+              path: 'partnership/:id',
+              element: <PartnershipDetail />,
+            },
+            { path: 'news', element: <News /> },
+            { path: 'news/:id', element: <NewsDetail /> },
+          ],
+        },
+        {
+          path: 'research_activities',
+
+          children: [
+            { path: '', element: <Navigate to="research_and_acquisitions" /> },
+            {
+              path: 'research_and_acquisitions',
+              element: <ResearchAndAcquisitions />,
+              index: true,
+            },
+            { path: 'conferences', element: <Conferences /> },
+            {
+              path: 'conferences/:id',
+              element: <ConferencesDetail />,
+            },
+          ],
+        },
+      ],
+    },
+  ]);
 
   return (
     <>
-      {/* {!isLoading ? ( */}
-
-      <Routes>
+      {/* <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="home" />} />
           <Route path="home" element={<Home />} />
@@ -144,7 +185,7 @@ export const App = () => {
             <Route index element={<Navigate to="support" />} />
             <Route path="support" element={<Support />} />
             <Route path="disciplines" element={<Disciplines />} />
-            <Route path="disciplines" element={<Disciplines />} />
+
             <Route path="schedule" element={<Schedule />} />
           </Route>
           <Route path="about">
@@ -158,7 +199,7 @@ export const App = () => {
               element={<PartnershipDetail />}
             />
             <Route path="news" element={<News />} />
-            <Route path="news/:news_detail" element={<NewsDetail />} />
+            <Route path="news/:id" element={<NewsDetail />} />
           </Route>
           <Route path="research_activities">
             <Route
@@ -177,20 +218,10 @@ export const App = () => {
           </Route>
         </Route>
         <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-
-      {/* ) : ( */}
-      {/* <Box
-          as="main"
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-          height="100vh"
-        >
-          <SpinnerLoader/>
-        </Box> */}
-      {/* )} */}
+      </Routes> */}
+      <AnimatePresence mode="wait">
+        {React.cloneElement(element, { key: location.pathname })}
+      </AnimatePresence>
     </>
   );
 };

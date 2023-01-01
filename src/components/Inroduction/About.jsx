@@ -12,8 +12,13 @@ import {
 import passport from '../../image/passport/passport.png';
 import { AditionalInfo } from 'components/AditionalInfo/AditionalInfo';
 import { Title } from 'components/Templates/Title/Title';
+import { AnimatePresence, motion } from 'framer-motion';
 
-const degree = ['Bachelor', 'Magistracy', 'Postgraduate'];
+const degree = [
+  { degree: 'Bachelor', name: 'Бакалаврат' },
+  { degree: 'Magistracy', name: 'Магістратура' },
+  { degree: 'Postgraduate', name: 'Аспірантура' },
+];
 
 const data = {
   Bachelor: [
@@ -92,18 +97,29 @@ export const About = () => {
     <>
       <Box maxWidth="960px" m="0 auto" boxShadow={'regular'}>
         <ButtonWrap>
-          {degree.map((degree, index) => (
+          {degree.map(({ degree, name }, index) => (
             <Button
               key={index}
               type="button"
               onClick={() => handleChange(degree)}
               active={about === degree}
             >
-              {degree}
+              {name}
             </Button>
           ))}
         </ButtonWrap>
-        <Degree degree={about} />
+        <AnimatePresence mode="wait" >
+          <motion.div
+            key={about}
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -10, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Degree degree={about} />
+          </motion.div>
+        </AnimatePresence>
+        {/* <Degree degree={about} /> */}
       </Box>
     </>
   );

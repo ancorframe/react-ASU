@@ -1,6 +1,7 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
-export const Wrap = styled.div`
+export const Wrap = styled(motion.div)`
   /* min-width: 390px; */
   display: flex;
   margin: 0 auto;
@@ -19,11 +20,12 @@ padding: 0 12px;
   @media screen and (min-width: 980px) {
     padding: 0;
 padding-left: 96px;
-max-width: 824px;
+max-width: 920px;
   }
 `;
 
 export const PromoContainer = styled.div`
+min-width: 330px;
   padding: 0 12px;
   @media screen and (min-width: 980px) {
     padding: 0;

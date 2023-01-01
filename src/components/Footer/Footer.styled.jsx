@@ -5,44 +5,41 @@ export const FooterDes = styled.p`
   text-align: center;
   font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights.regular};
-  font-size: ${p => p.theme.fontSizes.mobile.xs};
+  font-size: ${p => p.theme.fontSizes.main.additional};
   line-height: 1.5;
   letter-spacing: -0.05em;
   color: ${p => p.theme.colors.black};
   opacity: 0.4;
   @media screen and (min-width: 980px) {
     text-align: none;
-    font-size: ${p => p.theme.fontSizes.desktop.s};
+
     line-height: 1.42;
   }
 `;
 
 export const WrapHome = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  border-top: 1px solid rgba(15, 31, 44, 0.1);
-
   @media screen and (min-width: 980px) {
-    align-items: unset;
+    text-align: none;
+    display: flex;
     justify-content: space-between;
     flex-direction: row;
-
   }
+  text-align: center;
+
+  border-top: 1px solid rgba(15, 31, 44, 0.1);
+  padding-top: 12px;
 `;
 
 export const Wrap = styled.div`
   font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights.regular};
-  font-size: ${p => p.theme.fontSizes.mobile.xs};
+  font-size: ${p => p.theme.fontSizes.main.additional};
   line-height: 1.5;
   letter-spacing: -0.05em;
   color: ${p => p.theme.colors.white};
   opacity: 0.4;
   @media screen and (min-width: 980px) {
     text-align: none;
-    font-size: ${p => p.theme.fontSizes.desktop.s};
     line-height: 1.42;
     display: flex;
     justify-content: space-between;
@@ -50,32 +47,27 @@ export const Wrap = styled.div`
   }
   text-align: center;
 
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
   padding-top: 12px;
 `;
 
 export const Container = styled.div`
-  margin: 0 12px;
   background-color: ${p => p.theme.colors.black};
   border-radius: 4px;
   padding: 32px;
   @media screen and (min-width: 980px) {
     padding: 48px;
-    margin: 0 24px;
   }
 `;
 
 export const FooterContainer = styled.footer`
-  padding-bottom: 12px;
+  padding: 0 12px 14px;
+  margin: 0 auto;
   @media screen and (min-width: 980px) {
-    padding-bottom: 24px;
+    padding: 0 24px 24px;
     /* padding: 0 24px 24px; */
     max-width: 1440px;
-    margin: 0 auto;
   }
-  /* padding: 0 12px 12px; */
-
-  margin: 0 auto;
 `;
 
 export const ListLink = styled.ul`
@@ -89,39 +81,17 @@ export const ListLink = styled.ul`
   }
 `;
 
-export const Title = styled.h5`
-  width: 100%;
-  padding-bottom: 2px;
-  font-family: ${p => p.theme.fonts.titles};
-  font-weight: ${p => p.theme.fontWeights.bold};
-  font-size: ${p => p.theme.fontSizes.mobile.s};
-  line-height: 1.42;
-  letter-spacing: -0.05em;
-  color: ${p => p.theme.colors.white};
-  opacity: 0.2;
-  margin-bottom: 8px;
-  @media screen and (min-width: 980px) {
-    font-size: ${p => p.theme.fontSizes.desktop.m};
-    line-height: 1.4;
-    padding-bottom: 8px;
-    margin-bottom: 12px;
-  }
-
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-`;
-
 export const Link = styled(NavLink)`
   display: block;
   font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights.semiBold};
-  font-size: ${p => p.theme.fontSizes.mobile.xs};
+  font-size: ${p => p.theme.fontSizes.actions.linkS};
   line-height: 1.5;
   letter-spacing: -0.05em;
   color: ${p => p.theme.colors.white};
 
   @media screen and (min-width: 980px) {
     text-align: none;
-    font-size: ${p => p.theme.fontSizes.desktop.s};
     line-height: 1.42;
   }
 
@@ -132,14 +102,14 @@ export const LinkExternal = styled.a`
   display: block;
   font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights.semiBold};
-  font-size: ${p => p.theme.fontSizes.mobile.xs};
+  font-size: ${p => p.theme.fontSizes.actions.linkS};
   line-height: 1.5;
   letter-spacing: -0.05em;
   color: ${p => p.theme.colors.white};
 
   @media screen and (min-width: 980px) {
     text-align: none;
-    font-size: ${p => p.theme.fontSizes.desktop.s};
+
     line-height: 1.42;
   }
 
@@ -163,10 +133,9 @@ export const LinkItem = styled.li`
   }
 `;
 
-
 export const FooterHomeContainer = styled.footer`
   padding-bottom: 20px;
   @media screen and (min-width: 980px) {
- padding-bottom: 24px;
+    padding-bottom: 24px;
   }
 `;

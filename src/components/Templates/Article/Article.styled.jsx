@@ -12,16 +12,9 @@ import {
   typography,
 } from 'styled-system';
 
-export const Text = styled('p')(  color,
-  space,
-  layout,
-  flexbox,
-  grid,
-  background,
-  border,
-  position,
-  shadow,
-  typography,
+export const Text = styled('p')(
+  color,
+
   css`
     font-family: ${p => p.theme.fonts.main};
     font-weight: ${p => p.theme.fontWeights.regular};
@@ -33,5 +26,13 @@ export const Text = styled('p')(  color,
       line-height: 1.6;
     }
   `,
-
+  space,
+  layout,
+  flexbox,
+  grid,
+  background,
+  border,
+  position,
+  shadow,
+  typography
 );

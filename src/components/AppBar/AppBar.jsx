@@ -7,10 +7,10 @@ import {
   HeaderContainer,
   ArrowRight,
   ArrowLeft,
-  // Block,
   DropdownLink,
   MotionWrap,
   DropdownExternal,
+  MotionMenu,
 } from './AppBar.styled';
 import { ButtonLink } from './AppBar.styled';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -19,12 +19,44 @@ import { Menu } from './Menu';
 import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import {
-  motion,
-  AnimatePresence,
-  // usePresence,
-  // useIsPresent,
-} from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
+
+const links = [
+  {
+    to: 'learning_process',
+    name: 'Навчальний процес',
+    children: [
+      {
+        to: 'learning_process/support',
+        name: 'Навчально-методичне забезпечення',
+      },
+      { to: 'learning_process/disciplines', name: 'Перелік дисциплін' },
+      { to: 'learning_process/schedule', name: 'Розклад' },
+      { external: 'http://vns.lpnu.ua/', name: 'ВНС' },
+    ],
+  },
+  {
+    to: 'about',
+    name: 'Про кафедру',
+    children: [
+      { to: 'about/teachers', name: 'Викладачі' },
+      { to: 'about/history', name: 'Історія кафедри' },
+      { to: 'about/partnership', name: 'Партнерство' },
+      { to: 'about/news', name: 'Новини' },
+    ],
+  },
+  {
+    to: 'research_activities',
+    name: 'Наукова діяльність',
+    children: [
+      {
+        to: 'research_activities/research_and_acquisitions',
+        name: 'Дослідження та здобутки',
+      },
+      { to: 'research_activities/conferences', name: 'Конференції' },
+    ],
+  },
+];
 
 export const AppBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -70,29 +102,28 @@ export const AppBar = () => {
             alignItems="center"
             ml="auto"
           >
-            {windowSize.innerWidth > 980 && (
+            {windowSize.innerWidth > 979.5 && (
               <>
                 <Link to="introduction" text="ВСТУП" />
                 <Link to="literature" text="Корисна література" />
-                <LinkDropdown
-                  to="learning_process"
-                  text="Навчальний процес"
-                  keysa={21}
-                >
-                  <LearnListLink />
-                </LinkDropdown>
-                <LinkDropdown to="about" text="Про кафедру" keysa={22}>
-                  <DepartmentListLink />
-                </LinkDropdown>
-                <LinkDropdown
-                  to="research_activities"
-                  text="Наукова діяльність"
-                  keysa={23}
-                >
-                  <ResearchActivitiesListLink />
-                </LinkDropdown>
+
+                {links.map(({ to, name, children }, index) => (
+                  <LinkDropdown to={to} text={name} key={index} index={index}>
+                    {children.map(({ to, external, name }, index) => (
+                      <li key={index}>
+                        {to && <DropdownLink to={to}>{name}</DropdownLink>}
+                        {external && (
+                          <DropdownExternal href={external} target="_blank">
+                            {name}
+                          </DropdownExternal>
+                        )}
+                      </li>
+                    ))}
+                  </LinkDropdown>
+                ))}
               </>
             )}
+
             {windowSize.innerWidth < 980 && (
               <ButtonMenu onClick={onOpenMenu}>
                 <MenuIcon />
@@ -103,8 +134,7 @@ export const AppBar = () => {
       </Box>
       <AnimatePresence>
         {isOpen && (
-          <Box
-            as={motion.div}
+          <MotionMenu
             key="menu"
             initial={{
               x: 500,
@@ -137,18 +167,9 @@ export const AppBar = () => {
                 damping: 40,
               },
             }}
-            maxWidth="476px"
-            width="100%"
-            position="fixed"
-            top="0"
-            right="0"
-            zIndex="10"
-            bg="#ffffff"
-            overflowY="overlay"
-            maxHeight="100vh"
           >
             <Menu onCloseMenu={onCloseMenu} />
-          </Box>
+          </MotionMenu>
         )}
       </AnimatePresence>
     </>
@@ -184,17 +205,13 @@ export const Link = ({ to, text }) => {
   );
 };
 
-export const LinkDropdown = ({ to, text, children, keysa }) => {
+export const LinkDropdown = ({ to, text, children, index }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // useEffect(() => {
-  //   !isPresent && setTimeout(safeToRemove(), 1000);
-  // }, [isPresent, safeToRemove]);
   return (
     <>
       <Box
         position="relative"
-        // zIndex="120"
         onMouseEnter={event => {
           setIsOpen(true);
         }}
@@ -232,7 +249,7 @@ export const LinkDropdown = ({ to, text, children, keysa }) => {
           {isOpen && (
             <>
               <MotionWrap
-                key={keysa}
+                key={index}
                 initial={{
                   y: -30,
                   translateX: '-50%',
@@ -254,7 +271,7 @@ export const LinkDropdown = ({ to, text, children, keysa }) => {
                   },
                 }}
                 exit={{
-                  y: 50,
+                  y: 30,
                   translateX: '-50%',
                   opacity: 0,
                   transition: {
@@ -270,115 +287,6 @@ export const LinkDropdown = ({ to, text, children, keysa }) => {
           )}
         </AnimatePresence>
       </Box>
-    </>
-  );
-};
-
-export const LearnListLink = () => {
-  // const [isPresent, safeToRemove] = usePresence();
-  //  const isPresent = useIsPresent();
-  // console.log('isPresent', isPresent);
-  // useEffect(() => {
-  //   !isPresent && safeToRemove();
-  // }, [isPresent, safeToRemove]);
-  return (
-    <>
-      {/* <Box
-        as="ul"
-        display="flex"
-        flexDirection="column"
-        // gridGap="8px"
-        position="absolute"
-        top="100%"
-        left="0"
-        zIndex="20"
-        // width="282px"
-        // height="190px"
-        bg="#fff"
-        p="16px 8px "
-      > */}
-      <li>
-        <DropdownLink to="learning_process/support">
-          Навчально-методичне забезпечення
-        </DropdownLink>
-      </li>
-      <li>
-        <DropdownLink to="learning_process/disciplines ">
-          Перелік дисциплін
-        </DropdownLink>
-      </li>
-      <li>
-        <DropdownLink to="learning_process/schedule">Розклад</DropdownLink>
-      </li>
-      <li>
-        <DropdownExternal href="http://vns.lpnu.ua/" target="_blank">
-          ВНС
-        </DropdownExternal>
-      </li>
-      {/* </Box> */}
-    </>
-  );
-};
-
-export const DepartmentListLink = () => {
-  return (
-    <>
-      {/* <Box
-        as="ul"
-        display="flex"
-        flexDirection="column"
-        // gridGap="8px"
-        position="absolute"
-        top="100%"
-        left="0"
-        zIndex="20"
-        // width="282px"
-        // height="190px"
-        bg="#fff"
-        p="16px 8px "
-      > */}
-      <li>
-        <DropdownLink to="about/teachers ">Викладачі</DropdownLink>
-      </li>
-      <li>
-        <DropdownLink to="about/history ">Історія кафедри</DropdownLink>
-      </li>
-      <li>
-        <DropdownLink to="about/partnership">Партнерство</DropdownLink>
-      </li>
-      <li>
-        <DropdownLink to="about/news">Новини</DropdownLink>
-      </li>
-      {/* </Box> */}
-    </>
-  );
-};
-
-export const ResearchActivitiesListLink = () => {
-  return (
-    <>
-      {/* <Box
-        as="ul"
-        display="flex"
-        flexDirection="column"
-        // gridGap="8px"
-        position="absolute"
-        top="100%"
-        left="0"
-        zIndex="20"
-        // width="282px"
-        // height="190px"
-        bg="#fff"
-        p="16px 8px "
-      > */}
-      <li>
-        <DropdownLink to="research_activities/research_and_acquisitions">Дослідження та здобутки</DropdownLink>
-      </li>
-      <li>
-        <DropdownLink to="research_activities/conferences">Конференції</DropdownLink>
-      </li>
-
-      {/* </Box> */}
     </>
   );
 };

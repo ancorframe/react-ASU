@@ -1,11 +1,11 @@
+import 'normalize.css';
+import { GlobalStyle } from 'GlobalStyle';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { App } from 'components/App';
-import './index.css';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './theme';
 import { BrowserRouter } from 'react-router-dom';
-import { GlobalStyle } from 'GlobalStyle';
 
 
 

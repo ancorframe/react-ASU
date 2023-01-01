@@ -1,5 +1,5 @@
 // import { Box } from 'components/Box';
-import { FooterDes, WrapHome,FooterHomeContainer } from './Footer.styled';
+import { FooterDes, WrapHome,FooterHomeContainer} from './Footer.styled';
 
 export const FooterHome = () => {
   return (

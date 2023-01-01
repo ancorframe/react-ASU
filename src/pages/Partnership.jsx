@@ -3,6 +3,7 @@ import {
   Card,
   Img,
   ImgContainer,
+  Link,
   TextContainer,
 } from 'components/Partnership/Partnership.styled';
 import img from '../image/partnertest/Rectangle1.png';
@@ -14,7 +15,7 @@ import { Title } from 'components/Templates/Title/Title';
 import { Wrap } from 'components/Templates/Wrap/Wrap';
 import { TitleDescription } from 'components/Templates/TitleDescription/TitleDescription';
 import { ListWrap } from 'components/Templates/ListWrap/ListWrap';
-import { LoadMore } from 'components/common/LoadMore/LoadMore';
+
 
 const data = [
   { id: 1, img: img, title: 'Співпраця з навчальними закладами' },
@@ -53,7 +54,7 @@ export const Partnership = () => {
                         </Title>
                       </TextContainer>
                     </ImgContainer>
-                    <LoadMore to={`${id}`}>Читати_більше</LoadMore>
+                    <Link to={`${id}`}>Читати_більше</Link>
                   </Card>
                 );
               })}

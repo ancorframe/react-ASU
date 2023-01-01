@@ -6,20 +6,11 @@ import {
   TextContainer,
   PromoText,
 } from './Promo.styled';
-// import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-
-// import { ReactComponent as Svg }  from '../../image/icons/Vector.svg';
 import promo from '../../image/promoImg/promoVideo.png';
 import { Modal } from '../Modal/Modal';
 import { useState } from 'react';
 import YouTube from 'react-youtube';
-
-import {
-  // motion,
-  AnimatePresence,
-  // usePresence,
-  // useIsPresent,
-} from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 export const Promo = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,7 +39,6 @@ export const Promo = () => {
     height: '562',
     width: '900',
     playerVars: {
-      // https://developers.google.com/youtube/player_parameters
       autoplay: 1,
     },
   };

@@ -123,7 +123,6 @@ export const H4 = styled('h4')(
 );
 
 export const H5 = styled('h5')(
-  color,
   space,
   layout,
   flexbox,
@@ -143,5 +142,6 @@ export const H5 = styled('h5')(
     @media screen and (min-width: 980px) {
       line-height: 1.4;
     }
-  `
+  `,
+  color
 );

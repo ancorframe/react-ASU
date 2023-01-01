@@ -1,19 +1,11 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-// import MenuIcon from '@mui/icons-material/Menu';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
-import {
-  motion,
-  // useCycle,
-  // AnimatePresence
-} from 'framer-motion';
-
-
-
+import { motion } from 'framer-motion';
 
 export const ButtonLink = styled(NavLink)`
   position: relative;
@@ -37,7 +29,7 @@ export const ButtonLink = styled(NavLink)`
 
   color: #0f1f2c;
 
-  transition-property: ( background);
+  transition-property: (background);
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   :hover,
@@ -153,7 +145,7 @@ export const HeaderContainer = styled.div`
   background-color: #fff;
   display: flex;
   align-items: center;
-padding: 8px 12px;
+  padding: 8px 12px;
   @media screen and (min-width: 980px) {
     padding: 24px;
   }
@@ -295,7 +287,6 @@ export const DropdownExternal = styled.a`
   }
 `;
 
-
 export const MotionWrap = styled(motion.ul)`
   position: absolute;
   left: 50%;
@@ -315,3 +306,14 @@ export const MotionWrap = styled(motion.ul)`
   /* z-index: 5; */
 `;
 
+export const MotionMenu = styled(motion.div)`
+  max-width: 476px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  background-color: ${p => p.theme.backgroundColor.white};
+  overflow-y: overlay;
+  max-height: 100vh;
+`;

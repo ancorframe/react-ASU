@@ -1,23 +1,23 @@
 import { Footer } from 'components/Footer/Footer';
 import {
   TitleContainer,
-  Title,
   Img,
   ImgContainer,
-  // Item,
-  SectionImg,
-  Section,
   Container,
   ContainerItem,
-  Text,
-  ItemText,
   List,
-  ContainerList,
-} from 'components/NewsDetail/NewsDetail.styled';
+} from 'components/common/PagesDetail/PagesDetail.styled';
 
 import img from '../image/passport/passport.png';
 import { AditionalInfo } from 'components/AditionalInfo/AditionalInfo';
 import { NewsRecomendation } from 'components/NewsRecomendation/NewsRecomendation';
+
+import { SectionContent } from 'components/Templates/SectionContent/SectionContent';
+import { SectionTitle } from 'components/Templates/SectionTitle/SectionTitle';
+import { Title } from 'components/Templates/Title/Title';
+import { Wrap } from 'components/Templates/Wrap/Wrap';
+import { Box } from 'components/Box';
+import { Article } from 'components/Templates/Article/Article';
 
 const data = [
   {
@@ -37,10 +37,16 @@ const data = [
         id: 134675465735652334525233,
         text: [
           { id: 262235341, text: '035 «Філологія»;' },
-          { id: 226345745762, text: '121 «Інженерія програмного забезпечення»;' },
+          {
+            id: 226345745762,
+            text: '121 «Інженерія програмного забезпечення»;',
+          },
           { id: 234523723, text: '122 «Комп’ютерні науки»;' },
           { id: 2568568546824, text: '124 «Системний аналіз»;' },
-          { id: 22523537645695, text: '126 «Інформаційні системи та технології»;' },
+          {
+            id: 22523537645695,
+            text: '126 «Інформаційні системи та технології»;',
+          },
         ],
       },
       {
@@ -66,55 +72,59 @@ const data = [
             id: 2663112345432464,
             text: 'Огляд виставки розробок студентів та викладачів кафедр;',
           },
-          { id: 23461234534235, text: 'Знайомство з умовами навчання на кафедрах.' },
+          {
+            id: 23461234534235,
+            text: 'Знайомство з умовами навчання на кафедрах.',
+          },
         ],
       },
     ],
   },
 ];
 
-
-
 export const NewsDetail = () => {
   return (
     <>
       <main>
-        <SectionImg>
-          <ImgContainer>
-            <Img src={data[0].img} />
-            <TitleContainer>
-              <Title>{data[0].title}</Title>
-            </TitleContainer>
-          </ImgContainer>
-        </SectionImg>
-        <Section>
+        <SectionTitle pt={[17, 18]} pb={[21, 19]}>
+          <Wrap>
+            <ImgContainer>
+              <Img src={data[0].img} />
+              <TitleContainer>
+                <Box px={[6, 9]} py={[20, 8]}>
+                  <Title variant="h2">{data[0].title}</Title>
+                </Box>
+              </TitleContainer>
+            </ImgContainer>
+          </Wrap>
+        </SectionTitle>
+        <SectionContent>
           <Container>
-            <ContainerList>
-            {data[0].info.map((info, index) => {
-             
-              return (
-                <ContainerItem key={info.id}>
-                  {Array.isArray(info.text) ? (
-                    <List>
-                      {info.text.map((text, index) => {
-                        return (
-                          <li key={text.id}>
-                            <ItemText>{text.text}</ItemText>
-                          </li>
-                        );
-                      })}
-                    </List>
-                  ) : (
-                    <Text>{info.text}</Text>
-                  )}
-                </ContainerItem>
-              );
-            })}
-            </ContainerList>
-            <AditionalInfo/>
+            <Box as="ul" mb={[16, 19]}>
+              {data[0].info.map((info, index) => {
+                return (
+                  <ContainerItem key={info.id}>
+                    {Array.isArray(info.text) ? (
+                      <List>
+                        {info.text.map((text, index) => {
+                          return (
+                            <li key={text.id}>
+                              <Article>{text.text}</Article>
+                            </li>
+                          );
+                        })}
+                      </List>
+                    ) : (
+                      <Article>{info.text}</Article>
+                    )}
+                  </ContainerItem>
+                );
+              })}
+            </Box>
+            <AditionalInfo />
           </Container>
-        </Section>
-        <NewsRecomendation/>
+        </SectionContent>
+        <NewsRecomendation />
       </main>
 
       <Footer />

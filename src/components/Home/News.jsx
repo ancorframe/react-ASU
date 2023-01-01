@@ -1,8 +1,9 @@
-// import { Box } from 'components/Box';
-import { Item, LinkAllNews, NewsTitle, Section, ListWrap } from './News.styled';
+import { LinkAllNews } from './News.styled';
 import { Card } from '../common/Card/Card';
-
 import test from '../../image/newstest/Rectangle.png';
+import { Title } from 'components/Templates/Title/Title';
+import { Box } from 'components/Box';
+import { ListWrap } from 'components/Templates/ListWrap/ListWrap';
 
 const dataNews = [
   { id: 1, img: test, text: 'test text' },
@@ -13,16 +14,24 @@ const dataNews = [
 
 export const News = () => {
   return (
-    <Section>
-      <NewsTitle>Новини</NewsTitle>
-      <ListWrap>
+    <Box as="section" pb={[16, 12]}>
+      <Title
+        variant="h2"
+        pb={[2, 6]}
+        mb={[8, 22]}
+        borderBottom="titles"
+        opacity="0.4"
+      >
+        Новини
+      </Title>
+      <ListWrap mb={[7, 8]}>
         {dataNews.map(data => (
-          <Item key={data.id}>
+          <li key={data.id}>
             <Card data={data} />
-          </Item>
+          </li>
         ))}
       </ListWrap>
       <LinkAllNews to="/about/news">Всі_новини</LinkAllNews>
-    </Section>
+    </Box>
   );
 };
