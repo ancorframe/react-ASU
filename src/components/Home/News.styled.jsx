@@ -16,7 +16,7 @@ export const LinkAllNews = styled(NavLink)`
   border: 1px solid ${p => p.theme.colors.grey};
   border-radius: 1px;
   height: 56px;
-  max-width: 824px;
+
   box-shadow: 0px 4px 128px rgba(188, 196, 211, 0.5);
   transition-property: (border);
   transition-duration: 250ms;

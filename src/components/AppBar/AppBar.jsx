@@ -77,7 +77,10 @@ export const AppBar = () => {
   };
 
   const onCloseMenu = () => {
-    setIsOpen(false);
+    
+      setIsOpen(false);
+    
+    
   };
 
   return (
@@ -131,20 +134,19 @@ export const AppBar = () => {
             )}
           </Box>
         </HeaderContainer>
-      </Box>
-      <AnimatePresence>
+        <AnimatePresence mode='wait' >
         {isOpen && (
           <MotionMenu
-            key="menu"
+            key={88}
             initial={{
               x: 500,
               opacity: 0,
-              transition: {
-                delay: 0.1,
-                type: 'spring',
-                stiffness: 400,
-                damping: 40,
-              },
+              // transition: {
+              //   delay: 0.1,
+              //   type: 'spring',
+              //   stiffness: 400,
+              //   damping: 40,
+              // },
             }}
             animate={{
               x: 0,
@@ -159,12 +161,12 @@ export const AppBar = () => {
             exit={{
               x: 500,
               opacity: 0,
-              zIndex: -1,
+              // zIndex: -1,
               transition: {
                 delay: 0.1,
-                type: 'spring',
-                stiffness: 400,
-                damping: 40,
+              //   type: 'spring',
+              //   stiffness: 400,
+              //   damping: 40,
               },
             }}
           >
@@ -172,6 +174,8 @@ export const AppBar = () => {
           </MotionMenu>
         )}
       </AnimatePresence>
+      </Box>
+      
     </>
   );
 };
@@ -271,7 +275,7 @@ export const LinkDropdown = ({ to, text, children, index }) => {
                   },
                 }}
                 exit={{
-                  y: 30,
+                  y: 10,
                   translateX: '-50%',
                   opacity: 0,
                   transition: {

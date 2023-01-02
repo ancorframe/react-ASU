@@ -22,6 +22,7 @@ import { Wrap } from 'components/Templates/Wrap/Wrap';
 import { TitleDescription } from 'components/Templates/TitleDescription/TitleDescription';
 import { ListWrap } from 'components/Templates/ListWrap/ListWrap';
 import { LoadMore } from 'components/common/LoadMore/LoadMore';
+import { motion } from 'framer-motion';
 
 
 const data = [
@@ -65,83 +66,90 @@ export const Literature = () => {
 
   return (
     <>
-      <main>
-        <SectionTitle>
-          <Wrap>
-            <Title variant="h1" textAlign={[null, 'center']} mb={[3, 6]}>
-              Корисна_література
-            </Title>
-            <TitleDescription textAlign={[null, 'center']}>
-              Набір літератури та ресурсів. Тут є все, що тобі пригодиться у
-              навчанні 😉
-            </TitleDescription>
-          </Wrap>
-        </SectionTitle>
-        <SectionContent>
-          <Wrap>
-            <Form>
-              <InputWrap>
-                <Label htmlFor="search">Пошук</Label>
-                <Box position="relative">
-                  <Controller
-                    render={({ field }) => (
-                      <InputField
-                        {...field}
-                        placeholder="Назва книги або ресурсу ..."
-                        autoComplete="off"
-                      />
-                    )}
-                    name="search"
-                    control={control}
-                    defaultValue=""
-                  />
-                  <Box position="absolute" right="16px" top="16px">
-                    <SearchIcon />
+      <motion.div
+        key={1}
+        initial={{ y: -40, opacity: 0 }}
+        animate={{ y: 0, opacity: 1, transition: { duration: 0.5 } }}
+        exit={{ opacity: 0, y: 40, transition: { duration: 0.1 } }}
+      >
+        <main>
+          <SectionTitle>
+            <Wrap>
+              <Title variant="h1" textAlign={[null, 'center']} mb={[3, 6]}>
+                Корисна_література
+              </Title>
+              <TitleDescription textAlign={[null, 'center']}>
+                Набір літератури та ресурсів. Тут є все, що тобі пригодиться у
+                навчанні 😉
+              </TitleDescription>
+            </Wrap>
+          </SectionTitle>
+          <SectionContent>
+            <Wrap>
+              <Form>
+                <InputWrap>
+                  <Label htmlFor="search">Пошук</Label>
+                  <Box position="relative">
+                    <Controller
+                      render={({ field }) => (
+                        <InputField
+                          {...field}
+                          placeholder="Назва книги або ресурсу ..."
+                          autoComplete="off"
+                        />
+                      )}
+                      name="search"
+                      control={control}
+                      defaultValue=""
+                    />
+                    <Box position="absolute" right="16px" top="16px">
+                      <SearchIcon />
+                    </Box>
                   </Box>
-                </Box>
-              </InputWrap>
-              <InputWrap>
-                <Label htmlFor="select">Напрям</Label>
-                <Box position="relative">
-                  <Controller
-                    render={({ field }) => (
-                      <InputSelect {...field}>
-                        <option value="" disabled hidden>
-                          Обери фільтр ...
-                        </option>
-                        <option value="female">female</option>
-                        <option value="male">male</option>
-                        <option value="other">other</option>
-                      </InputSelect>
-                    )}
-                    name="select"
-                    control={control}
-                    defaultValue=""
-                  />
-                  <Box position="absolute" right="16px" top="16px">
-                    <FilterAltOutlinedIcon />
+                </InputWrap>
+                <InputWrap>
+                  <Label htmlFor="select">Напрям</Label>
+                  <Box position="relative">
+                    <Controller
+                      render={({ field }) => (
+                        <InputSelect {...field}>
+                          <option value="" disabled hidden>
+                            Обери фільтр ...
+                          </option>
+                          <option value="female">female</option>
+                          <option value="male">male</option>
+                          <option value="other">other</option>
+                        </InputSelect>
+                      )}
+                      name="select"
+                      control={control}
+                      defaultValue=""
+                    />
+                    <Box position="absolute" right="16px" top="16px">
+                      <FilterAltOutlinedIcon />
+                    </Box>
                   </Box>
-                </Box>
-              </InputWrap>
-              <ResetButton type="button" onClick={reset}>
-                {window.innerWidth < 849 ? 'Оновити' : <RefreshRoundedIcon />}
-              </ResetButton>
-            </Form>
+                </InputWrap>
+                <ResetButton type="button" onClick={reset}>
+                  {window.innerWidth < 849 ? 'Оновити' : <RefreshRoundedIcon />}
+                </ResetButton>
+              </Form>
 
-            <ListWrap mb={[7, 8]}>
-              {data.map(({ id, title, to, author }) => {
-                return (
-                  <Item key={id}>
-                    <BookCard to={to} title={title} author={author} />
-                  </Item>
-                );
-              })}
-            </ListWrap>
-            <LoadMore>Завантажити_більше</LoadMore>
-          </Wrap>
-        </SectionContent>
-      </main>
-      <Footer />
+              <ListWrap mb={[7, 8]}>
+                {data.map(({ id, title, to, author }) => {
+                  return (
+                    <Item key={id}>
+                      <BookCard to={to} title={title} author={author} />
+                    </Item>
+                  );
+                })}
+              </ListWrap>
+              <LoadMore>Завантажити_більше</LoadMore>
+            </Wrap>
+          </SectionContent>
+        </main>
+        <Footer />{' '}
+      </motion.div>
     </>
   );
 };

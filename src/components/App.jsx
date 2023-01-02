@@ -1,11 +1,11 @@
 import {
-  // Routes,
-  // Route,
+  Routes,
+  Route,
   Navigate,
-  useRoutes,
+  // useRoutes,
   useLocation,
   // useNavigate,
-  // Outlet,/
+  // Outlet,
 } from 'react-router-dom';
 import { lazy } from 'react';
 import { Layout } from './Layout';
@@ -93,135 +93,142 @@ const ResearchAndAcquisitions = lazy(() =>
     default: module.ResearchAndAcquisitions,
   }))
 );
-// const TestPage = lazy(() =>
-//   import('../pages/TestPage').then(module => ({
-//     default: module.TestPage,
-//   }))
-// );
+const TestPage = lazy(() =>
+  import('../pages/TestPage').then(module => ({
+    default: module.TestPage,
+  }))
+);
 
-// const NotFoundPage = lazy(() =>
-//   import('../pages/NotFoundPage').then(module => ({
-//     default: module.NotFoundPage,
-//   }))
-// );
+const NotFoundPage = lazy(() =>
+  import('../pages/NotFoundPage').then(module => ({
+    default: module.NotFoundPage,
+  }))
+);
 
 export const App = () => {
   const location = useLocation();
 
-  const element = useRoutes([
-    {
-      path: '/',
-      element: <Layout />,
-      children: [
-        {
-          element: <Home />,
-          index: true,
-        },
-        { path: 'introduction', element: <Introduction /> },
-        { path: 'literature', element: <Literature /> },
+  // const element = useRoutes([
+  //   {
+  //     path: '/',
+  //     element: <Layout />,
+  //     children: [
+  //       {
+  //         element: <Home />,
+  //         index: true,
+  //       },
+  //       { path: 'introduction', element: <Introduction /> },
+  //       { path: 'literature', element: <Literature /> },
 
-        {
-          path: 'learning_process',
-          children: [
-            { path: '', element: <Navigate to="support" /> },
-            {
-              path: 'support',
-              element: <Support />,
-            },
-            { path: 'disciplines', element: <Disciplines /> },
-            { path: 'introduction', element: <Introduction /> },
-            { path: 'schedule', element: <Schedule /> },
-          ],
-        },
-        {
-          path: 'about',
+  //       {
+  //         path: 'learning_process',
+  //         children: [
+  //           { path: '', element: <Navigate to="support" /> },
+  //           {
+  //             path: 'support',
+  //             element: <Support />,
+  //           },
+  //           { path: 'disciplines', element: <Disciplines /> },
+  //           { path: 'introduction', element: <Introduction /> },
+  //           { path: 'schedule', element: <Schedule /> },
+  //         ],
+  //       },
+  //       {
+  //         path: 'about',
 
-          children: [
-            { path: '', element: <Navigate to="history" /> },
-            { path: 'history', element: <History /> },
-            { path: 'disciplines', element: <Disciplines /> },
-            { path: 'teachers', element: <Teachers /> },
-            { path: 'teachers/:id', element: <TeacherDetail /> },
-            { path: 'partnership', element: <Partnership /> },
-            {
-              path: 'partnership/:id',
-              element: <PartnershipDetail />,
-            },
-            { path: 'news', element: <News /> },
-            { path: 'news/:id', element: <NewsDetail /> },
-          ],
-        },
-        {
-          path: 'research_activities',
+  //         children: [
+  //           { path: '', element: <Navigate to="history" /> },
+  //           { path: 'history', element: <History /> },
+  //           { path: 'disciplines', element: <Disciplines /> },
+  //           { path: 'teachers', element: <Teachers /> },
+  //           { path: 'teachers/:id', element: <TeacherDetail /> },
+  //           { path: 'partnership', element: <Partnership /> },
+  //           {
+  //             path: 'partnership/:id',
+  //             element: <PartnershipDetail />,
+  //           },
+  //           { path: 'news', element: <News /> },
+  //           { path: 'news/:id', element: <NewsDetail /> },
+  //         ],
+  //       },
+  //       {
+  //         path: 'research_activities',
 
-          children: [
-            { path: '', element: <Navigate to="research_and_acquisitions" /> },
-            {
-              path: 'research_and_acquisitions',
-              element: <ResearchAndAcquisitions />,
-              index: true,
-            },
-            { path: 'conferences', element: <Conferences /> },
-            {
-              path: 'conferences/:id',
-              element: <ConferencesDetail />,
-            },
-          ],
-        },
-      ],
-    },
-  ]);
+  //         children: [
+  //           { path: '', element: <Navigate to="research_and_acquisitions" /> },
+  //           {
+  //             path: 'research_and_acquisitions',
+  //             element: <ResearchAndAcquisitions />,
+  //             index: true,
+  //           },
+  //           { path: 'conferences', element: <Conferences /> },
+  //           {
+  //             path: 'conferences/:id',
+  //             element: <ConferencesDetail />,
+  //           },
+  //         ],
+  //       },
+  //     ],
+  //   },
+  // ]);
 
   return (
     <>
-      {/* <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Navigate to="home" />} />
-          <Route path="home" element={<Home />} />
-          <Route path="testpage" element={<TestPage />} />
-          <Route path="introduction" element={<Introduction />} />
-          <Route path="literature" element={<Literature />} />
-          <Route path="learning_process">
-            <Route index element={<Navigate to="support" />} />
-            <Route path="support" element={<Support />} />
-            <Route path="disciplines" element={<Disciplines />} />
-
-            <Route path="schedule" element={<Schedule />} />
-          </Route>
-          <Route path="about">
-            <Route index element={<Navigate to="history" />} />
-            <Route path="history" element={<History />} />
-            <Route path="teachers" element={<Teachers />} />
-            <Route path="teachers/:teacherDetail" element={<TeacherDetail />} />
-            <Route path="partnership" element={<Partnership />} />
-            <Route
-              path="partnership/:partnershipDetail"
-              element={<PartnershipDetail />}
-            />
-            <Route path="news" element={<News />} />
-            <Route path="news/:id" element={<NewsDetail />} />
-          </Route>
-          <Route path="research_activities">
-            <Route
-              index
-              element={<Navigate to="research_and_acquisitions" />}
-            />
-            <Route
-              path="research_and_acquisitions"
-              element={<ResearchAndAcquisitions />}
-            />
-            <Route path="conferences" element={<Conferences />} />
-            <Route
-              path="conferences/:conferencesDetail"
-              element={<ConferencesDetail />}
-            />
-          </Route>
-        </Route>
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes> */}
+      <Layout />
       <AnimatePresence mode="wait">
-        {React.cloneElement(element, { key: location.pathname })}
+        <Routes key={location.pathname} location={location}>
+          <Route path="/" >
+            <Route index element={<Navigate to="home" />} />
+            <Route path="home" element={<Home />} />
+            <Route path="testpage" element={<TestPage />} />
+            <Route path="introduction" element={<Introduction />} />
+            <Route path="literature" element={<Literature />} />
+            <Route path="learning_process">
+              <Route index element={<Navigate to="support" />} />
+              <Route path="support" element={<Support />} />
+              <Route path="disciplines" element={<Disciplines />} />
+
+              <Route path="schedule" element={<Schedule />} />
+            </Route>
+            <Route path="about">
+              <Route index element={<Navigate to="history" />} />
+              <Route path="history" element={<History />} />
+              <Route path="teachers" element={<Teachers />} />
+              <Route
+                path="teachers/:teacherDetail"
+                element={<TeacherDetail />}
+              />
+              <Route path="partnership" element={<Partnership />} />
+              <Route
+                path="partnership/:partnershipDetail"
+                element={<PartnershipDetail />}
+              />
+              <Route path="news" element={<News />} />
+              <Route path="news/:id" element={<NewsDetail />} />
+            </Route>
+            <Route path="research_activities">
+              <Route
+                index
+                element={<Navigate to="research_and_acquisitions" />}
+              />
+              <Route
+                path="research_and_acquisitions"
+                element={<ResearchAndAcquisitions />}
+              />
+              <Route path="conferences" element={<Conferences />} />
+              <Route
+                path="conferences/:conferencesDetail"
+                element={<ConferencesDetail />}
+              />
+            </Route>
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
       </AnimatePresence>
+
+      {/* <AnimatePresence mode="wait">
+        {React.cloneElement(element, { key: location.pathname })}
+      </AnimatePresence> */}
     </>
   );
 };
