@@ -22,7 +22,8 @@ import { Wrap } from 'components/Templates/Wrap/Wrap';
 import { TitleDescription } from 'components/Templates/TitleDescription/TitleDescription';
 import { ListWrap } from 'components/Templates/ListWrap/ListWrap';
 import { LoadMore } from 'components/common/LoadMore/LoadMore';
-import { motion } from 'framer-motion';
+
+import { MotionWrap } from 'components/MotionWrap/MotionWrap';
 
 
 const data = [
@@ -66,12 +67,7 @@ export const Literature = () => {
 
   return (
     <>
-      <motion.div
-        key={1}
-        initial={{ y: -40, opacity: 0 }}
-        animate={{ y: 0, opacity: 1, transition: { duration: 0.5 } }}
-        exit={{ opacity: 0, y: 40, transition: { duration: 0.1 } }}
-      >
+      <MotionWrap key={1}>
         <main>
           <SectionTitle>
             <Wrap>
@@ -148,8 +144,8 @@ export const Literature = () => {
             </Wrap>
           </SectionContent>
         </main>
-        <Footer />{' '}
-      </motion.div>
+        <Footer />
+      </MotionWrap>
     </>
   );
 };

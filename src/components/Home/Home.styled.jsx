@@ -1,7 +1,7 @@
-import { motion } from "framer-motion";
+
 import styled from "styled-components";
 
-export const Wrap = styled(motion.div)`
+export const Wrap = styled.div`
   /* min-width: 390px; */
   display: flex;
   margin: 0 auto;
