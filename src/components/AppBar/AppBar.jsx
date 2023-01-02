@@ -11,13 +11,14 @@ import {
   MotionWrap,
   DropdownExternal,
   MotionMenu,
+  LogoLink,
 } from './AppBar.styled';
 import { ButtonLink } from './AppBar.styled';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
 import { Menu } from './Menu';
 import { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 
 import { AnimatePresence } from 'framer-motion';
 
@@ -95,9 +96,9 @@ export const AppBar = () => {
         zIndex="10"
       >
         <HeaderContainer>
-          <NavLink to="/">
+          <LogoLink to="/home">
             <Logo src={logo} alt="Logo" />
-          </NavLink>
+          </LogoLink>
           <Box
             as="nav"
             display="flex"
@@ -283,6 +284,7 @@ export const LinkDropdown = ({ to, text, children, index }) => {
                     stiffness: 400,
                     damping: 40,
                   },
+                  
                 }}
               >
                 {children}

@@ -14,7 +14,7 @@ export const ButtonLink = styled(NavLink)`
   display: flex;
   align-items: center;
   /* width: 56px; */
-  padding: 8px 20px;
+  padding: 10px 26px;
   height: 32px;
   font-family: 'Nunito Sans';
   font-style: normal;
@@ -28,16 +28,18 @@ export const ButtonLink = styled(NavLink)`
   /* Black/100 */
 
   color: #0f1f2c;
-
-  transition-property: (background);
+  border-radius: 1px;
+  transition-property: (background-color);
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  :hover,
-  :focus {
-    background: #f2f3f5;
-    border-radius: 1px;
+  &:hover {
+    background-color: #f2f3f5;
   }
-
+  :not(&.active) {
+    &:focus {
+      background-color: #f2f3f5;
+    }
+  }
   /* height: 30px;
   padding: 3px 9px;
   text-decoration: none;
@@ -76,6 +78,7 @@ export const Logo = styled.img`
     width: 48px;
     height: 48px;
   }
+
 `;
 export const ButtonMenu = styled.button`
   padding: 0;
@@ -104,6 +107,10 @@ export const ButtonMenu = styled.button`
 export const ArrowDrop = styled(ArrowDropDownIcon)`
   width: 16px;
   height: 16px;
+  position: absolute;
+    top:50%;
+  transform: translateY(-50%);
+  right: 3px;
 `;
 
 export const ButtonDrop = styled.button`
@@ -152,10 +159,18 @@ export const HeaderContainer = styled.div`
 `;
 
 export const ArrowRight = styled(ArrowRightIcon)`
+position: absolute;
   color: #ff7536;
+  top:50%;
+  transform: translateY(-50%);
+  left:3px;
 `;
 export const ArrowLeft = styled(ArrowLeftIcon)`
+position: absolute;
   color: #ff7536;
+    top:50%;
+  transform: translateY(-50%);
+  right: 3px;
 `;
 
 export const Title = styled.h3`
@@ -304,6 +319,7 @@ export const MotionWrap = styled(motion.ul)`
   box-shadow: 0px 32px 128px rgba(188, 196, 211, 0.5);
   border-radius: 1px;
   /* z-index: 5; */
+
 `;
 
 export const MotionMenu = styled(motion.div)`
@@ -316,4 +332,24 @@ export const MotionMenu = styled(motion.div)`
   background-color: ${p => p.theme.backgroundColor.white};
   overflow-y: overlay;
   max-height: 100vh;
+`;
+
+
+export const LogoLink = styled(NavLink)`
+
+  transition-property: (scale, box-shadow);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    scale: 1.1;
+    box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
+      0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+  }
+  :not(&.active) {
+    :focus {
+      scale: 1.1;
+      box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
+        0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+    }
+  }
 `;

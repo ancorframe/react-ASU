@@ -6,7 +6,7 @@ import { Box } from 'components/Box';
 import { ListWrap } from 'components/Templates/ListWrap/ListWrap';
 
 const dataNews = [
-  { id: 1, img: test, text: 'test text' },
+  { id: 1, img: test, text: 'test text' ,to:'/about/news/1'},
   { id: 2, img: test, text: 'test text' },
   { id: 3, img: test, text: 'test text' },
   { id: 4, img: test, text: 'test text' },
@@ -27,7 +27,7 @@ export const News = () => {
       <ListWrap mb={[7, 8]}>
         {dataNews.map(data => (
           <li key={data.id}>
-            <Card data={data} />
+            <Card data={data} to={data.to} />
           </li>
         ))}
       </ListWrap>

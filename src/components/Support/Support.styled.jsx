@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+// import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 export const Container = styled.div`
   margin: 0 auto;
@@ -11,13 +12,6 @@ export const Container = styled.div`
   }
 `;
 
-
-
-
-
-
-
-
 export const WrapList = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -27,8 +21,8 @@ export const WrapList = styled.ul`
   }
 `;
 export const WrapItem = styled.li`
-width: 100%;
-`
+  width: 100%;
+`;
 
 export const CardWrap = styled.div`
   /* p="8px 20px  8px 8px"
@@ -47,9 +41,26 @@ export const CardWrap = styled.div`
     gap: 20px;
     padding: 8px 20px 8px 8px;
   }
+  `;
+
+  
+export const Icon = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* &:hover {
+    transform: rotate(90deg);
+  } */
 `;
+
+
+
 export const CardButton = styled.button`
   display: block;
+  outline: none;
   padding: 0;
   width: 100%;
   max-width: 40px;
@@ -63,7 +74,7 @@ export const CardButton = styled.button`
   background: #f2f3f5;
   border-radius: 1px;
   border: 0;
-  transition-property: (transform, border);
+  transition-property: all;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   @media screen and (min-width: 980px) {
@@ -72,20 +83,22 @@ export const CardButton = styled.button`
     min-height: 48px;
   }
 
-  :hover,
-  :focus {
-    ${p => !p.open && ' transform: rotate(-90deg);'}
-    /* transform: rotate(-90deg); */
+  :hover {
     border: 1px solid #0f1f2c;
-    border-radius: 1px;
   }
-  .unfocus:focus,
-  .unfocus:active {
-    outline: none;
-    box-shadow: none;
-    border: 0;
-  }
+  ${({ open }) =>
+    open &&
+    `${Icon} {
+      transform: rotate(-180deg);
+      }`}
+  ${({ open }) =>
+    !open &&
+    `:hover {
+    ${Icon} {
+      transform: rotate(-90deg);
+    }`}
 `;
+
 
 export const CardTitle = styled.p`
   /* width: 100%; */
@@ -114,7 +127,6 @@ export const CardTitle = styled.p`
   }
 `;
 
-
 export const CardAuthor = styled.p`
   font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights.bold};
@@ -129,8 +141,6 @@ export const CardAuthor = styled.p`
     margin-bottom: 10px;
   }
 `;
-
-
 
 export const CardDescription = styled.p`
   font-family: ${p => p.theme.fonts.main};
@@ -147,13 +157,13 @@ export const CardDescription = styled.p`
   :not(:last-child) {
     margin-bottom: 18px;
     @media screen and (min-width: 980px) {
-margin-bottom: 20px;
+      margin-bottom: 20px;
     }
   }
 `;
 
 export const CardContainer = styled.div`
   @media screen and (max-width: 979px) {
-  width:calc(100% - 64px);
+    width: calc(100% - 64px);
   }
 `;

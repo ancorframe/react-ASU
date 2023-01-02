@@ -39,6 +39,7 @@ export const Button = styled.button`
      }
   `} /* :hover,:focus :not(:checked) {
     background-color: ${p => p.theme.colors.grey}; */
+    cursor:pointer;
 `;
 
 export const ButtonWrap = styled.div`

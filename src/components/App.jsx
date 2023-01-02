@@ -1,16 +1,10 @@
-import {
-  Routes,
-  Route,
-  Navigate,
-  // useRoutes,
-  useLocation,
-  // useNavigate,
-  // Outlet,
-} from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+
 import { lazy } from 'react';
 import { Layout } from './Layout';
 import { AnimatePresence } from 'framer-motion';
 import React from 'react';
+import { ScrollToTop } from './ScrollToTop';
 
 const Home = lazy(() =>
   import('../pages/Home').then(module => ({
@@ -111,7 +105,6 @@ export const App = () => {
   // const element = useRoutes([
   //   {
   //     path: '/',
-  //     element: <Layout />,
   //     children: [
   //       {
   //         element: <Home />,
@@ -119,7 +112,6 @@ export const App = () => {
   //       },
   //       { path: 'introduction', element: <Introduction /> },
   //       { path: 'literature', element: <Literature /> },
-
   //       {
   //         path: 'learning_process',
   //         children: [
@@ -135,7 +127,6 @@ export const App = () => {
   //       },
   //       {
   //         path: 'about',
-
   //         children: [
   //           { path: '', element: <Navigate to="history" /> },
   //           { path: 'history', element: <History /> },
@@ -173,25 +164,26 @@ export const App = () => {
   // ]);
 
   return (
-    <>
+    <><ScrollToTop />
       <Layout />
+      
       <AnimatePresence mode="wait">
         <Routes key={location.pathname} location={location}>
-          <Route path="/" >
-            <Route index element={<Navigate to="home" />} />
+          <Route path="/">
+            <Route index element={<Navigate replace to="home" />} />
             <Route path="home" element={<Home />} />
             <Route path="testpage" element={<TestPage />} />
             <Route path="introduction" element={<Introduction />} />
             <Route path="literature" element={<Literature />} />
             <Route path="learning_process">
-              <Route index element={<Navigate to="support" />} />
+              <Route index element={<Navigate replace to="support" />} />
               <Route path="support" element={<Support />} />
               <Route path="disciplines" element={<Disciplines />} />
 
               <Route path="schedule" element={<Schedule />} />
             </Route>
             <Route path="about">
-              <Route index element={<Navigate to="history" />} />
+              <Route index element={<Navigate replace to="history" />} />
               <Route path="history" element={<History />} />
               <Route path="teachers" element={<Teachers />} />
               <Route
@@ -209,7 +201,7 @@ export const App = () => {
             <Route path="research_activities">
               <Route
                 index
-                element={<Navigate to="research_and_acquisitions" />}
+                element={<Navigate replace to="research_and_acquisitions" />}
               />
               <Route
                 path="research_and_acquisitions"
