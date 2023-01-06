@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-ASU/static/css/main.d33dd536.css",
-    "main.js": "/react-ASU/static/js/main.51b41656.js",
+    "main.js": "/react-ASU/static/js/main.cb784a36.js",
     "static/js/612.a1f4cdac.chunk.js": "/react-ASU/static/js/612.a1f4cdac.chunk.js",
     "static/js/745.785f6931.chunk.js": "/react-ASU/static/js/745.785f6931.chunk.js",
     "static/js/489.400ec48a.chunk.js": "/react-ASU/static/js/489.400ec48a.chunk.js",
@@ -44,7 +44,7 @@
     "index.html": "/react-ASU/index.html",
     "static/media/Vector.svg": "/react-ASU/static/media/Vector.5841017f504821c69ac71d3dca6acf21.svg",
     "main.d33dd536.css.map": "/react-ASU/static/css/main.d33dd536.css.map",
-    "main.51b41656.js.map": "/react-ASU/static/js/main.51b41656.js.map",
+    "main.cb784a36.js.map": "/react-ASU/static/js/main.cb784a36.js.map",
     "612.a1f4cdac.chunk.js.map": "/react-ASU/static/js/612.a1f4cdac.chunk.js.map",
     "745.785f6931.chunk.js.map": "/react-ASU/static/js/745.785f6931.chunk.js.map",
     "489.400ec48a.chunk.js.map": "/react-ASU/static/js/489.400ec48a.chunk.js.map",
@@ -69,6 +69,6 @@
   },
   "entrypoints": [
     "static/css/main.d33dd536.css",
-    "static/js/main.51b41656.js"
+    "static/js/main.cb784a36.js"
   ]
 }
