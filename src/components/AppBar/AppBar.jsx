@@ -276,9 +276,10 @@ export const LinkDropdown = ({ to, text, children, index }) => {
                   },
                 }}
                 exit={{
-                  y: 10,
+                  y: 30,
                   translateX: '-50%',
                   opacity: 0,
+
                   transition: {
                     type: 'spring',
                     stiffness: 400,
