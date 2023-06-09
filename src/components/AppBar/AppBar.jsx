@@ -108,7 +108,7 @@ export const AppBar = () => {
           >
             {windowSize.innerWidth > 979.5 && (
               <>
-                <Link to="introduction" text="ВСТУП" />
+                <Link to="entrants" text="ВСТУП" />
                 <Link to="literature" text="Корисна література" />
 
                 {links.map(({ to, name, children }, index) => (

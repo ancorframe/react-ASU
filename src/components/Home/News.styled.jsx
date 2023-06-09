@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { ListWrap } from 'components/Templates/ListWrap/ListWrap';
 
 export const LinkAllNews = styled(NavLink)`
   text-decoration: none;
@@ -30,5 +31,14 @@ export const LinkAllNews = styled(NavLink)`
   :focus {
     border: 1px solid ${p => p.theme.colors.black};
     text-decoration-line: underline;
+  }
+`;
+
+
+export const List = styled(ListWrap)`
+  margin-bottom: 16px;
+  @media screen and (min-width: 980px) {
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    margin-bottom: 24px;
   }
 `;

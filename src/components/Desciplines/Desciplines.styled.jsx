@@ -1,3 +1,4 @@
+import { ListWrap } from 'components/Templates/ListWrap/ListWrap';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -103,4 +104,9 @@ export const Label = styled.label`
   margin-bottom: 4px;
 
   text-transform: uppercase;
+`;
+
+
+export const List = styled(ListWrap)`
+grid-template-columns:repeat(auto-fit, minmax(min(100%, 401px), 1fr));
 `;

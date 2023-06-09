@@ -5,8 +5,12 @@ import { ReactComponent as Svg } from '../../image/icons/Vector.svg';
 export const PromoWrap = styled.section`
   /* padding: 0 12px; */
   position: relative;
+  display:block;
   width: 100%;
+  min-height:366px;
   max-height: 370px;
+   border-radius: 4px;
+    background: #f2f3f5;
   @media screen and (min-width: 980px) {
     padding: 0;
     height: 84vh;
@@ -16,8 +20,7 @@ export const PromoWrap = styled.section`
     width: 100%;
     max-height: 900px;
     position: sticky;
-    border-radius: 4px;
-    background: #f2f3f5;
+   
     /* z-index: 10; */
     /* overflow: hidden; */
   }
@@ -26,7 +29,7 @@ export const PromoWrap = styled.section`
 export const Img = styled.img`
   width: 100%;
   object-fit: cover;
-  object-position: top;
+  object-position: center;
 
   height: 100%;
   @media screen and (max-width: 979px) {

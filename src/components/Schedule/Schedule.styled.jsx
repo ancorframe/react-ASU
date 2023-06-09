@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 
 
-export const Form = styled.form`
+export const Form = styled.div`
 
   margin-bottom: 40px;
   /* @media screen and (min-width: 850px) {
@@ -250,6 +250,8 @@ export const InfoTeacher = styled.p`
 
 
 export const InfoImg = styled.img`
+  object-fit: cover;
+  object-position: center;
   width: 32px;
   height: 32px;
   @media screen and (min-width: 980px) {
@@ -258,7 +260,7 @@ height: 48px;
   }
 `;
 
-export const InfoAltConteiner = styled.div`
+export const InfoAltContainer = styled.div`
   width: 100%;
   background-color: ${p => p.theme.colors.greyLight};
   border-radius: 2px;

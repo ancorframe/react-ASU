@@ -1,18 +1,19 @@
+import { Box } from 'components/Box';
 import styled from 'styled-components';
 
 export const Item = styled.li`
-  min-width: 280px;
+  min-width: 330px;
 
-  max-height: 320px;
-  /* width: 100%; */
+  height: 320px;
+  width: 100%;
   /* @media screen and (min-width: 770px) {
     width: calc(100% / 2 - 12px);
     max-width: 460px;
-  }
+  } */
 
   @media screen and (min-width: 980px) {
-    width: calc(100% / 3 - 16px);
-  } */
+    max-width: 400px;
+  }
 `;
 
 export const Form = styled.form`
@@ -72,7 +73,7 @@ export const Label = styled.label`
   } */
 `;
 
-export const InputWrap = styled.div`
+export const InputWrap = styled(Box)`
   @media screen and (max-width: 849px) {
     width: 100%;
   }

@@ -31,7 +31,7 @@ export const Card = styled.a`
   /* width: calc(100% / 3 - 24px); */
   /* max-height: 320px; */
   width: 100%;
-
+overflow:hidden;
   height: 100%;
   border: 2px solid #0f1f2c;
   border-radius: 2px;
@@ -67,6 +67,7 @@ export const Description = styled.div`
   /* left: 0; */
   /* bottom: 12px; */
   background-color: #ffffff;
+  z-index:2;
   @media screen and (min-width: 980px) {
 padding: 24px;
   }

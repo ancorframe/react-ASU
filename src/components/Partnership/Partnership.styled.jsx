@@ -1,3 +1,4 @@
+import { ListWrap } from 'components/Templates/ListWrap/ListWrap';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -18,25 +19,30 @@ export const Img = styled.img`
   object-fit: cover;
   object-position: center;
   width: 100%;
-  max-height: 280px;
+  height: 280px;
   @media screen and (min-width: 700px) {
-    max-height: 350px;
+    height: 350px;
   }
   @media screen and (min-width: 980px) {
-    min-height: 480px;
+    height: 480px;
   }
 `;
 
 export const ImgContainer = styled.div`
-  /* max-width: 516px; */
+  overflow: hidden;
   position: relative;
-  /* box-shadow: 4px 4px 0px 0px #0f1f2c; */
   width: 100%;
-  /* max-height: 480px; */
+  height: 280px;
   margin-bottom: 28px;
   border: 2px solid #0f1f2c;
   border-radius: 2px;
   box-shadow: 4px 4px 0px 0px #0f1f2c;
+  @media screen and (min-width: 700px) {
+    height: 350px;
+  }
+  @media screen and (min-width: 980px) {
+    height: 480px;
+  }
 `;
 
 export const TextContainer = styled.div`
@@ -45,6 +51,7 @@ export const TextContainer = styled.div`
   width: 100%;
   left: 0;
   bottom: 24px;
+  z-index:3;
 `;
 
 
@@ -79,3 +86,6 @@ export const Link = styled(NavLink)`
     }
   `;
 
+export const List = styled(ListWrap)`
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 466px), 1fr));
+`;

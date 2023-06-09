@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-
-
 export const Cards = styled(NavLink)`
-/* text-decoration-line:none; */
+  /* text-decoration-line:none; */
   text-decoration: none;
   display: block;
   display: flex;
@@ -36,11 +34,15 @@ export const Cards = styled(NavLink)`
 `;
 
 export const ImgContainer = styled.div`
-position: relative;
+  position: relative;
   width: 100%;
-
+  overflow: hidden;
   border: 2px solid #161b1f;
   border-radius: 1px;
+  height: 240px;
+  @media screen and (max-width: 599px) {
+    height: 156px;
+  }
 `;
 export const CardImg = styled.img`
   /* margin-top: 4px ; */
@@ -59,10 +61,10 @@ export const TextContainer = styled.div`
   width: 100%;
   /* height: 48px; */
   /* margin-bottom: 16px; */
-flex-grow: 1;
+  flex-grow: 1;
   /* @media screen and (min-width: 980px) { */
-    /* margin-bottom: 24px; */
-    /* height: 52px; */
+  /* margin-bottom: 24px; */
+  /* height: 52px; */
 
   /* } */
 `;
@@ -77,7 +79,6 @@ export const CardText = styled.p`
   letter-spacing: -0.06em;
   color: ${p => p.theme.colors.black};
   @media screen and (min-width: 980px) {
-
     line-height: 1.3;
     padding: 0 20px 0 20px;
     /* margin-bottom: 24px; */

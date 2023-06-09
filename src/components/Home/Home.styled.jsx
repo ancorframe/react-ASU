@@ -1,5 +1,6 @@
 
 import styled from "styled-components";
+import { color } from "styled-system";
 
 export const Wrap = styled.div`
   /* min-width: 390px; */
@@ -11,6 +12,7 @@ export const Wrap = styled.div`
     max-width: 1440px;
     flex-direction: row;
   }
+  ${color}
 `;
 
 
@@ -29,6 +31,7 @@ min-width: 330px;
   padding: 0 12px;
   @media screen and (min-width: 980px) {
     padding: 0;
+    width: calc(100% - 920px);
     padding-right: 24px;
   }
 `;

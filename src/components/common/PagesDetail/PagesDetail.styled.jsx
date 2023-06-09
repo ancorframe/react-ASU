@@ -2,12 +2,15 @@ import styled from 'styled-components';
 
 export const ImgContainer = styled.div`
   margin: 0 auto;
-
+  height: 320px;
   position: relative;
   max-height: 480px;
   max-width: 1248px;
   border-radius: 2px;
   box-shadow: 4px 4px 0px 0px #0f1f2c;
+  @media screen and (min-width: 980px) {
+    height: 480px;
+  }
 `;
 
 export const Img = styled.img`
@@ -24,7 +27,7 @@ export const TitleContainer = styled.div`
   bottom: 12px;
   left: 12px;
   width: calc(100% - 12px * 2);
-
+z-index:3;
   @media screen and (min-width: 980px) {
     bottom: 24px;
     left: 24px;

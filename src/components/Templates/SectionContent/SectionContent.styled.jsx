@@ -14,6 +14,7 @@ import {
 
 export const Section = styled('section')(
   css`
+  min-height:67vh;
     padding-bottom: 100px;
     @media screen and (min-width: 980px) {
       padding-bottom: 128px;

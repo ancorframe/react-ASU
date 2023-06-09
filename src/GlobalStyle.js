@@ -5,12 +5,18 @@ export const GlobalStyle = createGlobalStyle`
   box-sizing: border-box; /* gives padding and border from inside */
    scroll-behavior: smooth;
 }
+
+html{
+  scroll-padding-top: 96px;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Overpass Mono','Nunito Sans';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color:#FAFAFA;
 }
 
 code {
@@ -41,4 +47,3 @@ h5 {
 }
 
 `;
-

@@ -1,6 +1,7 @@
 import { H1, H2, H3, H4, H5 } from './Title.styled';
 
 export const Title = props => {
+
   return (
     <>
       {props.variant === 'h1' && <H1 {...props} />}

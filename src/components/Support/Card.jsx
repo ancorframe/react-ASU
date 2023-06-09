@@ -13,7 +13,8 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 // import { Text } from 'components/Templates/Article/Text';
 import { useState } from 'react';
 
-export const Card = ({ Title, Author, Description ,Book}) => {
+export const Card = ({ ...props }) => {
+  const {title,content,author,source}=props
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => {
@@ -30,13 +31,13 @@ export const Card = ({ Title, Author, Description ,Book}) => {
           </Icon>
         </CardButton>
         <CardContainer>
-          {!isOpen && <CardTitle close>{Title}</CardTitle>}
+          {!isOpen && <CardTitle close>{title}</CardTitle>}
           {isOpen && (
             <>
-              <CardTitle>{Title}</CardTitle>
-              <CardAuthor>{Author}</CardAuthor>
-              <CardDescription>{Book}</CardDescription>
-              <CardDescription>{Description}</CardDescription>
+              <CardTitle>{title}</CardTitle>
+              <CardAuthor>{author}</CardAuthor>
+              <CardDescription>{source}</CardDescription>
+              <CardDescription>{content}</CardDescription>
             </>
           )}
         </CardContainer>

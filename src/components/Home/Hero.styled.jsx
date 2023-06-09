@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const TitleAligh = styled.span`
@@ -73,3 +73,15 @@ export const LinkAbout = styled(NavLink)`
     border: 1px solid #0f1f2c;
   }
 `;
+const animationUnion = keyframes`
+ 0% { color:#0F1F2C }
+ 50% { color:#FF7536}
+ 100% { color:#0F1F2C }
+`;
+
+export const Blink = styled.span`
+  animation-name: ${animationUnion};
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+`;
+
