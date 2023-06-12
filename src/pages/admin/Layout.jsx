@@ -1,11 +1,11 @@
-import {
-  useGetUser, useLogOut,
-  useRefreshToken
-} from 'cms/hooks/auth';
-import { Box } from 'components/Box'
+import { useIsFetching } from '@tanstack/react-query';
+import { useGetUser, useLogOut, useRefreshToken } from 'cms/hooks/auth';
+import { Box } from 'components/Box';
 import { Suspense } from 'react';
 import { Link, Outlet } from 'react-router-dom';
-
+import { ClipLoader } from 'react-spinners';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const links = [
@@ -26,7 +26,7 @@ const links = [
 export const Layout = () => {
   const { data: user } = useGetUser();
   useRefreshToken();
-  
+  const isFetching = useIsFetching();
   const logout = useLogOut();
   const handleLogout = () => {
     logout.mutate();
@@ -34,7 +34,7 @@ export const Layout = () => {
 
   return (
     <>
-      <header>
+      <Box as="header" position="relative">
         <Box
           display="flex"
           justifyContent="space-between"
@@ -66,10 +66,14 @@ export const Layout = () => {
             )}
           </nav>
         </Box>
-      </header>
+        <Box position="absolute" top="100%" right="0">
+          <ClipLoader color="#000000" loading={isFetching} />
+        </Box>
+      </Box>
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
+      <ToastContainer />
     </>
   );
 };

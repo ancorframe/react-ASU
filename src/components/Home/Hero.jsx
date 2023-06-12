@@ -19,7 +19,7 @@ export const Hero = () => {
         навчального корпусу.
       </Article>
       <Box display="flex" gridGap="24px">
-        <LinkGraduates to="/entrants/bachelor">Вступникам</LinkGraduates>
+        <LinkGraduates to="/entrants">Вступникам</LinkGraduates>
         <LinkAbout to="/about/history">Про_нас</LinkAbout>
       </Box>
     </Box>

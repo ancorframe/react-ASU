@@ -5,19 +5,20 @@ import { EditorState, convertToRaw, ContentState } from 'draft-js';
 import { FormProvider, useForm } from 'react-hook-form';
 import { TextEditor } from '../../../cms/components/TextEditor';
 import { Box } from 'components/Box';
-import { useEntrants, useUpdateEntrants } from 'cms/hooks/entrants';
+import { useEntrantsById, useUpdateEntrants } from 'cms/hooks/entrants';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 const defaultValues = {
   content: EditorState.createEmpty(),
 };
+
 export const Entrants = () => {
-  const { degree } = useParams();
+  const { id } = useParams();
   const methods = useForm({
     defaultValues,
   });
-  const { data } = useEntrants(degree);
+  const { data } = useEntrantsById(id);
   const update = useUpdateEntrants(data?.entrants.id);
 
   useEffect(() => {
@@ -37,6 +38,13 @@ export const Entrants = () => {
       ...data,
       content: draftToHtml(convertToRaw(data.content.getCurrentContent())),
     };
+    if (convertedData.content.length <= 30) {
+      methods.setError('content', {
+        type: 'custom',
+        message: 'Content must be more than 30 characters long',
+      });
+      return;
+    }
     update.mutate(convertedData);
   };
 

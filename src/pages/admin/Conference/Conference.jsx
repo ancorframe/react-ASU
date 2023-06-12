@@ -10,7 +10,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { InputFile } from 'cms/components/InputFile';
 import { DatePicker } from 'cms/components/DatePicker';
 import { Input } from 'components/Templates/Input/Input';
-import { useConferenceDetail, useDeleteConference, useUpdateConference } from 'cms/hooks/conference';
+import {
+  useConferenceDetail,
+  useDeleteConference,
+  useUpdateConference,
+} from 'cms/hooks/conference';
 import { TextEditor } from 'cms/components/TextEditor';
 
 const defaultValues = {

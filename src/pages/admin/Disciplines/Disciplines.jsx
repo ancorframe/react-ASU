@@ -2,10 +2,7 @@ import { SectionContent } from 'components/Templates/SectionContent/SectionConte
 import { FormProvider, useForm } from 'react-hook-form';
 import { Box } from 'components/Box';
 import { useEffect } from 'react';
-import {
-  useNavigate,
-  useParams
-} from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Input } from 'components/Templates/Input/Input';
 import {
   useDeleteDisciplines,
@@ -46,9 +43,9 @@ export const Disciplines = () => {
     mutate.mutate();
     navigate('/admin/disciplines');
   };
-      const checkKeyDown = e => {
-        if (e.key === 'Enter') e.preventDefault();
-      };
+  const checkKeyDown = e => {
+    if (e.key === 'Enter') e.preventDefault();
+  };
 
   return (
     <main>

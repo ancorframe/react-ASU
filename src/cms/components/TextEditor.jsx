@@ -3,6 +3,8 @@ import { Editor } from 'react-draft-wysiwyg';
 import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { upload } from 'cms/upload';
 import { Controller, useFormContext } from 'react-hook-form';
+import { ErrorMessage } from '@hookform/error-message';
+import { Article } from 'components/Templates/Article/Article';
 
 const toolbar = {
   options: [
@@ -31,27 +33,37 @@ const toolbar = {
   },
 };
 export const TextEditor = ({ name }) => {
-      const { control } = useFormContext();
+  const {
+    control,
+    formState: { errors },
+  } = useFormContext();
   return (
-    <Controller
-      name={name}
-      control={control}
-      render={({ field: { value, onChange } }) => {
-        return (
-          <Editor
-            editorState={value}
-            wrapperClassName="wrapper-class"
-            editorClassName="editor-class"
-            toolbarClassName="toolbar-class"
-            // wrapperStyle={<wrapperStyleObject>}
-            // editorStyle={<editorStyleObject>}
-            // toolbarStyle={<toolbarStyleObject>}
-            // onChange={onChange}
-            onEditorStateChange={onChange}
-            toolbar={toolbar}
-          />
-        );
-      }}
-    />
+    <>
+      <Controller
+        name={name}
+        control={control}
+        render={({ field: { value, onChange } }) => {
+          return (
+            <Editor
+              editorState={value}
+              wrapperClassName="wrapper-class"
+              editorClassName="editor-class"
+              toolbarClassName="toolbar-class"
+              // wrapperStyle={<wrapperStyleObject>}
+              // editorStyle={<editorStyleObject>}
+              // toolbarStyle={<toolbarStyleObject>}
+              // onChange={onChange}
+              onEditorStateChange={onChange}
+              toolbar={toolbar}
+            />
+          );
+        }}
+      />
+      <ErrorMessage
+        errors={errors}
+        name={name}
+        render={({ message }) => <Article color="red">{message}</Article>}
+      />
+    </>
   );
 };

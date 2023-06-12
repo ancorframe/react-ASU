@@ -77,9 +77,6 @@ export function useCreatePartnership() {
       });
     },
     onSuccess: data => {
-      //   console.log(data);
-      //  QueryClient.persistor.writeQueryData('myData', data);
-      // queryClient.invalidateQueries({ queryKey: ['entrants'] });
       queryClient.invalidateQueries({ queryKey: ['partnershipAdmin'] });
     },
     retry: false,
@@ -95,9 +92,6 @@ export function useCreatePartnershipDetail() {
       });
     },
     onSuccess: data => {
-      //   console.log(data);
-      //  QueryClient.persistor.writeQueryData('myData', data);
-      // queryClient.invalidateQueries({ queryKey: ['entrants'] });
       queryClient.invalidateQueries({ queryKey: ['partnershipDetailAdmin'] });
     },
     retry: false,
@@ -113,8 +107,6 @@ export function useUpdatePartnership(id) {
       });
     },
     onSuccess: data => {
-      //   console.log(data);
-      //  QueryClient.persistor.writeQueryData('myData', data);
       queryClient.invalidateQueries({ queryKey: ['partnershipAdmin',id] });
     },
     retry: false,
@@ -130,8 +122,6 @@ export function useUpdatePartnershipDetail(id) {
       });
     },
     onSuccess: data => {
-      //   console.log(data);
-      //  QueryClient.persistor.writeQueryData('myData', data);
       queryClient.invalidateQueries({ queryKey: ['partnershipDetailAdmin',id] });
     },
     retry: false,
@@ -160,14 +150,11 @@ export function useDeletePartnershipDetail(id) {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: () => {
-      return axios.delete(`/api/admin/partnership/${id}`, {
+      return axios.delete(`/api/admin/partnership/detail/${id}`, {
         withCredentials: true,
       });
     },
     onSuccess: data => {
-      //   console.log(data);
-      //  QueryClient.persistor.writeQueryData('myData', data);
-      // queryClient.invalidateQueries({ queryKey: ['entrants'] });
       queryClient.invalidateQueries({ queryKey: ['partnershipDetail'] });
     },
     retry: false,

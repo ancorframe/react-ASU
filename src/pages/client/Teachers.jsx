@@ -12,7 +12,7 @@ import { ErrorRequest } from 'components/ErrorRequest';
 import { useTeachers } from 'cms/hooks/teachers';
 
 export const Teachers = () => {
-  const { data,isLoading,isError } = useTeachers();
+  const { data, isLoading, isError } = useTeachers();
   return (
     <>
       <MotionWrap>
@@ -54,7 +54,7 @@ export const Teachers = () => {
                 )}
                 {isError && (
                   <MotionWrap key={88348030938043948}>
-                    <ErrorRequest/>
+                    <ErrorRequest />
                   </MotionWrap>
                 )}
               </AnimatePresence>

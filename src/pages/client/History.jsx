@@ -67,7 +67,7 @@ const options = {
 };
 
 export const History = () => {
-  const { data,isLoading,isError } = useHistory();
+  const { data, isLoading, isError } = useHistory();
   return (
     <>
       <MotionWrap key={34345}>

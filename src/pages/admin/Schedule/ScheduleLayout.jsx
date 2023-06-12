@@ -1,4 +1,3 @@
-
 import { useSchedule } from 'cms/hooks/schedule';
 import { Box } from 'components/Box';
 import { Suspense } from 'react';
@@ -15,7 +14,10 @@ export const ScheduleLayout = () => {
             <ul>
               {data.schedules.map(({ id, data }) => (
                 <Box as="li" p="20px" key={id}>
-                  <Link to={`${id}`}>{'erferf'}</Link>
+                  <Link to={`${id}`}>
+                    course:{data.course.label},group:{data.group.label}
+                    ,subgroup:{data.subgroup.label}
+                  </Link>
                 </Box>
               ))}
             </ul>

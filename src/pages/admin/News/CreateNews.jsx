@@ -9,6 +9,8 @@ import { InputFile } from 'cms/components/InputFile';
 import { DatePicker } from 'cms/components/DatePicker';
 import { Input } from 'components/Templates/Input/Input';
 import { useNavigate } from 'react-router-dom';
+import { newsSchema } from 'cms/validationSchemas/newsSchemas';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 const defaultValues = {
   title: '',
@@ -19,6 +21,7 @@ const defaultValues = {
 export const CreateNews = () => {
   const methods = useForm({
     defaultValues,
+    resolver: yupResolver(newsSchema),
   });
   const create = useCreateNews();
   const navigate = useNavigate();

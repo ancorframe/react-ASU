@@ -172,7 +172,7 @@ export const AdminApp = () => {
           <Route path="research" element={<Research />} />
           <Route path="history" element={<History />} />
           <Route path="entrants" element={<EntrantsLayout />}>
-            <Route path=":degree" element={<Entrants />} />
+            <Route path=":id" element={<Entrants />} />
           </Route>
           <Route path="news" element={<NewsLayout />}>
             <Route path=":id" element={<News />} />

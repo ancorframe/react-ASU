@@ -1,6 +1,4 @@
-import {
-  usePartnershipList,
-} from 'cms/hooks/partnership';
+import { usePartnershipList } from 'cms/hooks/partnership';
 import { Box } from 'components/Box';
 import { Suspense } from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';

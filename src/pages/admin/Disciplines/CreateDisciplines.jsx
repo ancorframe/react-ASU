@@ -20,19 +20,18 @@ export const CreateDisciplines = () => {
     // isError,
     // isLoading,
     // isSuccess,
-    mutate } = useCreateDisciplines();
+    mutate,
+  } = useCreateDisciplines();
   // const navigate = useNavigate();
 
   const onSubmit = data => {
     mutate(data);
-      //  navigate('/admin/disciplines');
+    //  navigate('/admin/disciplines');
   };
 
   const checkKeyDown = e => {
     if (e.key === 'Enter') e.preventDefault();
   };
-  
-
 
   return (
     <main>
@@ -59,7 +58,6 @@ export const CreateDisciplines = () => {
                 <button type="submit">submit</button>
               </form>
             </FormProvider>
-            {/* <DevTool control={methods.control}/> */}
           </Box>
         </Box>
       </SectionContent>

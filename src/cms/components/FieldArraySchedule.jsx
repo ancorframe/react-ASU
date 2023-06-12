@@ -1,25 +1,20 @@
-
+import { ErrorMessage } from '@hookform/error-message';
 import { useDisciplines } from 'cms/hooks/disciplines';
 import { useTeachers } from 'cms/hooks/teachers';
+import { Article } from 'components/Templates/Article/Article';
 import { Input } from 'components/Templates/Input/Input';
 import { InputSelects } from 'components/Templates/InputSelect/InputSelect';
-import {
-  useFieldArray,
-  useFormContext,
-} from 'react-hook-form';
+import { useFieldArray, useFormContext } from 'react-hook-form';
 
 export const FieldArraySchedule = props => {
-  const { data: teacherData } = useTeachers()
-  const { data: disciplinesData } = useDisciplines()
-  // console.log(data);
+  const { data: teacherData } = useTeachers();
+  const { data: disciplinesData } = useDisciplines();
   const { name } = props;
-  const { control } = useFormContext();
   const {
-    fields,
-    append,
-    // prepend ,
-    remove,
-  } = useFieldArray({
+    control,
+    formState: { errors },
+  } = useFormContext();
+  const { fields, append, remove } = useFieldArray({
     control,
     name: name,
   });
@@ -61,6 +56,11 @@ export const FieldArraySchedule = props => {
           </li>
         ))}
       </ul>
+      <ErrorMessage
+        errors={errors}
+        name={name}
+        render={({ message }) => <Article color="red">{message}</Article>}
+      />
       <button
         type="button"
         onClick={() =>

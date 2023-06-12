@@ -13,12 +13,12 @@ import { useQueryClient } from '@tanstack/react-query';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { motion } from 'framer-motion';
+import YouTube from 'react-youtube';
 
 export const Promo = () => {
   const [isOpen, setIsOpen] = useState(false);
   const queryClient = useQueryClient();
   const data = queryClient.getQueryData({ queryKey: ['home'] });
-
   const onClick = () => {
     if (window.screen.width < 980) {
       window.open(`${data.home.data.promoUrl}`, '_blank', 'noreferrer');
@@ -35,13 +35,27 @@ export const Promo = () => {
     }
   }
 
-  // const opts = {
-  //   height: '562',
-  //   width: '900',
-  //   playerVars: {
-  //     autoplay: 1,
-  //   },
-  // };
+  function getYouTubeVideoId(url) {
+     const videoId = url.split('v=')[1];
+     if (videoId) {
+       const ampersandPosition = videoId.indexOf('&');
+       if (ampersandPosition !== -1) {
+         return videoId.substring(0, ampersandPosition);
+       }
+       return videoId;
+     }
+    return null;
+  }
+
+const id = data && getYouTubeVideoId(data.home.data.promoUrl)
+
+  const opts = {
+    height: '562',
+    width: '900',
+    playerVars: {
+      autoplay: 1,
+    },
+  };
 
   return (
     <AnimatePresence mode="wait">
@@ -78,7 +92,7 @@ export const Promo = () => {
                   setIsOpen(false);
                 }}
               >
-                {/* <YouTube videoId={data.data[0].data.promoUrl} opts={opts} /> */}
+                <YouTube videoId={id} opts={opts} />
               </Modal>
             )}
           </AnimatePresence>

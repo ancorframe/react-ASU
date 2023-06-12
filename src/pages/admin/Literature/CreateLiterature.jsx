@@ -5,29 +5,37 @@ import { Input } from 'components/Templates/Input/Input';
 import { useNavigate } from 'react-router-dom';
 import { useCreateLiterature } from 'cms/hooks/literature';
 import { InputFile } from 'cms/components/InputFile';
-
+import { SpecialtySelect } from 'components/Templates/CreatableSelects/SpecialtySelect';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { literatureSchema } from 'cms/validationSchemas/literatureSchemas';
 
 const defaultValues = {
   title: '',
   image: '',
   author: '',
-  specialty: '',
+  specialty: [],
   url: '',
 };
 export const CreateLiterature = () => {
   const methods = useForm({
     defaultValues,
+    resolver: yupResolver(literatureSchema),
   });
   const create = useCreateLiterature();
   const navigate = useNavigate();
-  
+
   const onSubmit = data => {
+    const newData = { ...data, specialty: JSON.stringify(data.specialty) };
     const formData = new FormData();
-    for (const key in data) {
-      formData.append(key, data[key]);
+    for (const key in newData) {
+      formData.append(key, newData[key]);
     }
     create.mutate(formData);
     navigate('/admin/literature');
+  };
+
+  const checkKeyDown = e => {
+    if (e.key === 'Enter') e.preventDefault();
   };
 
   return (
@@ -36,14 +44,17 @@ export const CreateLiterature = () => {
         <Box maxWidth="960px" m="0 auto" boxShadow={'regular'}>
           <Box p={[null, 11]} px={[6, null]} py={[8, null]}>
             <FormProvider {...methods}>
-              <form onSubmit={methods.handleSubmit(onSubmit)}>
+              <form
+                onSubmit={methods.handleSubmit(onSubmit)}
+                onKeyDown={e => checkKeyDown(e)}
+              >
                 <section>
                   <label>title</label>
                   <Input name="title" />
                 </section>
                 <section>
                   <label>specialty</label>
-                  <Input name="specialty" />
+                  <SpecialtySelect isMulti name="specialty" />
                 </section>
                 <section>
                   <label>author</label>

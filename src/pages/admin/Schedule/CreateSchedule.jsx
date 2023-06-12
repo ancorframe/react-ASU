@@ -1,10 +1,14 @@
 import { SectionContent } from 'components/Templates/SectionContent/SectionContent';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Box } from 'components/Box';
-import { Input } from 'components/Templates/Input/Input';
 import { useNavigate } from 'react-router-dom';
 import { useCreateSchedule } from 'cms/hooks/schedule';
 import { FieldArraySchedule } from 'cms/components/FieldArraySchedule';
+import { CourseSelect } from 'components/Templates/CreatableSelects/CourseSelect';
+import { GroupSelect } from 'components/Templates/CreatableSelects/GroupSelect';
+import { SubgroupSelect } from 'components/Templates/CreatableSelects/SubgroupSelect';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { scheduleSchema } from 'cms/validationSchemas/scheduleSchemas';
 
 const defaultValues = {
   course: '',
@@ -54,6 +58,7 @@ const defaultValues = {
 export const CreateSchedule = () => {
   const methods = useForm({
     defaultValues,
+    resolver: yupResolver(scheduleSchema),
   });
   const create = useCreateSchedule();
   const navigate = useNavigate();
@@ -63,24 +68,31 @@ export const CreateSchedule = () => {
     navigate('/admin/schedule');
   };
 
+  const checkKeyDown = e => {
+    if (e.key === 'Enter') e.preventDefault();
+  };
+
   return (
     <main>
       <SectionContent>
         <Box maxWidth="960px" m="0 auto" boxShadow={'regular'}>
           <Box p={[null, 11]} px={[6, null]} py={[8, null]}>
             <FormProvider {...methods}>
-              <form onSubmit={methods.handleSubmit(onSubmit)}>
+              <form
+                onSubmit={methods.handleSubmit(onSubmit)}
+                onKeyDown={e => checkKeyDown(e)}
+              >
                 <section>
                   <label>course</label>
-                  <Input name="course" />
+                  <CourseSelect name="course" />
                 </section>
                 <section>
                   <label>group</label>
-                  <Input name="group" />
+                  <GroupSelect name="group" />
                 </section>
                 <section>
                   <label>subgroup</label>
-                  <Input name="subgroup" />
+                  <SubgroupSelect name="subgroup" />
                 </section>
                 <section>
                   <label>mon</label>

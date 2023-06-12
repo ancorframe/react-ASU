@@ -1,34 +1,15 @@
 import { SectionContent } from 'components/Templates/SectionContent/SectionContent';
-// import {
-//   EditorState,
-//   // convertToRaw, ContentState
-// } from 'draft-js';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Box } from 'components/Box';
 import { Input } from 'components/Templates/Input/Input';
-// import { FieldArrayPartnership } from 'cms/components/FieldArrayPartnership';
 import { InputFile } from 'cms/components/InputFile';
-import {
-  // useCreatePartnership,
-  useCreatePartnershipDetail,
-} from 'cms/hooks/partnership';
+import { useCreatePartnershipDetail } from 'cms/hooks/partnership';
 import { TextEditor } from 'cms/components/TextEditor';
-import {
-  EditorState,
-  convertToRaw,
-  // ContentState
-} from 'draft-js';
-
-// import { TextEditor } from '../../cms/components/TextEditor';
-// import draftToHtml from 'draftjs-to-html';
-// import htmlToDraft from 'html-to-draftjs';
-// import { useEntrants, useUpdateEntrants } from 'cms/hooks/entrants';
-// import { useEffect } from 'react';
-// import { useNewsDetail, useUpdateNews } from 'cms/hooks/news';
-// import { useParams } from 'react-router-dom';
-// import { DatePicker } from 'cms/components/DatePicker';
+import { EditorState, convertToRaw } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import { useParams } from 'react-router-dom';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { partnershipDetailSchema } from 'cms/validationSchemas/partnershipSchemas';
 
 const defaultValues = {
   title: '',
@@ -39,10 +20,10 @@ const defaultValues = {
 };
 export const CreatePartnershipDetail = () => {
   const { id } = useParams();
-  console.log('CreatePartnershipDetail', id);
   const create = useCreatePartnershipDetail();
   const methods = useForm({
     defaultValues,
+    resolver: yupResolver(partnershipDetailSchema),
   });
 
   const onSubmit = data => {
@@ -50,11 +31,21 @@ export const CreatePartnershipDetail = () => {
       ...data,
       content: draftToHtml(convertToRaw(data.content.getCurrentContent())),
     };
+
+    if (convertedData.content.length <= 30) {
+      methods.setError('content', {
+        type: 'custom',
+        message: 'Content must be more than 30 characters long',
+      });
+      return;
+    }
+
     const formData = new FormData();
     for (const key in convertedData) {
       formData.append(key, convertedData[key]);
     }
     formData.append('refer', id);
+
     create.mutate(formData);
   };
 

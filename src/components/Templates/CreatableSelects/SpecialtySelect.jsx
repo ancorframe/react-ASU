@@ -2,9 +2,14 @@ import { useSpecialty, useUpdateSpecialty } from 'cms/hooks/specialty';
 import { nanoid } from 'nanoid';
 import { Controller, useFormContext } from 'react-hook-form';
 import Select from 'react-select/creatable';
+import { ErrorMessage } from '@hookform/error-message';
+import { Article } from '../Article/Article';
 
 export const SpecialtySelect = ({ name, placeholder = 'Select', ...props }) => {
-  const { control } = useFormContext();
+  const {
+    control,
+    formState: { errors },
+  } = useFormContext();
   const { data, isLoading } = useSpecialty();
   const update = useUpdateSpecialty(data?.specialty.id);
 
@@ -19,22 +24,29 @@ export const SpecialtySelect = ({ name, placeholder = 'Select', ...props }) => {
   };
 
   return (
-    <Controller
-      name={name}
-      control={control}
-      render={({ field }) => (
-        <Select
-          isClearable
-          // isMulti
-          options={data?.specialty.data.specialty}
-          placeholder={placeholder}
-          isDisabled={isLoading}
-          isLoading={isLoading}
-          onCreateOption={handleCreate}
-          {...field}
-          {...props}
-        />
-      )}
-    />
+    <>
+      <Controller
+        name={name}
+        control={control}
+        render={({ field }) => (
+          <Select
+            isClearable
+            // isMulti
+            options={data?.specialty.data.specialty}
+            placeholder={placeholder}
+            isDisabled={isLoading}
+            isLoading={isLoading}
+            onCreateOption={handleCreate}
+            {...field}
+            {...props}
+          />
+        )}
+      />
+      <ErrorMessage
+        errors={errors}
+        name={name}
+        render={({ message }) => <Article color="red">{message}</Article>}
+      />
+    </>
   );
 };

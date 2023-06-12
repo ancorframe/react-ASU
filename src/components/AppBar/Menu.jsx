@@ -73,7 +73,7 @@ export const Menu = ({ onCloseMenu }) => {
       </Box>
       <Box as="ul" p="32px 24px " onClick={onClick}>
         <Item>
-          <MenuLink text="ВСТУП" to="introduction" />
+          <MenuLink text="ВСТУП" to="entrants" />
         </Item>
         <Item>
           <MenuLink text="Корисна література" to="literature" />

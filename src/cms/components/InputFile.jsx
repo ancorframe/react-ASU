@@ -1,6 +1,9 @@
 import { Controller, useFormContext } from 'react-hook-form';
 import { useDropzone } from 'react-dropzone';
 import { useCallback } from 'react';
+import { ErrorMessage } from '@hookform/error-message';
+import { Article } from 'components/Templates/Article/Article';
+
 
 function isValidUrl(string) {
   try {
@@ -12,7 +15,7 @@ function isValidUrl(string) {
 }
 export const InputFile = props => {
   const { name } = props;
-  const { control } = useFormContext();
+  const { control,  formState: { errors }} = useFormContext();
   return (
     <>
       <Controller
@@ -22,6 +25,11 @@ export const InputFile = props => {
         name={name}
         control={control}
         defaultValue=""
+      />
+      <ErrorMessage
+        errors={errors}
+        name={name}
+        render={({ message }) => <Article color="red">{message}</Article>}
       />
     </>
   );
@@ -55,7 +63,13 @@ const Dropzone = ({ value, onChange}) => {
         (isValidUrl(value) ? (
           <img src={value} alt="promo img" width="300px" />
         ) : (
-          <img src={URL.createObjectURL(value)} alt="promo img" width="300px" />
+          typeof value === 'object' && (
+             <img
+              src={URL.createObjectURL(value)}
+              alt="promo img"
+              width="300px"
+            />
+          )
         ))}
     </div>
   );

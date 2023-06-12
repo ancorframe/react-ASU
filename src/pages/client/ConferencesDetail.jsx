@@ -5,15 +5,8 @@ import {
   ImgContainer,
   Container,
   List,
-  // ContainerItem,
-  // List,
 } from 'components/common/PagesDetail/PagesDetail.styled';
-
 import { NewsRecommendations } from 'components/NewsRecommendations/NewsRecommendations';
-// import {
-//   InfoDescription,
-//   InfoImg,
-// } from 'components/ConferencesDetail/ConferencesDetail.styled';
 import { SectionContent } from 'components/Templates/SectionContent/SectionContent';
 import { SectionTitle } from 'components/Templates/SectionTitle/SectionTitle';
 import { Title } from 'components/Templates/Title/Title';
@@ -23,13 +16,12 @@ import { MotionWrap } from 'components/MotionWrap/MotionWrap';
 import { AnimatePresence } from 'framer-motion';
 import { HtmlParser } from 'cms/components/HtmlParser';
 import { LoaderNews } from 'components/LoaderNews';
-import { useConferenceDetail } from 'client/conference';
+import { useConferenceDetail } from 'client/hooks/conference';
 import { domToReact } from 'html-react-parser';
 import { Article } from 'components/Templates/Article/Article';
 import { ContentImg } from 'components/Templates/ContentImg/ContentImg';
 import { useParams } from 'react-router-dom';
 import { ErrorRequest } from 'components/ErrorRequest';
-// import { Article } from 'components/Templates/Article/Article';
 
 const options = {
   replace: el => {

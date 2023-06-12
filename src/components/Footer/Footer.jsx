@@ -14,7 +14,7 @@ const links = [
   {
     title: 'Основне',
     links: [
-      { to: '/introduction', name: 'Вступникам' },
+      { to: '/entrants', name: 'Вступникам' },
       { to: '/literature', name: 'Корисна література' },
     ],
   },

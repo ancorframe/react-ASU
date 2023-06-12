@@ -1,14 +1,20 @@
 import { Input } from 'components/Templates/Input/Input';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useSignIn } from 'cms/hooks/auth';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { loginSchema } from 'cms/validationSchemas/loginSchemas';
 
 const defaultValues = {
   email: '',
   password: '',
 };
 export const Login = () => {
-  const methods = useForm({ defaultValues });
+  const methods = useForm({
+    defaultValues,
+    resolver: yupResolver(loginSchema),
+  });
   const mutation = useSignIn();
+
 
   const onSubmit = data => {
     mutation.mutate(data);

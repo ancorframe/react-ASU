@@ -1,4 +1,3 @@
-
 import { useDisciplines } from 'cms/hooks/disciplines';
 import { Box } from 'components/Box';
 import { Suspense } from 'react';

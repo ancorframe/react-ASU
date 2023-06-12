@@ -1,4 +1,3 @@
-
 import { Box } from 'components/Box';
 import {
   CardTitle,
@@ -8,18 +7,17 @@ import {
   Item,
   Label,
   Link,
+  List,
 } from 'components/Desciplines/Desciplines.styled';
 import { Footer } from 'components/Footer/Footer';
 import { useForm, Controller } from 'react-hook-form';
 import BusinessCenterOutlinedIcon from '@mui/icons-material/BusinessCenterOutlined';
 import EmojiFlagsOutlinedIcon from '@mui/icons-material/EmojiFlagsOutlined';
-
 import { SectionContent } from 'components/Templates/SectionContent/SectionContent';
 import { SectionTitle } from 'components/Templates/SectionTitle/SectionTitle';
 import { Title } from 'components/Templates/Title/Title';
 import { Wrap } from 'components/Templates/Wrap/Wrap';
 import { TitleDescription } from 'components/Templates/TitleDescription/TitleDescription';
-import { ListWrap } from 'components/Templates/ListWrap/ListWrap';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { debounce } from 'debounce';
@@ -94,9 +92,14 @@ export const Disciplines = () => {
                                       <option value="" disabled hidden>
                                         Обери спеціальність ...
                                       </option>
-                                      {/* <option value="female">female</option>
-                        <option value="male">male</option>
-                        <option value="other">other</option> */}
+                                      {filter.specialty.map(item => (
+                                        <option
+                                          value={item.value}
+                                          key={item.value}
+                                        >
+                                          {item.label}
+                                        </option>
+                                      ))}
                                     </InputSelect>
                                   )}
                                   name="specialty"
@@ -121,9 +124,14 @@ export const Disciplines = () => {
                                       <option value="" disabled hidden>
                                         Обери курс ...
                                       </option>
-                                      {/* <option value="female">female</option>
-                        <option value="male">male</option>
-                        <option value="other">other</option> */}
+                                      {filter.course.map(item => (
+                                        <option
+                                          value={item.value}
+                                          key={item.value}
+                                        >
+                                          {item.label}
+                                        </option>
+                                      ))}
                                     </InputSelect>
                                   )}
                                   name="course"
@@ -157,7 +165,7 @@ export const Disciplines = () => {
                       {data && (
                         <AnimatePresence mode="wait" key={23424}>
                           {data.disciplines.length !== 0 && (
-                            <ListWrap key={55533}>
+                            <List key={55533}>
                               <AnimatePresence mode="wait">
                                 {data.disciplines.map(item => (
                                   <Item
@@ -176,12 +184,14 @@ export const Disciplines = () => {
                                     }}
                                   >
                                     <Link>
-                                      <CardTitle>{item.data.title}</CardTitle>
+                                      <CardTitle>
+                                        {item.data.disciplines}
+                                      </CardTitle>
                                     </Link>
                                   </Item>
                                 ))}
                               </AnimatePresence>
-                            </ListWrap>
+                            </List>
                           )}
                           {(data.disciplines.length === 0 || isError) && (
                             <MotionWrap key={3434}>
@@ -193,19 +203,21 @@ export const Disciplines = () => {
                         </AnimatePresence>
                       )}
                       {isLoading && (
-                        <ListWrap mb={[7, 8]} key={6655543}>
+                        <List mb={[7, 8]} key={6655543}>
                           {Array(6)
                             .fill()
                             .map((item, index) => {
                               return (
                                 <Item key={index}>
                                   <Link>
-                                    <CardTitle><Skeleton/></CardTitle>
+                                    <CardTitle>
+                                      <Skeleton />
+                                    </CardTitle>
                                   </Link>
                                 </Item>
                               );
                             })}
-                        </ListWrap>
+                        </List>
                       )}
                     </AnimatePresence>
                   </MotionWrap>

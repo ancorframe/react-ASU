@@ -9,7 +9,10 @@ export function useSignUp() {
       });
       return response.data;
     },
-    onSuccess: data => {},
+    onSuccess: data => {
+    },
+    onError: (error) => {
+    },
     refetchOnWindowFocus: false,
   });
 }
@@ -27,14 +30,14 @@ export function useSignIn() {
     onSuccess: data => {
       queryClient.setQueriesData(['user'], data);
     },
-    onError: () => {},
+    onError: (error) => {
+    },
     refetchOnWindowFocus: false,
   });
 }
 
 export function useGetUser() {
   const queryClient = useQueryClient();
-
   const user = queryClient.getQueryData(['user']);
   return useQuery({
     queryKey: ['user'],
@@ -47,15 +50,10 @@ export function useGetUser() {
     },
     onSuccess: data => {
       queryClient.setQueriesData(['user'], data);
-      // queryClient.invalidateQueries(['user']);
     },
     onError: () => {
       queryClient.setQueriesData(['user'], null);
-      // setCurrentUser(null);
     },
-    // refetchInterval: 14 * 60 * 1000,
-    // refetchIntervalInBackground: true,
-    // refetchOnWindowFocus: false,
     refetchOnMount: false,
     retry: 0,
     enabled: !(!!user), // disable this query from automatically running
@@ -73,7 +71,6 @@ export function useLogOut() {
       return response.data;
     },
     onSuccess: () => {
-      // queryClient.invalidateQueries(['user']);
       queryClient.setQueriesData(['user'], null);
     },
     onError: () => {},
@@ -84,9 +81,7 @@ export function useLogOut() {
 
 export function useRefreshToken() {
   const queryClient = useQueryClient();
-
   const user = queryClient.getQueryData(['user']);
-  // console.log(user);
   return useQuery({
     queryKey: ['token'],
     queryFn: async ({ signal }) => {
@@ -98,7 +93,6 @@ export function useRefreshToken() {
     },
     onSuccess: () => {},
     onError: () => {
-      // setCurrentUser(null);
       queryClient.setQueriesData(['user'], null);
     },
     refetchInterval: 14 * 60 * 1000,

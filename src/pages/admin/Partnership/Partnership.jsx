@@ -1,16 +1,17 @@
 import { SectionContent } from 'components/Templates/SectionContent/SectionContent';
 import { FormProvider, useForm } from 'react-hook-form';
-// import { FieldArrayPartnership } from 'cms/components/FieldArrayPartnership';
 import { InputFile } from 'cms/components/InputFile';
 import { Box } from 'components/Box';
 import { Input } from 'components/Templates/Input/Input';
-
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
+  useDeletePartnership,
   usePartnershipById,
   useUpdatePartnership,
 } from 'cms/hooks/partnership';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { partnershipSchema } from 'cms/validationSchemas/partnershipSchemas';
 
 const defaultValues = {
   title: '',
@@ -18,10 +19,13 @@ const defaultValues = {
 };
 export const Partnership = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const methods = useForm({
     defaultValues,
+    resolver: yupResolver(partnershipSchema),
   });
   const { data } = usePartnershipById(id);
+  const mutate = useDeletePartnership(id);
 
   const update = useUpdatePartnership(id);
   useEffect(() => {
@@ -37,7 +41,12 @@ export const Partnership = () => {
     for (const key in data) {
       formData.append(key, data[key]);
     }
+
     update.mutate(formData);
+  };
+  const onDelete = () => {
+    mutate.mutate();
+    navigate('/admin/partnership');
   };
 
   return (
@@ -55,10 +64,12 @@ export const Partnership = () => {
                   <label>image</label>
                   <InputFile name="image" />
                 </section>
-                {/* <FieldArrayPartnership name="content" /> */}
                 <button type="submit">submit</button>
               </form>
             </FormProvider>
+            <button type="button" onClick={onDelete}>
+              delete
+            </button>
           </Box>
         </Box>
       </SectionContent>

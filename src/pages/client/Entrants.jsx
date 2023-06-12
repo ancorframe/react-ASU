@@ -19,6 +19,7 @@ import { AdditionalInfo } from 'components/AdditionalInfo/AdditionalInfo';
 import { domToReact } from 'html-react-parser';
 import { ContentImg } from 'components/Templates/ContentImg/ContentImg';
 import { Article } from 'components/Templates/Article/Article';
+import { List } from 'components/common/PagesDetail/PagesDetail.styled';
 
 const degrees = [
   { d: 'bachelor', name: 'Бакалаврат' },
@@ -63,6 +64,14 @@ const options = {
         return <Article>{domToReact(el.children, options)}</Article>;
       case 'img':
         return <ContentImg src={el.attribs.src} alt={el.attribs.alt} />;
+      case 'ul':
+        return <List> {domToReact(el.children, options)}</List>;
+      case 'li':
+        return (
+          <li>
+            <Article>{domToReact(el.children, options)}</Article>
+          </li>
+        );
       default:
         break;
     }
@@ -154,7 +163,7 @@ export const Entrants = () => {
                         {degrees.map(({ d, name }, index) => (
                           <Button
                             key={index}
-                            isActive={d===degree}
+                            isActive={d === degree}
                             onClick={() => onHandleChange(d)}
                           >
                             {name}

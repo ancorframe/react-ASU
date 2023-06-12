@@ -104,9 +104,18 @@ export const Schedule = () => {
     if (!isSuccess) {
       return;
     }
+    
+    const newArray = filter.schedules.map(item => ({
+      data: {
+        course: item.data.course.value,
+        group: item.data.group.value,
+        subgroup: item.data.subgroup.value,
+      },
+    }));
+
     const param = Object.fromEntries([...searchParams]);
     if (param.hasOwnProperty('subgroup')) {
-      const check = filter.schedules.find(
+      const check = newArray.find(
         item => JSON.stringify(item.data) === JSON.stringify(param)
       );
       if (!check) {
@@ -121,7 +130,7 @@ export const Schedule = () => {
 
     const local = JSON.parse(localStorage.getItem('filter'));
     if (local && local.hasOwnProperty('subgroup')) {
-      const check = filter.schedules.find(
+      const check = newArray.find(
         item => JSON.stringify(item.data) === JSON.stringify(local)
       );
       if (!check) {
@@ -148,7 +157,7 @@ export const Schedule = () => {
     Array.from(
       new Set(
         filter.schedules
-          .filter(obj => obj.data.course === selectedCourse)
+          .filter(obj => obj.data.course.value === selectedCourse)
           .map(obj => obj.data.group)
       )
     );
@@ -159,8 +168,8 @@ export const Schedule = () => {
         filter.schedules
           .filter(
             obj =>
-              obj.data.course === selectedCourse &&
-              obj.data.group === selectedGroup
+              obj.data.course.value === selectedCourse &&
+              obj.data.group.value === selectedGroup
           )
           .map(obj => obj.data.subgroup)
       )

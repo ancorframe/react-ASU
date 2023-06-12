@@ -4,18 +4,19 @@ import { Box } from 'components/Box';
 import { Input } from 'components/Templates/Input/Input';
 import { useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { homeSchema } from 'cms/validationSchemas/homeSchemas';
 
 const initialState = {
-  description: '',
   image: '',
   promoUrl: '',
-  promoAlt:''
+  promoAlt: '',
 };
 export const Home = () => {
-  const methods = useForm({ initialState });
+  const methods = useForm({ initialState, resolver: yupResolver(homeSchema) });
   const { data } = useHome();
 
-  const updateHome = useUpdateHome(data?._id);
+  const updateHome = useUpdateHome(data?.home.id);
 
   useEffect(() => {
     if (data) {
@@ -37,10 +38,6 @@ export const Home = () => {
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit)}>
             <section>
-              <label>description</label>
-              <Input name="description" />
-            </section>
-            <section>
               <label>promo image</label>
               <InputFile name="image" />
             </section>
@@ -50,7 +47,7 @@ export const Home = () => {
             </section>
             <section>
               <label>promo url</label>
-              <Input name="promoUrl" type="url" />
+              <Input name="promoUrl" />
             </section>
             <button type="submit">submit</button>
           </form>

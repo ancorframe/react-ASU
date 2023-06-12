@@ -3,16 +3,10 @@ import draftToHtml from 'draftjs-to-html';
 import { FormProvider, useForm } from 'react-hook-form';
 import { TextEditor } from '../../cms/components/TextEditor';
 import { FieldArray } from 'cms/components/FieldArray';
-import {
-  EditorState, convertToRaw,
-  ContentState
-} from 'draft-js';
+import { EditorState, convertToRaw, ContentState } from 'draft-js';
 import { Box } from 'components/Box';
 import { Title } from 'components/Templates/Title/Title';
-import {
-  // useCreateSupport,
-  useSupport, useUpdateSupport
-} from 'cms/hooks/support';
+import { useSupport, useUpdateSupport } from 'cms/hooks/support';
 import htmlToDraft from 'html-to-draftjs';
 import { useEffect } from 'react';
 
@@ -31,34 +25,44 @@ export const Support = () => {
   const methods = useForm({
     defaultValues,
   });
-    const { data } = useSupport() ;
-    console.log(data);
-    const update = useUpdateSupport(data?.support.id);
-    useEffect(() => {
-      if (data) {
-        const support = {
-          ...data.support.data,
-          content: EditorState.createWithContent(
-            ContentState.createFromBlockArray(
-              htmlToDraft(data.support.data.content).contentBlocks
-            )
-          ),
-        };
-        methods.reset({
-          ...support,
-        });
-      }
-    }, [methods, data]);
+  const { data } = useSupport();
+
+  const update = useUpdateSupport(data?.support.id);
+  useEffect(() => {
+    if (data) {
+      const support = {
+        ...data.support.data,
+        content: EditorState.createWithContent(
+          ContentState.createFromBlockArray(
+            htmlToDraft(data.support.data.content).contentBlocks
+          )
+        ),
+      };
+      methods.reset({
+        ...support,
+      });
+    }
+  }, [methods, data]);
 
   const onSubmit = data => {
     const convertedData = {
       ...data,
       content: draftToHtml(convertToRaw(data.content.getCurrentContent())),
     };
+
+    if (convertedData.content.length <= 30) {
+      methods.setError('content', {
+        type: 'custom',
+        message: 'Content must be more than 30 characters long',
+      });
+      return;
+    }
+
     const formData = new FormData();
     for (const key in convertedData) {
       formData.append(key, convertedData[key]);
     }
+
     update.mutate(convertedData);
   };
 
@@ -89,5 +93,3 @@ export const Support = () => {
     </main>
   );
 };
-
-

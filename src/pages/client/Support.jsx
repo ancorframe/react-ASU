@@ -74,7 +74,7 @@ const options = {
 };
 
 export const Support = () => {
-  const { data,isError,isLoading } = useSupport();
+  const { data, isError, isLoading } = useSupport();
   return (
     <>
       <MotionWrap key={3432343445}>
@@ -125,7 +125,7 @@ export const Support = () => {
                 )}
                 {isError && (
                   <MotionWrap key={3434536645}>
-                    <ErrorRequest/>
+                    <ErrorRequest />
                   </MotionWrap>
                 )}
               </AnimatePresence>

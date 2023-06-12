@@ -14,6 +14,8 @@ import {
 } from 'cms/hooks/teachers';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { teacherSchema } from 'cms/validationSchemas/teacherSchema';
 
 const defaultValues = {
   fullName: '',
@@ -25,6 +27,7 @@ export const Teacher = () => {
   const { id } = useParams();
   const methods = useForm({
     defaultValues,
+    resolver: yupResolver(teacherSchema),
   });
   const { data } = useTeachersDetail(id);
   const update = useUpdateTeacher(id);
@@ -52,10 +55,20 @@ export const Teacher = () => {
       ...data,
       content: draftToHtml(convertToRaw(data.content.getCurrentContent())),
     };
+
+    if (convertedData.content.length <= 30) {
+      methods.setError('content', {
+        type: 'custom',
+        message: 'Content must be more than 30 characters long',
+      });
+      return;
+    }
+
     const formData = new FormData();
     for (const key in convertedData) {
       formData.append(key, convertedData[key]);
     }
+
     update.mutate(formData);
   };
   const onDelete = () => {

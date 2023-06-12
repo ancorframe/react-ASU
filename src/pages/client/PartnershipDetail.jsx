@@ -17,7 +17,7 @@ import { SectionContent } from 'components/Templates/SectionContent/SectionConte
 import { SectionTitle } from 'components/Templates/SectionTitle/SectionTitle';
 import { Title } from 'components/Templates/Title/Title';
 import { Wrap } from 'components/Templates/Wrap/Wrap';
-import {  useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Article } from 'components/Templates/Article/Article';
 import { Box } from 'components/Box';
 import { domToReact } from 'html-react-parser';
@@ -88,7 +88,7 @@ export const PartnershipDetail = () => {
 
   const onClick = link => {
     window.location.href = `#${link}`;
-  };  
+  };
   useScrollToLocation();
 
   return (

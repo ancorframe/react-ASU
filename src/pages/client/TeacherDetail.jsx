@@ -1,4 +1,3 @@
-
 import { Footer } from 'components/Footer/Footer';
 import { MotionWrap } from 'components/MotionWrap/MotionWrap';
 import {
@@ -21,7 +20,6 @@ import { ContentImg } from 'components/Templates/ContentImg/ContentImg';
 import { List } from 'components/common/PagesDetail/PagesDetail.styled';
 import { ErrorRequest } from 'components/ErrorRequest';
 import { useTeachersDetail } from 'client/hooks/teachers';
-
 
 const options = {
   replace: el => {
@@ -75,8 +73,8 @@ const options = {
 };
 
 export const TeacherDetail = () => {
-  const { id } = useParams()
-  const { data,isLoading,isError } = useTeachersDetail(id)
+  const { id } = useParams();
+  const { data, isLoading, isError } = useTeachersDetail(id);
   return (
     <>
       <MotionWrap key={903043434983}>
@@ -120,7 +118,7 @@ export const TeacherDetail = () => {
             {isError && (
               <MotionWrap key={90304343433434983}>
                 <Wrap>
-                <ErrorRequest/>
+                  <ErrorRequest />
                 </Wrap>
               </MotionWrap>
             )}

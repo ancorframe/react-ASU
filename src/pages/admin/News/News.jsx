@@ -11,6 +11,8 @@ import { useDeleteNews, useNewsDetail, useUpdateNews } from 'cms/hooks/news';
 import { InputFile } from 'cms/components/InputFile';
 import { DatePicker } from 'cms/components/DatePicker';
 import { Input } from 'components/Templates/Input/Input';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { newsSchema } from 'cms/validationSchemas/newsSchemas';
 
 const defaultValues = {
   title: '',
@@ -22,6 +24,7 @@ export const News = () => {
   const { id } = useParams();
   const methods = useForm({
     defaultValues,
+    resolver: yupResolver(newsSchema),
   });
   const { data } = useNewsDetail(id);
   const mutate = useDeleteNews(id);
@@ -39,7 +42,6 @@ export const News = () => {
           )
         ),
       };
-      // console.log(new Date(data.news.news.data.date).toISOString());
       methods.reset({
         ...news,
       });
@@ -51,10 +53,20 @@ export const News = () => {
       ...data,
       content: draftToHtml(convertToRaw(data.content.getCurrentContent())),
     };
+
     const formData = new FormData();
     for (const key in convertedData) {
       formData.append(key, convertedData[key]);
     }
+
+    if (convertedData.content.length <= 30) {
+      methods.setError('content', {
+        type: 'custom',
+        message: 'Content must be more than 30 characters long',
+      });
+      return;
+    }
+
     update.mutate(formData);
   };
 

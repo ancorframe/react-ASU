@@ -16,9 +16,10 @@ export const ImgContainer = styled.div`
 export const Img = styled.img`
   object-fit: cover;
   object-position: center;
-  min-height: 320px;
+  /* min-height: 320px; */
   width: 100%;
-  max-height: 480px;
+  /* max-height: 480px; */
+  height:100%;
 `;
 
 export const TitleContainer = styled.div`

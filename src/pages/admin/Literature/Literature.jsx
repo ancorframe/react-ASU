@@ -10,12 +10,15 @@ import {
   useUpdateLiterature,
 } from 'cms/hooks/literature';
 import { InputFile } from 'cms/components/InputFile';
+import { SpecialtySelect } from 'components/Templates/CreatableSelects/SpecialtySelect';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { literatureSchema } from 'cms/validationSchemas/literatureSchemas';
 
 const defaultValues = {
   title: '',
   image: '',
   author: '',
-  specialty: '',
+  specialty: [],
   url: '',
 };
 
@@ -23,9 +26,9 @@ export const Literature = () => {
   const { id } = useParams();
   const methods = useForm({
     defaultValues,
+    resolver: yupResolver(literatureSchema),
   });
   const { data } = useLiteratureDetail(id);
-  console.log(data);
   const mutate = useDeleteLiterature(id);
   const update = useUpdateLiterature(id);
   const navigate = useNavigate();
@@ -39,9 +42,10 @@ export const Literature = () => {
   }, [data, methods]);
 
   const onSubmit = data => {
+    const newData = { ...data, specialty: JSON.stringify(data.specialty) };
     const formData = new FormData();
-    for (const key in data) {
-      formData.append(key, data[key]);
+    for (const key in newData) {
+      formData.append(key, newData[key]);
     }
     update.mutate(formData);
   };
@@ -51,20 +55,27 @@ export const Literature = () => {
     navigate('/admin/literature');
   };
 
+  const checkKeyDown = e => {
+    if (e.key === 'Enter') e.preventDefault();
+  };
+
   return (
     <main>
       <SectionContent>
         <Box maxWidth="960px" m="0 auto" boxShadow={'regular'}>
           <Box p={[null, 11]} px={[6, null]} py={[8, null]}>
             <FormProvider {...methods}>
-              <form onSubmit={methods.handleSubmit(onSubmit)}>
+              <form
+                onSubmit={methods.handleSubmit(onSubmit)}
+                onKeyDown={e => checkKeyDown(e)}
+              >
                 <section>
                   <label>title</label>
                   <Input name="title" />
                 </section>
                 <section>
                   <label>specialty</label>
-                  <Input name="specialty" />
+                  <SpecialtySelect isMulti name="specialty" />
                 </section>
                 <section>
                   <label>author</label>
@@ -78,7 +89,6 @@ export const Literature = () => {
                   <label>image</label>
                   <InputFile name="image" />
                 </section>
-
                 <button type="submit">submit</button>
               </form>
             </FormProvider>

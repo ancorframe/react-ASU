@@ -38,10 +38,20 @@ export const Research = () => {
       ...data,
       content: draftToHtml(convertToRaw(data.content.getCurrentContent())),
     };
+
+    if (convertedData.content.length <= 30) {
+      methods.setError('content', {
+        type: 'custom',
+        message: 'Content must be more than 30 characters long',
+      });
+      return;
+    }
+
     const formData = new FormData();
     for (const key in convertedData) {
       formData.append(key, convertedData[key]);
     }
+
     update.mutate(convertedData);
   };
 

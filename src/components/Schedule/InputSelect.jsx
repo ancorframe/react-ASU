@@ -24,9 +24,9 @@ export const InputSelects = ({
           <option value="" disabled hidden>
             {placeholder}
           </option>
-          {option.map((option, index) => (
-            <option key={index} value={option}>
-              {option}
+          {option.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
             </option>
           ))}
         </InputSelect>

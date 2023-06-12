@@ -8,6 +8,7 @@ export const Item = styled.li`
   width: 100%;
   border: 2px solid #f2f3f5;
   border-radius: 4px;
+  background-color: ${p => p.theme.colors.white};
 `;
 
 export const CardTitle = styled.p`
@@ -108,5 +109,7 @@ export const Label = styled.label`
 
 
 export const List = styled(ListWrap)`
-grid-template-columns:repeat(auto-fit, minmax(min(100%, 401px), 1fr));
+  @media screen and (min-width: 980px) {
+    grid-template-columns: repeat(2, minmax(330px, 1fr));
+  }
 `;

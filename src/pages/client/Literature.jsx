@@ -14,7 +14,6 @@ import {
   ResetButton,
 } from 'components/Literature/Literaturte.styled';
 import { useForm, Controller } from 'react-hook-form';
-
 import { SectionContent } from 'components/Templates/SectionContent/SectionContent';
 import { SectionTitle } from 'components/Templates/SectionTitle/SectionTitle';
 import { Title } from 'components/Templates/Title/Title';
@@ -22,9 +21,11 @@ import { Wrap } from 'components/Templates/Wrap/Wrap';
 import { TitleDescription } from 'components/Templates/TitleDescription/TitleDescription';
 import { ListWrap } from 'components/Templates/ListWrap/ListWrap';
 import { LoadMore } from 'components/common/LoadMore/LoadMore';
-
 import { MotionWrap } from 'components/MotionWrap/MotionWrap';
-import { useInfiniteLiterature, useLiteratureFilter } from 'client/hooks/literature';
+import {
+  useInfiniteLiterature,
+  useLiteratureFilter,
+} from 'client/hooks/literature';
 import debounce from 'debounce';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -34,15 +35,15 @@ import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import React from 'react';
 
-
 export const Literature = () => {
   const [query, setQuery] = useState(null);
-  const { control, watch, reset, handleSubmit } = useForm({
+  const { control, watch, resetField, handleSubmit } = useForm({
     defaultValues: {
       searchQuery: '',
       specialty: '',
     },
   });
+  
   const { data, isError, isLoading, hasNextPage, fetchNextPage, refetch } =
     useInfiniteLiterature(query);
   const {
@@ -63,7 +64,8 @@ export const Literature = () => {
   }, [query, refetch]);
 
   const onSubmit = values => {
-    setQuery(values);
+    const trimmed = { ...values, searchQuery: values.searchQuery.trim() };
+      setQuery(trimmed);
   };
 
   return (
@@ -124,8 +126,8 @@ export const Literature = () => {
                                         Обери фільтр ...
                                       </option>
                                       {filter.filter.map((item, index) => (
-                                        <option value={item} key={index}>
-                                          {item}
+                                        <option value={item.value} key={index}>
+                                          {item.label}
                                         </option>
                                       ))}
                                     </InputSelect>
@@ -144,7 +146,10 @@ export const Literature = () => {
                               </Box>
                             </InputWrap>
 
-                            <ResetButton type="button" onClick={() => reset()}>
+                            <ResetButton
+                              type="button"
+                              onClick={() => resetField('specialty')}
+                            >
                               {window.innerWidth < 849 ? (
                                 'Оновити'
                               ) : (

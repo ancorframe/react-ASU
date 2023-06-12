@@ -76,7 +76,7 @@ const options = {
 };
 export const NewsDetail = () => {
   const { id } = useParams();
-  const { data,isLoading,isError } = useNewsDetail(id);
+  const { data, isLoading, isError } = useNewsDetail(id);
 
   return (
     <>

@@ -1,16 +1,15 @@
+import { ErrorMessage } from '@hookform/error-message';
+import { Article } from 'components/Templates/Article/Article';
 import { Input } from 'components/Templates/Input/Input';
-// import { InputField } from 'components/Templates/Input/Input.styled';
-import {
-  // Controller,
-  useFieldArray, useFormContext
-} from 'react-hook-form';
+import { useFieldArray, useFormContext } from 'react-hook-form';
 
 export const FieldArray = props => {
   const { name } = props;
-  const { control } = useFormContext();
-    const { fields, append,
-        // prepend ,
-        remove } = useFieldArray({
+  const {
+    control,
+    formState: { errors },
+  } = useFormContext();
+  const { fields, append, remove } = useFieldArray({
     control,
     name: name,
   });
@@ -35,32 +34,18 @@ export const FieldArray = props => {
               <label>content</label>
               <Input name={`${name}.${index}.content`} />
             </section>
-            {/* <Controller
-              render={({ field }) => <InputField {...field} />}
-              name={`${name}.${index}.title`}
-              control={control}
-            /> */}
-            {/* <Controller
-              render={({ field }) => <InputField {...field} />}
-              name={`${name}.${index}.author`}
-              control={control}
-            /> */}
-            {/* <Controller
-              render={({ field }) => <InputField {...field} />}
-              name={`${name}.${index}.source`}
-              control={control}
-            /> */}
-            {/* <Controller
-              render={({ field }) => <InputField {...field} />}
-              name={`${name}.${index}.content`}
-              control={control}
-            /> */}
+
             <button type="button" onClick={() => remove(index)}>
               Delete
             </button>
           </li>
         ))}
       </ul>
+      <ErrorMessage
+        errors={errors}
+        name={name}
+        render={({ message }) => <Article color="red">{message}</Article>}
+      />
       <button
         type="button"
         onClick={() =>

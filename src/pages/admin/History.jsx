@@ -1,10 +1,6 @@
 import { SectionContent } from 'components/Templates/SectionContent/SectionContent';
 import draftToHtml from 'draftjs-to-html';
-import {
-    EditorState,
-    convertToRaw,
-    ContentState
-} from 'draft-js';
+import { EditorState, convertToRaw, ContentState } from 'draft-js';
 import { FormProvider, useForm } from 'react-hook-form';
 import { TextEditor } from '../../cms/components/TextEditor';
 import { Box } from 'components/Box';
@@ -19,9 +15,8 @@ export const History = () => {
   const methods = useForm({
     defaultValues,
   });
-  const { data } = useHistory()
-  const update = useUpdateHistory(data?.history.id)
-
+  const { data } = useHistory();
+  const update = useUpdateHistory(data?.history.id);
 
   useEffect(() => {
     if (data) {
@@ -40,6 +35,15 @@ export const History = () => {
       ...data,
       content: draftToHtml(convertToRaw(data.content.getCurrentContent())),
     };
+
+    if (convertedData.content.length <= 30) {
+      methods.setError('content', {
+        type: 'custom',
+        message: 'Content must be more than 30 characters long',
+      });
+      return;
+    }
+
     update.mutate(convertedData);
   };
 
